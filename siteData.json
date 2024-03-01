@@ -8,9 +8,9 @@
         "about-us": "About Us",
         "project-team": "Project team",
         "baizhou": "Baizhou",
-        "jane-doe": "Jane Doe",
-        "johnny-doe": "Johnny Doe",
-        "jean-doe": "Jean Doe",
+        "ho-kin-tat": "Ho Kin Tat",
+        "liu-yiyang": "Liu Yiyang",
+        "marcus": "Marcus",
         "wu-yizheng": "Wu Yizheng"
       },
       "headingKeywords": {}
@@ -140,6 +140,14 @@
       "title": "John Doe's Project Portfolio Page",
       "headings": {
         "project-addressbook-level-3": "Project: AddressBook Level 3"
+      },
+      "headingKeywords": {}
+    },
+    {
+      "src": "team/kintat.md",
+      "title": "Kin Tat's Project Portfolio Page",
+      "headings": {
+        "personal-portfolio": "Personal Portfolio"
       },
       "headingKeywords": {}
     },
