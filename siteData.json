@@ -84,6 +84,11 @@
       "headingKeywords": {}
     },
     {
+      "src": "README.md",
+      "headings": {},
+      "headingKeywords": {}
+    },
+    {
       "src": "SettingUp.md",
       "title": "Setting up and getting started",
       "headings": {
