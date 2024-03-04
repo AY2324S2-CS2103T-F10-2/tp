@@ -3,7 +3,8 @@
     "name": "Alice Pauline",
     "phone": "94351253",
     "email": "alice@example.com",
-    "address": "123, Jurong West Ave 6, #08-111",
+    "address": "4th street",
+    "remark" : "",
     "tags": [ "friends" ]
   }, {
     "name": "Alice Pauline",
