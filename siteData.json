@@ -132,7 +132,23 @@
       "src": "index.md",
       "title": "",
       "headings": {
-        "addressbook-level-3": "AddressBook Level-3"
+        "tuteetally": "TuteeTally"
+      },
+      "headingKeywords": {}
+    },
+    {
+      "src": "team/baizhou.md",
+      "title": "Bai Zhou's Project Portfolio Page",
+      "headings": {
+        "personal-portfolio": "Personal Portfolio"
+      },
+      "headingKeywords": {}
+    },
+    {
+      "src": "team/jessica.md",
+      "title": "Jessica's Project Portfolio Page",
+      "headings": {
+        "personal-portfolio": "Personal Portfolio"
       },
       "headingKeywords": {}
     },
@@ -147,6 +163,22 @@
     {
       "src": "team/kintat.md",
       "title": "Kin Tat's Project Portfolio Page",
+      "headings": {
+        "personal-portfolio": "Personal Portfolio"
+      },
+      "headingKeywords": {}
+    },
+    {
+      "src": "team/marcus.md",
+      "title": "Marcus's Project Portfolio Page",
+      "headings": {
+        "personal-portfolio": "Personal Portfolio"
+      },
+      "headingKeywords": {}
+    },
+    {
+      "src": "team/yiyang.md",
+      "title": "Yi Yang's Project Portfolio Page",
       "headings": {
         "personal-portfolio": "Personal Portfolio"
       },
