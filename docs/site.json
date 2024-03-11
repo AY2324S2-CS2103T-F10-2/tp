@@ -11,6 +11,7 @@
     "_markbind/logs/*",
     "_site/*",
     "site.json",
+    "*.md",
     "*.njk",
     ".git/*",
     "node_modules/*"
