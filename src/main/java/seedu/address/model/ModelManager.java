@@ -146,7 +146,7 @@ public class ModelManager implements Model {
     @Override
     public Person getPersonByUniqueId(int uniqueId) {
         for (Person person : addressBook.getPersonList()) {
-            if (Integer.parseInt(person.getUniqueId()) == uniqueId) {
+            if (Integer.parseInt(person.getUniqueId().id) == uniqueId) {
                 return person;
             }
         }
