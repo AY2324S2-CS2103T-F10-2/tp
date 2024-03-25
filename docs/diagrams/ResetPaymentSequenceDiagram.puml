@@ -1,0 +1,70 @@
+@startuml
+!include style.puml
+skinparam ArrowFontStyle plain
+
+box Logic LOGIC_COLOR_T1
+participant ":LogicManager" as LogicManager LOGIC_COLOR
+participant ":AddressBookParser" as AddressBookParser LOGIC_COLOR
+participant ":ResetPaymentCommandParser" as ResetPaymentCommandParser LOGIC_COLOR
+participant "rp:ResetPaymentCommand" as ResetPaymentCommand LOGIC_COLOR
+participant "r:CommandResult" as CommandResult LOGIC_COLOR
+end box
+
+box Model MODEL_COLOR_T1
+participant "m:Model" as Model MODEL_COLOR
+end box
+
+[-> LogicManager : execute("resetpayment -id 000003")
+activate LogicManager
+
+LogicManager -> AddressBookParser : parseCommand("resetpayment -id 000003")
+activate AddressBookParser
+
+create ResetPaymentCommandParser
+AddressBookParser -> ResetPaymentCommandParser
+activate ResetPaymentCommandParser
+
+ResetPaymentCommandParser --> AddressBookParser
+deactivate ResetPaymentCommandParser
+
+AddressBookParser -> ResetPaymentCommandParser : parse("000003")
+activate ResetPaymentCommandParser
+
+create ResetPaymentCommand
+ResetPaymentCommandParser -> ResetPaymentCommand
+activate ResetPaymentCommand
+
+ResetPaymentCommand --> ResetPaymentCommandParser :
+deactivate ResetPaymentCommand
+
+ResetPaymentCommandParser --> AddressBookParser : rp
+deactivate ResetPaymentCommandParser
+'Hidden arrow to position the destroy marker below the end of the activation bar.
+ResetPaymentCommandParser -[hidden]-> AddressBookParser
+destroy ResetPaymentCommandParser
+
+AddressBookParser --> LogicManager : a
+deactivate AddressBookParser
+
+LogicManager -> ResetPaymentCommand : execute(m)
+activate ResetPaymentCommand
+
+ResetPaymentCommand -> Model : resetpayment(Id(000003))
+activate Model
+
+Model --> ResetPaymentCommand
+deactivate Model
+
+create CommandResult
+ResetPaymentCommand -> CommandResult
+activate CommandResult
+
+CommandResult --> ResetPaymentCommand
+deactivate CommandResult
+
+ResetPaymentCommand --> LogicManager : r
+deactivate ResetPaymentCommand
+
+[<--LogicManager
+deactivate LogicManager
+@enduml

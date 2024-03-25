@@ -30,11 +30,13 @@ public class DeleteCommand extends Command {
     public static final String MESSAGE_POSITIVE_INTEGER_AND_ZERO =
             "The unique ID must be a positive integer and/or zero";
 
-    private final int targetUniqueId;
+    private final String targetUniqueId;
+
     /**
      * Creates a DeleteCommand to delete the person with the specified unique ID.
      */
-    public DeleteCommand(int targetUniqueId) {
+    public DeleteCommand(String targetUniqueId) {
+        requireNonNull(targetUniqueId);
         this.targetUniqueId = targetUniqueId;
     }
 
@@ -42,17 +44,7 @@ public class DeleteCommand extends Command {
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
 
-        List<Person> lastShownList = model.getFilteredPersonList();
-
-        if (targetUniqueId >= lastShownList.size()) {
-            throw new CommandException(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
-        }
-
-        if (targetUniqueId < 0) { // Positive Integer or 0, to discuss
-            throw new CommandException(MESSAGE_POSITIVE_INTEGER_AND_ZERO);
-        }
-
-        Person personToDelete = lastShownList.get(targetUniqueId);
+        Person personToDelete = model.getPersonByUniqueId(targetUniqueId);
 
         if (personToDelete == null) {
             throw new CommandException(MESSAGE_PERSON_NOT_FOUND);
