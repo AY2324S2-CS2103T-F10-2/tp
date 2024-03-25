@@ -1,0 +1,25 @@
+@startuml
+!include style.puml
+skinparam arrowThickness 1.1
+skinparam arrowColor LOGIC_COLOR
+skinparam classBackgroundColor LOGIC_COLOR
+
+package "Model Package" {
+
+package "Person Classes" #F4F6F6 {
+    Class "<<class>>\nPerson" as Person
+    Class Id
+    Class Payment
+}
+
+Class "<<interface>>\nModel" as Model
+Class ModelManager
+
+Person -- Id : id >
+Person -- Payment : paymentOwed >
+}
+
+
+ModelManager .up.|> Model
+ModelManager --> "1" Person
+@enduml

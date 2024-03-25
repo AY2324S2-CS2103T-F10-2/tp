@@ -251,10 +251,61 @@ The following activity diagram summarizes what happens when a user executes a ne
 
 _{more aspects and alternatives to be added}_
 
+### Payment Modification Feature
+
+#### Proposed Implementation
+
+The payment modification feature allows users to update the payment information of persons in the address book. It is implemented with the following key operations:
+
+* `AddressBook#addPayment(Id id, Payment payment)` — Adds a payment to the person with the specified ID.
+* `AddressBook#markPayment(Id id, Payment payment)` — Marks a specified amount as paid for the person with the given ID.
+* `AddressBook#resetPayments(Id id)` — Resets the payment information for the person with the specified ID.
+
+These operations update the `Person` objects within the `AddressBook` and are reflected immediately in the UI. The operations are exposed in the `Model` interface as `Model#addpayment(Id id, Payment payment)`, `Model#markpayment(Id id, Payment payment)`, and `Model#resetpayments(Id id)` respectively.
+
+Given below is an example usage scenario and how the payment modification feature behaves at each step.
+
+#### Example Usage Scenario
+
+Step 1: The user starts the application. The initial state of the address book is loaded, and the UI shows a list of all persons with their payment information.
+
+Step 2: The user executes a command to add a payment of $200 to the person with ID #000003. The application calls the `Model#addpayment(Id id, Payment payment)` method, and the UI updates to show the new payment owed.
+<puml src="diagrams/AddPaymentSequenceDiagram.puml" alt="AddPaymentSequenceDiagram" />
+
+Step 3: The user then marks a payment of $50 for the same person. They execute the `markpayment` command. The application calls the `Model#markpayment(Id id, Payment payment)` method, and the UI reflects this by showing the updated payment owed amount.
+<puml src="diagrams/MarkPaymentSequenceDiagram.puml" alt="MarkPaymentSequenceDiagram" />
+
+Step 4: If the user wishes to reset all payments made by a person, they execute the `resetpayments` command. The application calls `Model#resetpayments(Id id)`, and the UI updates to remove any payment owed by the person.
+<puml src="diagrams/ResetPaymentsSequenceDiagram.puml" alt="ResetPaymentsSequenceDiagram" />
+
+
+#### Design Considerations:
+
+**Aspect: How payments are managed and updated in the UI:**
+
+* **Alternative 1 (current choice):** The UI directly reflects changes made to the `Person` objects in the `AddressBook`.
+    * Pros: Immediate feedback in the UI ensures the user is aware of the changes.
+    * Cons: More demanding on system resources due to continuous updates.
+
+* **Alternative 2:** Employ a lazy update strategy where the UI is updated at regular intervals or upon specific events.
+    * Pros: Potentially better performance and less resource-intensive.
+    * Cons: Changes made may not be immediately visible to the user, leading to possible confusion.
+
+**Aspect: How payment information is stored:**
+
+* **Alternative 1 (current choice):** As part of the `Person` objects within the `AddressBook`.
+    * Pros: Simplified data management by keeping all information about a person within a single object.
+    * Cons: Increases the complexity of `Person` objects.
+
+* **Alternative 2:** In a separate `Payment` object associated with `Person`.
+    * Pros: Decouples payment information from personal details, following the Single Responsibility Principle.
+    * Cons: Requires additional logic to manage the relationship between `Person` and `Payment` objects.
+
 ### \[Proposed\] Data archiving
 
 _{Explain here how the data archiving feature will be implemented}_
 
+    
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -459,8 +510,8 @@ testers are expected to do more *exploratory* testing.
 
    1. Prerequisites: List all persons using the `list` command. Multiple persons in the list.
 
-   1. Test case: `delete 1`<br>
-      Expected: First contact is deleted from the list. Details of the deleted contact shown in the status message. Timestamp in the status bar is updated.
+   1. Test case: `delete 000001`<br>
+      Expected: Contact with ID #000001 is deleted from the list. Details of the deleted contact shown in the status message. Timestamp in the status bar is updated.
 
    1. Test case: `delete 0`<br>
       Expected: No person is deleted. Error details shown in the status message. Status bar remains the same.
