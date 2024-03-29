@@ -19,5 +19,7 @@ Person *--> Phone
 Person *--> Email
 Person *--> Address
 Person *--> Subject
+Person *--> "1" LogList
+LogList -down-> "*" Log
 
 @enduml

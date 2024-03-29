@@ -251,9 +251,48 @@ The following activity diagram summarizes what happens when a user executes a ne
 
 _{more aspects and alternatives to be added}_
 
-### \[Proposed\] Data archiving
+### View student feature
+The `view` command is a feature that allows the user to find details related to student(s) and retrieve their details.
+It consists of 3 variants
+1. `view -all` : shows all students currently recorded in TuteeTally.
+2. `view -name`: shows all students recorded with their name, or part of their name matching the input.
+2. `view -id` : finds (unique) student associated with the unique id.
+3. `view -stats` : opens a popup for summary statistics with regard to all students.
+#### Proposed Implementation
+The checking of which variant of `view` is triggered is detected based on the presence of prefixes in `ViewCommandParser#parse`.
 
-_{Explain here how the data archiving feature will be implemented}_
+If more than one valid prefix `-all`, `-name`, `-id`, or `stats` are present, `ViewCommandParser` creates `ViewCommands` in the following order of precedence:
+* `all` > `name` > `id` > `stats`
+
+Below is an example usage scenario where the `view -stats` command was entered.
+
+**Step 1:** User first calls `view -stats`. The input is passed into ``AddressBookParser`` which instantiates a ``ViewCommandParser`` instance.
+The `ViewCommandParser` uses ``ViewCommandParser#arePrefixesPresent`` to check for presence of the ``-add`` prefix.
+
+<puml src="diagrams/ViewParserSequenceDiagram0.puml" />
+
+**Step 2:** The check for ``-add`` prefix returns false, and a similar check routine for prefixes is carried out for ``-name`` and ``-id``
+<puml src="diagrams/ViewParserSequenceDiagram1.puml" />
+
+**Step 3:** All checks for prefixes return false, and falls into the default case. A ``CommandResult`` with the ``isStatsCommand`` set to true is returned
+<puml src="diagrams/ViewParserSequenceDiagram2.puml" />
+
+For the prefixes ``-name`` and ``-id``, a filtered list containing the search results will be returned.
+Both variants utilize a similar logic to of passing in a ``prefix`` to ``model#updateFilteredPersonList`` to adjust the entries displayed by the GUI.
+<puml src="diagrams/ViewIdSequenceDiagram.puml" />
+
+#### Design considerations:
+**Aspect: How to check which command to execute:**
+
+* **Alternative 1 (current choice):** Goes through checks for presence of prefix variants, and execute the first detected based on the precedence of ``-all`` > ``-name`` > ``-id`` > ``-stats``
+    * Pros: Easy to implement.
+    * Cons: If variants increase in the future, might take extra time falling through the conditional checks. Precedence of prefixes can also not be aligned with what the user intended.
+
+* **Alternative 2:** Executes all variants given in the command
+  itself.
+    * Pros: More intuitive for user, gives quick overview of multiple view commands.
+    * Cons: Difficult to implement and requires drastic changes in GUI.
+
 
 
 --------------------------------------------------------------------------------------------------------------------

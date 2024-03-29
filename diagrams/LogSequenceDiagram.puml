@@ -1,0 +1,90 @@
+@startuml
+!include style.puml
+skinparam ArrowFontStyle plain
+
+box Logic LOGIC_COLOR_T1
+participant ":LogicManager" as LogicManager LOGIC_COLOR
+participant ":AddressBookParser" as AddressBookParser LOGIC_COLOR
+participant ":LogCommandParser" as LogCommandParser LOGIC_COLOR
+participant "l:LogCommand" as LogCommand LOGIC_COLOR
+participant "lg:Log" as Log LOGIC_COLOR
+participant "r:CommandResult" as CommandResult LOGIC_COLOR
+end box
+
+box Model MODEL_COLOR_T1
+participant "m:Model" as Model MODEL_COLOR
+end box
+
+[-> LogicManager : execute("log -id 1 -hours 1 -style visual -content Eng Essay -notes Good improvement")
+activate LogicManager
+
+LogicManager -> AddressBookParser : parseCommand("log -id 1 -hours 1 -style visual -content Eng Essay -notes Good improvement")
+activate AddressBookParser
+
+create LogCommandParser
+AddressBookParser -> LogCommandParser
+activate LogCommandParser
+
+LogCommandParser --> AddressBookParser
+deactivate LogCommandParser
+
+AddressBookParser -> LogCommandParser : parse("-id 1 -hours 1 -style visual -content Eng Essay -notes Good improvement")
+activate LogCommandParser
+
+create Log
+LogCommandParser -> Log : Log(visual, 1, Eng Essay, Good improvement)
+activate Log
+
+Log -> LogCommandParser : lg
+deactivate Log
+
+create LogCommand
+LogCommandParser -> LogCommand : LogCommand(1, lg)
+activate LogCommand
+
+LogCommand -->  LogCommandParser : l
+deactivate LogCommand
+
+LogCommandParser --> AddressBookParser : l
+deactivate LogCommandParser
+'Hidden arrow to position the destroy marker below the end of the activation bar.
+LogCommandParser -[hidden]-> AddressBookParser
+destroy LogCommandParser
+
+AddressBookParser --> LogicManager : l
+deactivate AddressBookParser
+
+LogicManager -> LogCommand : execute(m)
+activate LogCommand
+
+LogCommand -> Model : getPersonByUniqueId(1)
+activate Model
+
+Model --> LogCommand : p:Person
+deactivate Model
+
+LogCommand --> Model : addLog(p, lg)
+activate Model
+
+Model --> LogCommand
+deactivate Model
+
+LogCommand --> Model : updateFilteredPersonsList()
+activate Model
+
+Model --> LogCommand
+deactivate Model
+
+create CommandResult
+LogCommand -> CommandResult
+activate CommandResult
+
+CommandResult --> ViewCommand
+deactivate CommandResult
+
+LogCommand --> LogicManager : r
+deactivate LogCommand
+
+[<--LogicManager
+deactivate LogicManager
+@enduml
