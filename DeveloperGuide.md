@@ -67,13 +67,13 @@ The sections below give more details of each component.
 
 ### UI component
 
-The **API** of this component is specified in [`Ui.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/ui/Ui.java)
+The **API** of this component is specified in [`Ui.java`](https://github.com/AY2324S2-CS2103T-F10-2/tp/blob/master/src/main/java/seedu/address/ui/Ui.java)
 
 <puml src="diagrams/UiClassDiagram.puml" alt="Structure of the UI Component"/>
 
 The UI consists of a `MainWindow` that is made up of parts e.g.`CommandBox`, `ResultDisplay`, `PersonListPanel`, `StatusBarFooter` etc. All these, including the `MainWindow`, inherit from the abstract `UiPart` class which captures the commonalities between classes that represent parts of the visible GUI.
 
-The `UI` component uses the JavaFx UI framework. The layout of these UI parts are defined in matching `.fxml` files that are in the `src/main/resources/view` folder. For example, the layout of the [`MainWindow`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/ui/MainWindow.java) is specified in [`MainWindow.fxml`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/resources/view/MainWindow.fxml)
+The `UI` component uses the JavaFx UI framework. The layout of these UI parts are defined in matching `.fxml` files that are in the `src/main/resources/view` folder. For example, the layout of the [`MainWindow`](https://github.com/AY2324S2-CS2103T-F10-2/tp/blob/master/src/main/java/seedu/address/ui/MainWindow.java) is specified in [`MainWindow.fxml`](https://github.com/AY2324S2-CS2103T-F10-2/tp/blob/master/src/main/resources/view/MainWindow.fxml)
 
 The `UI` component,
 
@@ -84,7 +84,7 @@ The `UI` component,
 
 ### Logic component
 
-**API** : [`Logic.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/logic/Logic.java)
+**API** : [`Logic.java`](https://github.com/AY2324S2-CS2103T-F10-2/tp/blob/master/src/main/java/seedu/address/logic/Logic.java)
 
 Here's a (partial) class diagram of the `Logic` component:
 
@@ -116,7 +116,7 @@ How the parsing works:
 * All `XYZCommandParser` classes (e.g., `AddCommandParser`, `DeleteCommandParser`, ...) inherit from the `Parser` interface so that they can be treated similarly where possible e.g, during testing.
 
 ### Model component
-**API** : [`Model.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/model/Model.java)
+**API** : [`Model.java`](https://github.com/AY2324S2-CS2103T-F10-2/tp/blob/master/src/main/java/seedu/address/model/Model.java)
 
 <puml src="diagrams/ModelClassDiagram.puml" width="450" />
 
@@ -139,7 +139,7 @@ The `Model` component,
 
 ### Storage component
 
-**API** : [`Storage.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/storage/Storage.java)
+**API** : [`Storage.java`](https://github.com/AY2324S2-CS2103T-F10-2/tp/blob/master/src/main/java/seedu/address/storage/Storage.java)
 
 <puml src="diagrams/StorageClassDiagram.puml" width="550" />
 
@@ -151,12 +151,58 @@ The `Storage` component,
 ### Common classes
 
 Classes used by multiple components are in the `seedu.addressbook.commons` package.
+This consists of 
+- `Core`
+  -  Files like `Config`, `GuiSettings` and `LogsCenter`
+- `Exceptions`
+- `Util`
 
 --------------------------------------------------------------------------------------------------------------------
-s
+
 ## **Implementation**
 
 This section describes some noteworthy details on how certain features are implemented.
+### View student feature
+The `view` command is a feature that allows the user to find details related to student(s) and retrieve their details.
+It consists of 3 variants
+1. `view -all` : shows all students currently recorded in TuteeTally.
+2. `view -name`: shows all students recorded with their name, or part of their name matching the input.
+2. `view -id` : finds (unique) student associated with the unique id.
+3. `view -stats` : opens a popup for summary statistics with regard to all students.
+#### Implementation
+The checking of which variant of `view` is triggered is detected based on the presence of prefixes in `ViewCommandParser#parse`.
+
+If more than one valid prefix `-all`, `-name`, `-id`, or `stats` are present, `ViewCommandParser` creates `ViewCommands` in the following order of precedence:
+* `all` > `name` > `id` > `stats`
+
+#### Design considerations:
+**Aspect: How to check which command to execute:**
+
+* **Alternative 1 (current choice):** Goes through checks for presence of prefix variants, and execute the first detected based on the precedence of ``-all`` > ``-name`` > ``-id`` > ``-stats``
+    * Pros: Easy to implement.
+    * Cons: If variants increase in the future, might take extra time falling through the conditional checks. Precedence of prefixes can also not be aligned with what the user intended.
+
+* **Alternative 2:** Executes all variants given in the command
+  itself.
+    * Pros: More intuitive for user, gives quick overview of multiple view commands.
+    * Cons: Difficult to implement and requires drastic changes in GUI.
+
+Below is an example usage scenario where the `view -stats` command was entered.
+
+**Step 1:** User first calls `view -stats`. The input is passed into ``AddressBookParser`` which instantiates a ``ViewCommandParser`` instance.
+The `ViewCommandParser` uses ``ViewCommandParser#arePrefixesPresent`` to check for presence of the ``-add`` prefix.
+
+<puml src="diagrams/ViewParserSequenceDiagram0.puml" />
+
+**Step 2:** The check for ``-add`` prefix returns false, and a similar check routine for prefixes is carried out for ``-name`` and ``-id``
+<puml src="diagrams/ViewParserSequenceDiagram1.puml" />
+
+**Step 3:** All checks for prefixes return false, and falls into the default case. A ``CommandResult`` with the ``isStatsCommand`` set to true is returned
+<puml src="diagrams/ViewParserSequenceDiagram2.puml" />
+
+For the prefixes ``-name`` and ``-id``, a filtered list containing the search results will be returned.
+Both variants utilize a similar logic to of passing in a ``prefix`` to ``model#updateFilteredPersonList`` to adjust the entries displayed by the GUI.
+<puml src="diagrams/ViewIdSequenceDiagram.puml" />
 
 ### View all feature
 
@@ -180,50 +226,24 @@ Below is a sequence diagram of how view all interacts with multiple classes.
     * Pros: Easy to implement, less merge conflicts.
     * Cons: Large number of files and parsers needed.
 
-### View student feature
-The `view` command is a feature that allows the user to find details related to student(s) and retrieve their details.
-It consists of 3 variants
-1. `view -all` : shows all students currently recorded in TuteeTally.
-2. `view -name`: shows all students recorded with their name, or part of their name matching the input.
-2. `view -id` : finds (unique) student associated with the unique id.
-3. `view -stats` : opens a popup for summary statistics with regard to all students.
-#### Proposed Implementation
-The checking of which variant of `view` is triggered is detected based on the presence of prefixes in `ViewCommandParser#parse`.
 
-If more than one valid prefix `-all`, `-name`, `-id`, or `stats` are present, `ViewCommandParser` creates `ViewCommands` in the following order of precedence:
-* `all` > `name` > `id` > `stats`
+### View Stats feature
+This feature supports the viewing of summary statistics, it currently shows the total number of students, the total amount
+owed by them and the number of exams in the upcoming months. 
 
-Below is an example usage scenario where the `view -stats` command was entered.
+#### Implementation
+It's mechanism is similar to the `help` feature where a popout window is shown when called.
 
-**Step 1:** User first calls `view -stats`. The input is passed into ``AddressBookParser`` which instantiates a ``ViewCommandParser`` instance.
-The `ViewCommandParser` uses ``ViewCommandParser#arePrefixesPresent`` to check for presence of the ``-add`` prefix.
+It gets it's info from the `logic` interface
 
-<puml src="diagrams/ViewParserSequenceDiagram0.puml" />
-
-**Step 2:** The check for ``-add`` prefix returns false, and a similar check routine for prefixes is carried out for ``-name`` and ``-id``
-<puml src="diagrams/ViewParserSequenceDiagram1.puml" />
-
-**Step 3:** All checks for prefixes return false, and falls into the default case. A ``CommandResult`` with the ``isStatsCommand`` set to true is returned
-<puml src="diagrams/ViewParserSequenceDiagram2.puml" />
-
-For the prefixes ``-name`` and ``-id``, a filtered list containing the search results will be returned.
-Both variants utilize a similar logic to of passing in a ``prefix`` to ``model#updateFilteredPersonList`` to adjust the entries displayed by the GUI.
-<puml src="diagrams/ViewIdSequenceDiagram.puml" />
-
-#### Design considerations:
-**Aspect: How to check which command to execute:**
-
-* **Alternative 1 (current choice):** Goes through checks for presence of prefix variants, and execute the first detected based on the precedence of ``-all`` > ``-name`` > ``-id`` > ``-stats``
-    * Pros: Easy to implement.
-    * Cons: If variants increase in the future, might take extra time falling through the conditional checks. Precedence of prefixes can also not be aligned with what the user intended.
-
-* **Alternative 2:** Executes all variants given in the command
-  itself.
-    * Pros: More intuitive for user, gives quick overview of multiple view commands.
-    * Cons: Difficult to implement and requires drastic changes in GUI.
-
-
-
+### View Name Feature
+** to add in v1.4**
+#### Implementation
+** to add in v1.4**
+### View ID Feature
+** to add in v1.4**
+#### Implementation
+** to add in v1.4**
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -256,6 +276,8 @@ Both variants utilize a similar logic to of passing in a ``prefix`` to ``model#u
 * Easier time to track Student’s grades and weaknesses
 * Manage parent’s expectations
 * Easy tracking of payment
+* Logging of Lessons for retrevial in the future
+* Easily track Exams dates
 
 
 
@@ -270,6 +292,8 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | `* * *`  | Tutor   | delete a person                           | remove entries that I no longer need                      |
 | `* * *`  | Tutor   | view single students detail               | see the individual detail for a single student            |
 | `* * *`  | Tutor   | view total number of students             | check if I have space for more students                   |
+| `* * *`  | Tutor   | track my payments                         | won't miss out on any payments                            |
+| `* * *`  | Tutor   | track my student's exam dates             | personalise and plan better for lessons                   |
 
 
 *{More to be added}*
@@ -382,7 +406,7 @@ Use case ends.
 
 ### Non-Functional Requirements
 
-1.  Should work on any _mainstream OS_ as long as it has Java `11` or above installed.
+1.  Should work on any _mainstream OS_ as long as it has Java `11` to support JavaFx.
 2.  Should be able to hold up to 1000 persons without a noticeable sluggishness in performance for typical usage.
 3.  A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
 4.  System should provide quick responses to user commands.

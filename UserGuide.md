@@ -83,6 +83,33 @@ The `t/{tag}` field is optional and can be used to add a tag to the student reco
 Examples:
 * `add -name Xiao Ming -address 13, Computing Dr, 117417 -phone 88888888 -subject Math`
 
+### Editing a student: `Edit`
+
+Edit the specific student detail from TuteeTally using the ID
+
+Parameters: INDEX (must be a positive integer) [-nameNAME] [-phonePHONE] [-emailEMAIL] [-addressADDRESS] [t/TAG]... [-subjectSUBJECT]...
+Editable Fields
+- `Name`
+- `Phone`
+- `Email`
+- `Address`
+- `Tags`
+- `Subject`
+- `UniqueId`
+- `Exams`
+ 
+Format: `edit -id {ID} -<Insert Field to Edit> {Value}`
+
+Example: 
+* `edit 1 -phone91234567 -emailjohndoe@example.com -subjectMath`
+
+* Deletes the person at the specified `id`.
+* The index refers to the 5-digit code attached to each student entry.
+
+Examples:
+* `delete -id 000001 / 1` deletes the student with the id 000001
+
+
 ### Deleting a student: `delete`
 
 Deletes the specified student from the address book.
@@ -96,8 +123,12 @@ Examples:
 * `delete -id 000001 / 1` deletes the student with the id 000001
 
 ### View student statistics: `View`
-This would display the total number of students and the total amount owed by students.
-Format: `view -statistics`
+This would display the following in a pop-up window
+- the total number of students 
+- the total amount owed by students
+- the number of upcoming exams in the following month
+Format 1: `view -statistics`
+Format 2: `view -stats`
 
 ### View student summary on the home page: `View`
 This would display a summary of student particulars on the homepage.
@@ -110,7 +141,7 @@ Examples:
 * `view -name Xiao Ming` would display the student particular of Xiao Ming if existed
 
 ### View student particular by id: `View`
-This will display a specific particular by searching for its id
+This will display a specific particular by searching for its Id, this also pops up the lesson logs of the student.
 Format: `view -id {ID}`
 Examples:
 * `view -id 88888` would display the student particular for the student whose id is 88888 if it exists.
@@ -121,7 +152,7 @@ Format: `addpayment -id {ID} -payment {AMOUNT}`
 Examples:
 * `addpayment -id 88888 -payment 100` would add a payment of 100 to the student whose id is 88888 if it exists.
 
-### Mark student's payment as paid by id: `MarkPaid`
+### Mark student's payment as paid by id: `MarkPayment`
 This will mark a student's payment as paid by searching for their `id`
 Format: `markpayment -id {ID} -payment {AMOUNT}`
 Examples:
@@ -146,6 +177,13 @@ Format 1: `deleteexam -id {ID} -exam {EXAMNAME} -date {DATE}`
 Format 2: `deleteexam -id {ID} -exam {EXAMNAME} -date {DATE} -time {TIME}`
 Examples:
 * `deleteexam -id 888888 -exam Computing -date 2024-04-27 -time 09:00` would delete an exam of Computing with date of 2024-04-27 and time of 09:00 from a student whose id is 888888 if the student exists.
+
+### Logging the Lessons of a student: `Logging`
+This will log the lessons of a student, the parameters can be added in any order.
+Format `log -id {ID} -hours {HOURS} -content {CONTENT} -style {LEARNING STYLE} -notes {NOTES}
+Examples:
+* `log -id 1 -hours 2 -content English Comprehension -style Visual -notes Great improvement!`. would log a lesson for ID 1 noting that it had great improvement in English Comprehension, it also logs the learning style of the student
+
 
 ### More features `[coming in v1.4]`
 
@@ -173,13 +211,15 @@ _Details coming soon ..._
 --------------------------------------------------------------------------------------------------------------------
 ## Command summary
 
-| Action           | Format, Examples                                                                                                                                                                                                                         |
-|------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Action           | Format, Examples                                                                                                                                                                                                                        |
+|------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | **Add**          | `add -name {NAME} -email {EMAIL} -phone {number} -address {ADDRESS} -subject {SUBJECT} t/{tag}` <br> e.g., `add -name Xiao Ming -phone 88888888 -email xiaoming@gmail.com -address 13, Computing Dr, 117417  -subject Math t/bestfriend` |
-| **Delete**       | `delete -id {id}`<br> e.g., `delete -id 88888`                                                                                                                                                                                           |
-| **View**         | `view [-statistics] [-all] [-id ID] [-name NAME]`                                                                                                                                                                                        |
-| **AddPayment**   | `addpayment -id {ID} -payment {AMOUNT}`<br> e.g., `addpayment -id 88888 -payment 100`                                                                                                                                                    |
-| **MarkPayment**  | `markpayment -id {ID} -payment {AMOUNT}`<br> e.g., `markpayment -id 88888 -payment 100`                                                                                                                                                  |
-| **ResetPayment** | `resetpayments -id {ID}`<br> e.g., `resetpayments -id 88888`                                                                                                                                                                             |
-| **AddExam**      | `addexam -id {ID} -exam {EXAMNAME} -date {DATE} -time {TIME OPTIONAL}` <br> e.g., `addexam -id 888888 -exam Computing -date 2024-04-27 -time 09:00`                                                                                      |
-| **DeleteExam**   | `deleteexam -id {ID} -exam {EXAMNAME} -date {DATE} -time {TIME}` or `deleteexam -id {ID} -exam {EXAMNAME} -date {DATE}` <br> e.g., `deleteexam -id 888888 -exam Computing -date 2024-04-27 -time 09:00`                                  |
+| **Delete**       | `delete -id {id}`<br> e.g., `delete -id 88888`                                                                                                                                                                                          |
+| **Edit**         | `edit 1 -phone91234567 -emailjohndoe@example.com -subjectMath`                                                                                                                                                                          |
+| **View**         | `view [-statistics] [-all] [-id ID] [-name NAME]`                                                                                                                                                                                       |
+| **AddPayment**   | `addpayment -id {ID} -payment {AMOUNT}`<br> e.g., `addpayment -id 88888 -payment 100`                                                                                                                                                   |
+| **MarkPayment**  | `markpayment -id {ID} -payment {AMOUNT}`<br> e.g., `markpayment -id 88888 -payment 100`                                                                                                                                                 |
+| **ResetPayment** | `resetpayments -id {ID}`<br> e.g., `resetpayments -id 88888`                                                                                                                                                                            |
+| **AddExam**      | `addexam -id {ID} -exam {EXAMNAME} -date {DATE} -time {TIME OPTIONAL}` <br> e.g., `addexam -id 888888 -exam Computing -date 2024-04-27 -time 09:00`                                                                                     |
+| **DeleteExam**   | `deleteexam -id {ID} -exam {EXAMNAME} -date {DATE} -time {TIME}` or `deleteexam -id {ID} -exam {EXAMNAME} -date {DATE}` <br> e.g., `deleteexam -id 888888 -exam Computing -date 2024-04-27 -time 09:00`                                 |
+| **Log**          | `log -id 1 -hours 2 -content English Comprehension -style Visual -notes Great improvement!`                                                                                                                                             |

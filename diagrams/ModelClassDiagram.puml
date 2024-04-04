@@ -21,6 +21,10 @@ Class Phone
 Class Subject
 Class Id
 Class Tag
+Class Exam
+Class Log
+Class Payment
+
 
 Class I #FFFFFF
 }
@@ -44,8 +48,12 @@ Person *--> Phone
 Person *--> Email
 Person *--> Address
 Person *--> Subject
+Person *--> Exam
+Person *--> Payment
+Person *--> Log
 Person *--> Id
 Person *--> "*" Tag
+
 
 Person -[hidden]up--> I
 UniquePersonList -[hidden]right-> I
@@ -55,6 +63,7 @@ Phone -[hidden]right-> Address
 Address -[hidden]right-> Email
 Subject -[hidden]right-> Subject
 Id -[hidden]right-> Id
-
+Tag -[hidden]right-> Log
+Exam -[hidden]right-> Log
 ModelManager --> "~* filtered" Person
 @enduml
