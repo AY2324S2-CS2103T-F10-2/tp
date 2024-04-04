@@ -153,7 +153,7 @@ The `Storage` component,
 Classes used by multiple components are in the `seedu.addressbook.commons` package.
 
 --------------------------------------------------------------------------------------------------------------------
-
+s
 ## **Implementation**
 
 This section describes some noteworthy details on how certain features are implemented.
@@ -166,7 +166,7 @@ The mechanism is similar to list feature in `AddressBook`. parser checks for `-a
 
 The feature can return user to the whole list after user uses view -id/view -name function to see specific student. A list of students will only be displayed if there are at least 1 student added to TuteeTally.
 
-Below is a sequence diagram of how view all interacts with multiple classes. 
+Below is a sequence diagram of how view all interacts with multiple classes.
 
 <puml src="diagrams/ViewAllSequenceDiagram.puml" alt="ViewAllSequenceDiagram" />
 
