@@ -31,7 +31,7 @@ public class LogCommandParser {
         String style = argMultimap.getValue(PREFIX_STYLE).get().trim();
         String notes = argMultimap.getValue(PREFIX_NOTES).get().trim();
 
-        Log logEntry = new Log(style, hours, content, notes);
+        Log logEntry = new Log(style, hours, content, notes, null);
 
         return new LogCommand(id.getInt(), logEntry);
     }

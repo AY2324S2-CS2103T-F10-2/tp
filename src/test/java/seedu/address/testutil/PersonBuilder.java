@@ -3,14 +3,7 @@ package seedu.address.testutil;
 import java.util.HashSet;
 import java.util.Set;
 
-import seedu.address.model.person.Address;
-import seedu.address.model.person.Email;
-import seedu.address.model.person.Id;
-import seedu.address.model.person.Name;
-import seedu.address.model.person.Payment;
-import seedu.address.model.person.Person;
-import seedu.address.model.person.Phone;
-import seedu.address.model.person.Subject;
+import seedu.address.model.person.*;
 import seedu.address.model.tag.Tag;
 import seedu.address.model.util.SampleDataUtil;
 
@@ -35,6 +28,8 @@ public class PersonBuilder {
     private Subject subject;
     private Id uniqueId;
     private Payment payment;
+    private Set<Exam> exams;
+    private LogList logs;
 
     /**
      * Creates a {@code PersonBuilder} with the default details.
@@ -136,12 +131,22 @@ public class PersonBuilder {
         return this;
     }
 
+    public PersonBuilder withExams(Exam ... exams) {
+        this.exams = SampleDataUtil.getSampleExams();
+        return this;
+    }
+
+    public PersonBuilder withLogs(Log ... logs) {
+        this.logs = SampleDataUtil.getSampleLogs();
+        return this;
+    }
+
     public Person build() {
-        return new Person(name, phone, email, address, tags, subject, uniqueId, payment);
+        return new Person(name, phone, email, address, tags, subject, uniqueId, exams, payment, logs);
     }
 
     public Person buildWithoutId() {
-        return new Person(name, phone, email, address, tags, subject, payment);
+        return new Person(name, phone, email, address, tags, subject, exams, payment, logs);
     }
 
 }

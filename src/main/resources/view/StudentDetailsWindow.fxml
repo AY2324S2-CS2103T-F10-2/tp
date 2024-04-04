@@ -10,21 +10,25 @@
 <?import javafx.stage.Stage?>
 
 <?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.layout.Region?>
 <fx:root resizable="false" title="Student Details Window" type="javafx.stage.Stage"
          xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
-         minWidth="220" minHeight="200">
+         minWidth="220" minHeight="200" maxHeight="300">
     <scene>
         <Scene>
             <stylesheets>
                 <URL value="@StudentDetailsWindow.css" />
             </stylesheets>
-            <ScrollPane fitToWidth="true" vbarPolicy="AS_NEEDED">
-                <HBox alignment="CENTER" fx:id="studentDetailsContainer">
+            <ScrollPane fitToWidth="true" vbarPolicy="AS_NEEDED" fx:id="scrollContainer">
+                <VBox alignment="CENTER" fx:id="studentDetailsContainer">
                     <children>
-                        <Label fx:id="detailsMessage" text="Label">
-                            <HBox.margin>
-                                <Insets right="5.0" />
-                            </HBox.margin>
+                        <Label fx:id="detailsMessage" styleClass="cell_big_label"  maxWidth="300.0">
+                            <minWidth>
+                                <!-- Ensures that the label text is never truncated -->
+                                <Region fx:constant="USE_PREF_SIZE" />
+                            </minWidth>
                         </Label>
                     </children>
                     <opaqueInsets>
@@ -33,7 +37,7 @@
                     <padding>
                         <Insets bottom="10.0" left="5.0" right="10.0" top="5.0" />
                     </padding>
-            </HBox>
+            </VBox>
             </ScrollPane>
         </Scene>
     </scene>

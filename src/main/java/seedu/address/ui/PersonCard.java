@@ -79,7 +79,7 @@ public class PersonCard extends UiPart<Region> {
             paymentText.setFill(Color.GREEN);
             paymentText.setText("No payment owed");
         } else {
-            paymentText.setFill(Color.RED);
+            paymentText.setFill(Color.SALMON);
         }
 
         TextFlow textFlow = new TextFlow(paymentText);

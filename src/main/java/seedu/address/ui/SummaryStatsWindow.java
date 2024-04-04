@@ -70,6 +70,9 @@ public class SummaryStatsWindow extends UiPart<Stage> {
      */
     public void show() {
         logger.fine("Showing total Student Count about the application.");
+        totalPerson = logic.getTotalPersons();
+        String output = SUMMARYSTATS_MESSAGE + " " + Integer.toString(totalPerson);
+        summaryMessage.setText(output);
         getRoot().show();
         getRoot().centerOnScreen();
     }
@@ -92,6 +95,9 @@ public class SummaryStatsWindow extends UiPart<Stage> {
      * Focuses on the help window.
      */
     public void focus() {
+        totalPerson = logic.getTotalPersons();
+        String output = SUMMARYSTATS_MESSAGE + " " + Integer.toString(totalPerson);
+        summaryMessage.setText(output);
         getRoot().requestFocus();
     }
 

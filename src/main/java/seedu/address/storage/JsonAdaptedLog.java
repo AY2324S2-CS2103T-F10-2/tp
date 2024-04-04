@@ -66,7 +66,7 @@ public class JsonAdaptedLog {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, "notes"));
         }
 
-        return new Log(learningStyle, hours, lessonContent, notes);
+        return new Log(learningStyle, hours, lessonContent, notes, date);
     }
 
 }

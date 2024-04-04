@@ -2,10 +2,7 @@ package seedu.address.model.util;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Optional;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 import seedu.address.model.AddressBook;
@@ -44,7 +41,7 @@ public class SampleDataUtil {
                 .collect(Collectors.toSet());
     }
 
-    private static Set<Exam> getSampleExams() {
+    public static Set<Exam> getSampleExams() {
         // Sample exams
         Exam exam1 = new Exam(
                 "exam1",
@@ -66,6 +63,17 @@ public class SampleDataUtil {
 
         // Return a set containing all sample exams
         return Set.of(exam1, exam2, exam3);
+    }
+
+    public static LogList getSampleLogs() {
+        Log log1 = new Log("visual", "2", "English Essay",
+                "Page 20-30", "2023-09-18 12:05:05");
+        Log log2 = new Log("audio", "3", "Math problems",
+                "Finished workbook pg 26-30", "2023-10-09 13:09:32");
+        Log log3 = new Log("combination", "2", "Organic Chemistry",
+                "Finished 1 paper from pyp", "2023-12-24 14:03:18");
+        List<Log> logList = List.of(log1, log2, log3);
+        return new LogList(logList);
     }
 
 }
