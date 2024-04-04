@@ -42,6 +42,8 @@ Note: For MacOS users, a compatible Java 11 version is available [here](https://
    * `addpayment` - adding payment to student
    * `markpayment` - marking payment as paid for student
    * `resetpayments` - resetting payment for student
+   * `addexam` - adding exam to student
+   * `deleteexam` - deleting exam from student
 
 6. Refer to the [Features](#features) below for details of each command.
 
@@ -110,26 +112,40 @@ Examples:
 ### View student particular by id: `View`
 This will display a specific particular by searching for its id
 Format: `view -id {ID}`
-Examples;
+Examples:
 * `view -id 88888` would display the student particular for the student whose id is 88888 if it exists.
 
 ### Add payment for the student by id: `AddPayment`
 This will add a payment to a student by searching for their `id`
 Format: `addpayment -id {ID} -payment {AMOUNT}`
-Examples;
+Examples:
 * `addpayment -id 88888 -payment 100` would add a payment of 100 to the student whose id is 88888 if it exists.
 
 ### Mark student's payment as paid by id: `MarkPaid`
 This will mark a student's payment as paid by searching for their `id`
 Format: `markpayment -id {ID} -payment {AMOUNT}`
-Examples;
+Examples:
 * `markpayment -id 88888 -payment 100` would mark a payment of 100 as paid for the student whose id is 88888 if it exists.
 
 ### Reset student's payment by id: `ResetPayment`
 This will reset a student's payment by searching for their `id`
 Format: `resetpayments -id {ID}`
-Examples;
+Examples:
 * `resetpayments -id 88888` would reset the payment for the student whose id is 88888 if it exists.
+
+### Add student's exam by id: `AddExam`
+This will add an exam to a student by searching for their `id`. Time is an optional field.
+Format 1: `addexam -id {ID} -exam {EXAMNAME} -date {DATE}`
+Format 2: `addexam -id {ID} -exam {EXAMNAME} -date {DATE} -time {TIME}`
+Examples:
+* `addexam -id 888888 -exam Computing -date 2024-04-27 -time 09:00` would add an exam of Computing with date of 2024-04-27 and time of 09:00 to a student whose id is 888888 if the student exists.
+
+### Delete student's exam by id: `DeleteExam`
+This will delete an exam from a student by searching for their `id`. Fields should follow exactly from the exam from the exam list that you wish to delete.
+Format 1: `deleteexam -id {ID} -exam {EXAMNAME} -date {DATE}`
+Format 2: `deleteexam -id {ID} -exam {EXAMNAME} -date {DATE} -time {TIME}`
+Examples:
+* `deleteexam -id 888888 -exam Computing -date 2024-04-27 -time 09:00` would delete an exam of Computing with date of 2024-04-27 and time of 09:00 from a student whose id is 888888 if the student exists.
 
 ### More features `[coming in v1.4]`
 
@@ -157,11 +173,13 @@ _Details coming soon ..._
 --------------------------------------------------------------------------------------------------------------------
 ## Command summary
 
-| Action          | Format, Examples                                                                                                                                                                                                                         |
-|-----------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Add**         | `add -name {NAME} -email {EMAIL} -phone {number} -address {ADDRESS} -subject {SUBJECT} t/{tag}` <br> e.g., `add -name Xiao Ming -phone 88888888 -email xiaoming@gmail.com -address 13, Computing Dr, 117417  -subject Math t/bestfriend` |
-| **Delete**      | `delete -id {id}`<br> e.g., `delete -id 88888`                                                                                                                                                                                           |
-| **View**        | `view [-statistics] [-all] [-id ID] [-name NAME]`                                                                                                                                                                                        |
-| **AddPayment**  | `addpayment -id {ID} -payment {AMOUNT}`<br> e.g., `addpayment -id 88888 -payment 100`                                                                                                                                                    |
-| **MarkPayment** | `markpayment -id {ID} -payment {AMOUNT}`<br> e.g., `markpayment -id 88888 -payment 100`                                                                                                                                                  |
-| **ResetPayment**| `resetpayments -id {ID}`<br> e.g., `resetpayments -id 88888`                                                                                                                                                                             |
+| Action           | Format, Examples                                                                                                                                                                                                                         |
+|------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Add**          | `add -name {NAME} -email {EMAIL} -phone {number} -address {ADDRESS} -subject {SUBJECT} t/{tag}` <br> e.g., `add -name Xiao Ming -phone 88888888 -email xiaoming@gmail.com -address 13, Computing Dr, 117417  -subject Math t/bestfriend` |
+| **Delete**       | `delete -id {id}`<br> e.g., `delete -id 88888`                                                                                                                                                                                           |
+| **View**         | `view [-statistics] [-all] [-id ID] [-name NAME]`                                                                                                                                                                                        |
+| **AddPayment**   | `addpayment -id {ID} -payment {AMOUNT}`<br> e.g., `addpayment -id 88888 -payment 100`                                                                                                                                                    |
+| **MarkPayment**  | `markpayment -id {ID} -payment {AMOUNT}`<br> e.g., `markpayment -id 88888 -payment 100`                                                                                                                                                  |
+| **ResetPayment** | `resetpayments -id {ID}`<br> e.g., `resetpayments -id 88888`                                                                                                                                                                             |
+| **AddExam**      | `addexam -id {ID} -exam {EXAMNAME} -date {DATE} -time {TIME OPTIONAL}` <br> e.g., `addexam -id 888888 -exam Computing -date 2024-04-27 -time 09:00`                                                                                      |
+| **DeleteExam**   | `deleteexam -id {ID} -exam {EXAMNAME} -date {DATE} -time {TIME}` or `deleteexam -id {ID} -exam {EXAMNAME} -date {DATE}` <br> e.g., `deleteexam -id 888888 -exam Computing -date 2024-04-27 -time 09:00`                                  |

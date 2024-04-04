@@ -124,6 +124,8 @@
         "add-payment-for-the-student-by-id-addpayment": "Add payment for the student by id: AddPayment",
         "mark-student-s-payment-as-paid-by-id-markpaid": "Mark student's payment as paid by id: MarkPaid",
         "reset-student-s-payment-by-id-resetpayment": "Reset student's payment by id: ResetPayment",
+        "add-student-s-exam-by-id-addexam": "Add student's exam by id: AddExam",
+        "delete-student-s-exam-by-id-deleteexam": "Delete student's exam by id: DeleteExam",
         "more-features-coming-in-v1-4": "More features [coming in v1.4]",
         "faq": "FAQ",
         "known-issues": "Known issues",
