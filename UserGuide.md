@@ -18,7 +18,7 @@ The system includes features for adding students, viewing student details, viewi
 
 ## Quick start
 
-1. Ensure you have Java `11` or above installed on your Computer.
+1. Ensure you have Java `11` or above installed on your Computer. <br>
 <box type="info" seamless>
 Note: If you do not have Java 11 installed on your computer, you can download it from <a href="https://www.oracle.com/sg/java/technologies/javase-jdk11-downloads.html">here</a>.
 
@@ -205,9 +205,6 @@ _Details coming soon ..._
 
 **Q**: How do I transfer my data to another Computer?<br>
 **A**: Install the app on the other computer and overwrite the empty data file it creates with the file that contains the data of your previous AddressBook home folder.
-
-**Q**: What are the system requirements for TuteeTally?<br>
-**A**: TuteeTally requires Java 11 or above to run. It is compatible with Windows, MacOS, and Linux operating systems.
 
 **Q**: What are the system requirements for TuteeTally?<br>
 **A**: TuteeTally requires Java 11 or above to run. It is compatible with Windows, MacOS, and Linux operating systems.
