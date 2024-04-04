@@ -131,10 +131,15 @@ Examples:
 * `delete -id 000001 / 1` deletes the student with the id 000001
 
 ### View student statistics: `view`
-This would display the following in a pop-up window
+This would display the following in a pop-up window 
 - the total number of students 
 - the total amount owed by students
 - the number of upcoming exams in the following month
+
+![StatsWindow](images/StatsWindow.png)
+
+Press `F2` on the keyboard to access the `stats` view or type the below commands
+
 Format 1: `view -statistics`
 Format 2: `view -stats`
 
