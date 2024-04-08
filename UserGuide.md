@@ -8,7 +8,10 @@ pageNav: 3
 
 TuteeTally is a **desktop app for managing student contacts, optimized for use via a Command Line Interface** (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, TuteeTally can make student management much easier and faster than traditional GUI apps.
 
-The system includes features for adding students, viewing student details, viewing summary statistics, and deleting student entries. All inputs are case-insensitive, enhancing user accessibility.
+The system includes features for adding students, viewing student details, viewing summary statistics, and deleting student entries. <br>
+<box type="info" seamless>
+**Note**: All commands are case-sensitive.
+</box>
 
 
 <!-- * Table of Contents -->
@@ -128,7 +131,7 @@ Format: `delete -id {ID}`
 * Deletes the person at the specified `id`.
 
 Examples:
-* `delete -id 000001 / 1` deletes the student with the id 000001
+* `delete -id 000001` or `delete -id 1` deletes the student with the id 000001
 
 ### View student statistics: `view`
 This would display the following in a pop-up window 
@@ -161,23 +164,63 @@ Format: `view -id {ID}`
 Examples:
 * `view -id 88888` would display the student particular for the student whose id is 88888 if it exists.
 
-### Add payment for the student by id: `addpayment`
-This will add a payment to a student by searching for their `id`
-Format: `addpayment -id {ID} -payment {AMOUNT}`
-Examples:
-* `addpayment -id 88888 -payment 100` would add a payment of 100 to the student whose id is 88888 if it exists.
+## Enhanced Payment Management
 
-### Mark student's payment as paid by id: `markpayment`
-This will mark a specified amount of a student's payment as paid. The command searches for their `id`, and reduces the total outstanding payment amount of the student by `{AMOUNT}`.
-Format: `markpayment -id {ID} -payment {AMOUNT}`
-Examples:
-* `markpayment -id 88888 -payment 100` would mark a payment of 100 as paid for the student whose id is 88888 if it exists. If the student had $150 of outstanding payments, the display will now show $50.
+TuteeTally's payment management commands are designed to streamline the financial interactions between tutors and students, ensuring accuracy and transparency. Below are detailed explanations of each command's purpose and benefits:
 
-### Reset student's payment by id: `resetpayment`
-This will reset a student's payment to 0 by searching for their `id`. 
-Format: `resetpayments -id {ID}`
-Examples:
-* `resetpayments -id 88888` would reset the payment for the student whose id is 88888 if it exists.
+### Adding Payments: `addpayment`
+
+Record new payments easily with the `addpayment` command, keeping track of what each student owes. This command simplifies the maintenance of financial records, ensuring you never overlook an outstanding payment.
+
+**Format:** `addpayment -id {ID} -payment {AMOUNT}`
+**Example:** `addpayment -id 000001 -payment 150` or `addpayment -id 1 -payment 150` would add a payment of 150 to the student whose ID is '#000001' if it exists. <br>
+If the student has no outstanding payments, a 'No payment owed' message will be displayed. <br>
+Following the command, the display will update to show "Payment owed: $150".
+After entering the command, the interface will update as shown below:
+
+![Add Payment Update Display](images/payment/add_payment.png) _The display showing "Payment owed: $150" after adding a payment._
+
+<box type="info" seamless>
+* All payments added will be rounded off to the nearest $0.01.
+</box>
+
+### Marking Payments as Paid: `markpayment`
+
+The `markpayment` command allows you to update the status of a student's payment to reflect payments that have been made. This feature helps maintain a clear record of completed transactions, building trust and transparency.
+
+**Format:** `markpayment -id {ID} -payment {AMOUNT}`
+**Example:** `markpayment -id 000001 -payment 100` or `markpayment -id 000001 -payment 100` whose ID is '#000001' if it exists. <br>
+If the student had $150 of outstanding payments, the display will update to show "Payment owed: $50". <br>
+After entering the command, the interface will update as shown below: <br>
+
+![Mark Payment Update Display](images/payment/mark_payment.png) _The display showing "Payment owed: $50" after marking a payment of $100, with $150 owed initially._
+
+<box type="info" seamless>
+* If the amount marked as paid exceeds the total outstanding payment, the total outstanding payment will be set to 0. <br>
+* If the amount owed by student is already 0, you are still allowed to enter the command, but there will be no changes. <br>
+* All payments added will be rounded off to the nearest $0.01.
+</box>
+
+### Resetting Payments: `resetpayments`
+<box type="info" seamless>
+
+**Note:** The command `resetpayments` intentionally includes an 's' after `payment` because it is designed to reset all owed payments for a student. <br>
+</box>
+
+Use the `resetpayments` command to clear a student's outstanding payment amount, useful for starting anew or correcting mistakes. This command ensures your financial records remain accurate and up-to-date.<br>
+
+**Format:** `resetpayments -id {ID}`
+**Example:** `resetpayments -id 000001` or `resetpayments -id 1` would reset the payment for the student whose id is '#000001' if it exists. <br>
+After entering the command, the interface will update as shown below: <br>
+
+![Reset Payments Update Display](images/payment/reset_payments.png) _The display showing "No payment owed" after resetting payments, with $50 owed previously._
+
+<box type="info" seamless>
+* If the amount marked as paid exceeds the total outstanding payment, the total outstanding payment will be set to 0. <br>
+* If the amount owed by student is already 0, you are still allowed to enter the command, but there will be no changes. <br>
+</box>
+
+Each of these features contributes to a comprehensive financial management system within TuteeTally, enabling tutors to manage their tutoring finances more effectively and efficiently.
 
 ### Add student's exam by id: `addexam`
 This will add an exam to a student by searching for their `id`. Time is an optional field.
@@ -209,7 +252,7 @@ _Details coming soon ..._
 ## FAQ
 
 **Q**: How do I transfer my data to another Computer?<br>
-**A**: Install the app on the other computer and overwrite the empty data file it creates with the file that contains the data of your previous AddressBook home folder.
+**A**: Install the app on the other computer and overwrite the empty data file it creates with the file that contains the data of your previous TuteeTally home folder.
 
 **Q**: What are the system requirements for TuteeTally?<br>
 **A**: TuteeTally requires Java 11 or above to run. It is compatible with Windows, MacOS, and Linux operating systems.
@@ -223,15 +266,15 @@ _Details coming soon ..._
 --------------------------------------------------------------------------------------------------------------------
 ## Command summary
 
-| Action           | Format, Examples                                                                                                                                                                                                                         |
-|------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Add**          | `add -name {NAME} -email {EMAIL} -phone {number} -address {ADDRESS} -subject {SUBJECT} t/{tag}` <br> e.g., `add -name Xiao Ming -phone 88888888 -email xiaoming@gmail.com -address 13, Computing Dr, 117417  -subject Math t/bestfriend` |
-| **Delete**       | `delete -id {id}`<br> e.g., `delete -id 88888`                                                                                                                                                                                           |
-| **Edit**         | `edit {ID} -<Editable Fields> {Value}` <br> e.g., `edit 1 -phone91234567 -emailjohndoe@example.com -nameJohn Doo`                                                                                                                        |
-| **View**         | `view [-statistics] [-all] [-id ID] [-name NAME]`                                                                                                                                                                                        |
-| **AddPayment**   | `addpayment -id {ID} -payment {AMOUNT}`<br> e.g., `addpayment -id 88888 -payment 100`                                                                                                                                                    |
-| **MarkPayment**  | `markpayment -id {ID} -payment {AMOUNT}`<br> e.g., `markpayment -id 88888 -payment 100`                                                                                                                                                  |
-| **ResetPayment** | `resetpayments -id {ID}`<br> e.g., `resetpayments -id 88888`                                                                                                                                                                             |
-| **AddExam**      | `addexam -id {ID} -exam {EXAMNAME} -date {DATE} -time {TIME OPTIONAL}` <br> e.g., `addexam -id 888888 -exam Computing -date 2024-04-27 -time 09:00`                                                                                      |
-| **DeleteExam**   | `deleteexam -id {ID} -exam {EXAMNAME} -date {DATE} -time {TIME}` or `deleteexam -id {ID} -exam {EXAMNAME} -date {DATE}` <br> e.g., `deleteexam -id 888888 -exam Computing -date 2024-04-27 -time 09:00`                                  |
-| **Log**          | `log -id {ID} -hours {HOURS} -content {CONTENT} -style {LEARNING STYLE} -notes {NOTES}` <br> e.g., `log -id 1 -hours 2 -content English Comprehension -style Visual -notes Great improvement!`                                           |
+| Action            | Format, Examples                                                                                                                                                                                                                         |
+|-------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Add**           | `add -name {NAME} -email {EMAIL} -phone {number} -address {ADDRESS} -subject {SUBJECT} t/{tag}` <br> e.g., `add -name Xiao Ming -phone 88888888 -email xiaoming@gmail.com -address 13, Computing Dr, 117417  -subject Math t/bestfriend` |
+| **Delete**        | `delete -id {id}`<br> e.g., `delete -id 88888`                                                                                                                                                                                           |
+| **Edit**          | `edit {ID} -<Editable Fields> {Value}` <br> e.g., `edit 1 -phone91234567 -emailjohndoe@example.com -nameJohn Doo`                                                                                                                        |
+| **View**          | `view [-statistics] [-all] [-id ID] [-name NAME]`                                                                                                                                                                                        |
+| **AddPayment**    | `addpayment -id {ID} -payment {AMOUNT}`<br> e.g., `addpayment -id 88888 -payment 100`                                                                                                                                                    |
+| **MarkPayment**   | `markpayment -id {ID} -payment {AMOUNT}`<br> e.g., `markpayment -id 88888 -payment 100`                                                                                                                                                  |
+| **ResetPayments** | `resetpayments -id {ID}`<br> e.g., `resetpayments -id 88888`                                                                                                                                                                             |
+| **AddExam**       | `addexam -id {ID} -exam {EXAMNAME} -date {DATE} -time {TIME OPTIONAL}` <br> e.g., `addexam -id 888888 -exam Computing -date 2024-04-27 -time 09:00`                                                                                      |
+| **DeleteExam**    | `deleteexam -id {ID} -exam {EXAMNAME} -date {DATE} -time {TIME}` or `deleteexam -id {ID} -exam {EXAMNAME} -date {DATE}` <br> e.g., `deleteexam -id 888888 -exam Computing -date 2024-04-27 -time 09:00`                                  |
+| **Log**           | `log -id {ID} -hours {HOURS} -content {CONTENT} -style {LEARNING STYLE} -notes {NOTES}` <br> e.g., `log -id 1 -hours 2 -content English Comprehension -style Visual -notes Great improvement!`                                           |
