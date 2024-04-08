@@ -218,13 +218,13 @@ Below is a sequence diagram of how view all interacts with multiple classes.
 
 #### Design considerations:
 **Aspect: How view all executes:**
-* **Alternative 1 (current choice):** In a view command class with view -id/-name.
+* **Alternative 1:** In a view command class with view -id/-name.
     * Pros: Clear execution line.
     * Cons: Several if else checks, more prone to errors.
 
-* **Alternative 2:** Separate classes for each view command
+* **Alternative 2 (current choice) :** Separate classes for view -all and other view commands
     * Pros: Easy to implement, less merge conflicts.
-    * Cons: Large number of files and parsers needed.
+    * Cons: More files and parsers needed.
 
 
 ### View Stats feature
@@ -241,6 +241,19 @@ It gets it's info from the `logic` interface
 #### Implementation
 ** to add in v1.4**
 ### View ID Feature
+** to add in v1.4**
+#### Implementation
+** to add in v1.4**
+
+### Add Exam feature
+This feature allow users to add exams to students by uniqueId. Exams added will contain exam name, 
+exam date, optional exam time as information and student name and uniqueId for reference.
+This feature is implemented to ensure data integrity and provide users with the ability to track and manage student exams efficiently.
+
+#### Implementation
+
+
+### Delete Exam feature
 ** to add in v1.4**
 #### Implementation
 ** to add in v1.4**

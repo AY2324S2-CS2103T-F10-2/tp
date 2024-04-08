@@ -56,6 +56,8 @@
         "view-stats-feature": "View Stats feature",
         "view-name-feature": "View Name Feature",
         "view-id-feature": "View ID Feature",
+        "add-exam-feature": "Add Exam feature",
+        "delete-exam-feature": "Delete Exam feature",
         "documentation-logging-testing-configuration-dev-ops": "Documentation, logging, testing, configuration, dev-ops",
         "appendix-requirements": "Appendix: Requirements",
         "product-scope": "Product scope",
