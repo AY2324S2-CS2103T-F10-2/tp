@@ -414,7 +414,9 @@ Use case ends.
 
 
 
-
+### Planned Enhancements
+1. Improve Tuteetally such that automatic past exam removal information is updated at real time to storage. 
+Users need not use the command `exit` to save the automatic past exam removal to storage.
 
 
 ### Non-Functional Requirements

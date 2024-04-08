@@ -279,18 +279,28 @@ After entering the command, the interface will update as shown below: <br>
 Each of these features contributes to a comprehensive financial management system within TuteeTally, enabling tutors to manage their tutoring finances more effectively and efficiently.
 
 ### Add student's exam by id: `addexam`
-This will add an exam to a student by searching for their `id`. Time is an optional field.
+This will add an exam to a student by searching for their `id`. Time is an optional field. Do note that only exams from the current date onwards can be added.
+
 Format 1: `addexam -id {ID} -exam {EXAMNAME} -date {DATE}`
 Format 2: `addexam -id {ID} -exam {EXAMNAME} -date {DATE} -time {TIME}`
+
 Examples:
 * `addexam -id 000001 -exam Computing -date 2024-04-27 -time 09:00` would add an exam of Computing with date of 2024-04-27 and time of 09:00 to a student whose id is 888888 if the student exists.
 After entering the command, the interface will update as shown below: <br>
 
 ![Add Exam Update Display](images/exam/add_exam.jpg) _The display showing a new `COMPUTING` exam of the student with ID #000001 after being added._
 
+<box type="info" seamless>
+
+**Note:** <br>
+* This feature support adding an exam that is on current date but with a past time to allow for tracking exams happening on the same day.
+* If the entered date is yyyy-02-29 in non leap year, 29th will be automatically converted to 28th. Exam of yyyy-02-28 will be added.
+  
+</box>
 
 ### Delete student's exam by id: `deleteexam`
 This will delete an exam from a student by searching for their `id`. Fields should follow exactly from the exam from the exam list that you wish to delete.
+
 Format 1: `deleteexam -id {ID} -exam {EXAMNAME} -date {DATE}`
 Format 2: `deleteexam -id {ID} -exam {EXAMNAME} -date {DATE} -time {TIME}`
 Examples:
@@ -299,6 +309,16 @@ After entering the command, the interface will update as shown below: <br>
 
 ![Delete Exam Update Display](images/exam/delete_exam.jpg) _The display, after the COMPUTING exam for the student with ID #000001 has been deleted, shows the updated status, confirming the successful removal of the exam._
 
+<box type="info" seamless>
+
+**Note:** <br>
+* Past exams specified below will be automatically removed when the user opens TuteeTally at the current date.
+   - Exam of past date and past time
+   - Exam of past date
+   - Exam of current date and past time
+* To update the change to storage, user should use the command `exit` to exit the app.
+
+</box>
 
 ### Logging the Lessons of a student: `log`
 This will add a log to the lessons of a student. The time field of the log entry will be the *system time* when the log was added.
