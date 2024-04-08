@@ -10,6 +10,7 @@ TuteeTally is a **desktop app for managing student contacts, optimized for use v
 
 The system includes features for adding students, viewing student details, viewing summary statistics, and deleting student entries. <br>
 <box type="info" seamless>
+
 **Note**: <br>
 All commands are case-sensitive.
 </box>
@@ -51,11 +52,6 @@ Note: If you do not have Java 11 installed on your computer, you can download it
    * `addexam` - adding exam to student
    * `deleteexam` - deleting exam from student
    * `log` - logging a session's content, hours, learning styles and comments (notes) for each session
-   
-   <box type="info" seamless>
-     Note: We noticed an existing bug that causes the exams of a student to disappear when we add a new payment.
-     Will be fixed in V1.4.
-   </box>
 
 6. Refer to the [Features](#features) below for details of each command.
 
@@ -110,6 +106,10 @@ The `t/{tag}` field is optional and can be used to add a tag to the student reco
 Examples:
 * `add -name Xiao Ming -address 13, Computing Dr, 117417 -email xiaoming@email.com -phone 88888888 -subject Math`
 
+After entering the command, the interface will update as shown below:
+
+![Add Student Display](images/add/add.jpg) _The display showing *ALL* the students after a new student gets added._
+
 ### Editing a student: `edit`
 
 Edit the specific student detail from TuteeTally using the *INDEX* of the student. <br>
@@ -130,6 +130,10 @@ Format: `edit {ID} -<Insert Field to Edit> {Value}`
 Example: 
 * `edit 1 -phone91234567 -emailjohndoe@example.com -nameJohnDoo`
 
+After entering the command, the interface will update as shown below:
+
+![Edit Student Display](images/edit/edit.jpg) _The display showing the edited student with the INDEX 1._
+
 ### Deleting a student: `delete`
 
 Deletes the specified student from the address book.
@@ -139,7 +143,11 @@ Format: `delete -id {ID}`
 * Deletes the person at the specified `id`.
 
 Examples:
-* `delete -id 000001` or `delete -id 1` deletes the student with the id 000001
+* `delete -id 000001` or `delete -id 1` deletes the student with the ID #000001
+
+After entering the command, the interface will update as shown below:
+
+![Delete ID Display](images/delete/delete.jpg) _The display showing *ALL* the students after the student with the ID #000001 gets deleted._
 
 ## View student details: `view`
 
@@ -151,8 +159,9 @@ These student details can be found in the `test.json` file that we have included
 
 <box type="tip" seamless>
 
-**Note:** <br>
-To match the results shown in the illustrations within our User Guide, we recommend replacing the contents of the data/addressbook.json file with the data from the data/test.json file. This will ensure your outputs align with the examples provided in our guide. <br>
+**Tip:** <br>
+To match the results shown in the illustrations within our User Guide, we recommend replacing the contents of the `data/addressbook.json` file with the data from the `data/test.json` file. <br>
+This will ensure your outputs align with the examples provided in our guide. <br>
 
 </box>
 
@@ -161,8 +170,6 @@ This would display the following in a pop-up window
 - the total number of students 
 - the total amount owed by students
 - the number of upcoming exams in the following month
-
-![StatsWindow](images/StatsWindow.png)
 
 Press `F2` on the keyboard to access the `stats` view or type the below commands
 
@@ -208,6 +215,13 @@ After entering the command, the interface will update as shown below:
 
 TuteeTally's payment management commands are designed to streamline the financial interactions between tutors and students, ensuring accuracy and transparency. Below are detailed explanations of each command's purpose and benefits:
 
+<box type="info" seamless>
+
+**Note:** <br>
+* Displayed payment amounts are rounded to the nearest $0.01. However, TuteeTally accurately tracks the exact amounts entered, without rounding. <br>
+
+</box>
+
 ### Adding a Payment: `addpayment`
 
 Record new payments easily with the `addpayment` command, keeping track of what each student owes. This command simplifies the maintenance of financial records, ensuring you never overlook an outstanding payment.
@@ -216,18 +230,10 @@ Format: `addpayment -id {ID} -payment {AMOUNT}`
 
 Example: 
 * `addpayment -id 000001 -payment 150` or `addpayment -id 1 -payment 150` would add a payment of 150 to the student with ID #000001 if it exists. <br>
-If the student has no outstanding payments, a 'No payment owed' message will be displayed. <br>
-Following the command, the display will update to show "Payment owed: $150".
+
 After entering the command, the interface will update as shown below:
 
-![Add Payment Update Display](images/payment/add_payment.png) _The display showing "Payment owed: $150" after adding a payment._
-
-<box type="info" seamless>
-
-**Note:** <br>
-* All payments added will be rounded off to the nearest $0.01.
-
-</box>
+![Add Payment Update Display](images/payment/add_payment.jpg) _The display showing "Payment owed: $150" after adding a payment._
 
 ### Marking Payment of the student: `markpayment`
 
@@ -237,7 +243,7 @@ Format: `markpayment -id {ID} -payment {AMOUNT}`
 
 Example:
 * `markpayment -id 000001 -payment 100` or `markpayment -id 1 -payment 100` with ID #000001 if it exists. <br>
-If the student had $150 of outstanding payments, the display will update to show "Payment owed: $50". <br>
+
 After entering the command, the interface will update as shown below: <br>
 
 ![Mark Payment Update Display](images/payment/mark_payment.jpg) _The display showing "Payment owed: $50" after marking a payment of $100, with $150 owed initially._
@@ -247,7 +253,6 @@ After entering the command, the interface will update as shown below: <br>
 **Note:** <br>
 * If the amount marked as paid exceeds the total outstanding payment, the total outstanding payment will be set to 0. <br>
 * If the amount owed by student is already 0, you are still allowed to enter the command, but there will be no changes. <br>
-* All payments added will be rounded off to the nearest $0.01.
 
 </box>
 
@@ -263,7 +268,8 @@ Use the `resetpayments` command to clear a student's outstanding payment amount,
 Format: `resetpayments -id {ID}`
 
 Example: 
-* `resetpayments -id 000001` or `resetpayments -id 1` would reset the payment for the student with ID #000001 if it exists. <br>
+* `resetpayments -id 000001` or `resetpayments -id 1` would reset the payment for the student with ID #000001 if it exists.
+
 After entering the command, the interface will update as shown below: <br>
 
 ![Reset Payments Update Display](images/payment/reset_payments.jpg) _The display showing "No payment owed" after resetting payments, with $50 owed previously._
@@ -362,6 +368,9 @@ _Details coming soon ..._
 ## Known issues
 
 1. **When using multiple screens**, if you move the application to a secondary screen, and later switch to using only the primary screen, the GUI will open off-screen. The remedy is to delete the `preferences.json` file created by the application before running the application again.
+
+
+4. **When using the payment commands**, the display will round the payment amounts to the nearest $0.01. So if you enter a payment of $0.001, it will be displayed as $0.00. However, the application will accurately track the exact amounts entered, without rounding.
 
 --------------------------------------------------------------------------------------------------------------------
 ## Command summary
