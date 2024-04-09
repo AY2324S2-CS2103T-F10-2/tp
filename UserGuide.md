@@ -6,7 +6,9 @@ pageNav: 3
 
 # TuteeTally User Guide
 
-TuteeTally is a **desktop app for managing student contacts, optimized for use via a Command Line Interface** (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, TuteeTally can make student management much easier and faster than traditional GUI apps.
+TuteeTally is a **desktop app for managing student contacts for private tutors, optimized for use via a Command Line Interface** (CLI) 
+while still having the benefits of a Graphical User Interface (GUI). If you can type fast, TuteeTally can make student 
+management much easier and faster than traditional GUI apps. 
 
 The system includes features for adding students, viewing student details, viewing summary statistics, and deleting student entries. <br>
 <box type="info" seamless>
@@ -25,7 +27,6 @@ All commands are case-sensitive.
 
 1. Ensure you have Java `11` or above installed on your Computer. <br>
 <box type="info" seamless>
-Note: If you do not have Java 11 installed on your computer, you can download it from <a href="https://www.oracle.com/sg/java/technologies/javase-jdk11-downloads.html">here</a>.
 
 **Note:** <br>
 * If you do not have Java 11 installed on your computer, you can download it from <a href="https://www.oracle.com/sg/java/technologies/javase-jdk11-downloads.html">here</a>. <br>
@@ -55,6 +56,16 @@ Note: If you do not have Java 11 installed on your computer, you can download it
 
 6. Refer to the [Features](#features) below for details of each command.
 
+--------------------------------------------------------------------------------------------------------------------
+## Glossary
+
+| Term         | Explanation                                                                                                                                        |
+|--------------|----------------------------------------------------------------------------------------------------------------------------------------------------|
+| **CLI**      | `A command-line interface (CLI) is a text-based user interface used to interact with programs, in this case TuteeTally!`                           |
+| **GUI**      | `A graphical user interface (GUI) is a digital interface in which a user interacts with graphical components such as icons, buttons, and menus.`   |
+| **Exam**     | `An Exam is any assessment or Test that the tutor choose to keep track of a student`                                                               |
+| **Index**    | `The index of the student refers to the position of student counting from the top of current displayed list, with the first student being index 1` |
+| **UniqueID** | `The UniqueID of a student refers to a uniquely generated identity that is assigned to a student when is he added to TuteeTally.`                  |
 --------------------------------------------------------------------------------------------------------------------
 
 ## Features
@@ -87,6 +98,16 @@ e.g. `07:00` is a valid time input and refers to 7am, but not `7:00`
 * If you are using a PDF version of this document, be careful when copying and pasting commands that span multiple lines as space characters surrounding line-breaks may be omitted when copied over to the application.
 </box>
 
+** Notes on Fields for the students **
+
+| Field       | Prefix    | Required | Caveats                                                                                                                                                                                                                                                                                                                                                                                                |
+|-------------|-----------|----------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Name**    | `-name`   | Yes      | Names should only contain alphanumeric characters and spaces, it cannot contain special characters. |
+| **Phone**   | `-phone`  | Yes      | Phone numbers should only contain numbers, and it should be at least 3 digits long <br/> There is no limit on the length of the phone number to accommodate worldwide phone numbers.                                                                                                                                                                                                                   |
+| **Email**   | `-email`  | Yes      | Emails does not require top level domain, it only requires `@`, for example admin@example. More info on valid email formatting can be found  on this wikipedia article<a href="https://en.wikipedia.org/wiki/Email_address#Examples"> here</a>.                                                                                                                                                        |
+| **Address** | `-address` | Yes      | Addresses can take any values, and it should not be blank                                                                                                                                                                                                                                                                                                                                              |
+| **Subject** | `-subject` | Yes      | Subjects can take any values, and it should not be blank.                                                                                                                                                                                                                                                                                                                                              |
+| **Tag**     | `t/`      | Nope     | Tags names should be alphanumeric and not contain any special characters.                                                                                                                                                                                                                                                                                                                              | 
 
 ### Adding a student: `add`
 
@@ -97,9 +118,16 @@ Format: `add -name {NAME} -phone {NUMBER} -email {EMAIL} -address {ADDRESS} -sub
 <box type="tip" seamless>
 Tip:<br>
 If the addition is successful, the new student record will be shown at the bottom of the list.
+Long names might also cause the Id field to be blocked. In this case, you can opt to drag the middle portion of the UI to 
+reveal the ID. However, the upper limit of this workaround is 220 characters long. If a student's name exceeds 220 characters,
+it is advisable to use nicknames instead.
 </box>
+
+There is currently no detection for duplicates, this is under planned enhancements. 
+
 <box type="info" seamless>
 Note:<br>
+
 The `t/{tag}` field is optional and can be used to add a tag to the student record and no spaces are allowed in the {tag}.
 </box>
 
@@ -108,7 +136,7 @@ Examples:
 
 After entering the command, the interface will update as shown below:
 
-![Add Student Display](images/add/add.jpg) _The display showing *ALL* the students after a new student gets added._
+![Add Student Display](images/add/add.png) _The display showing *ALL* the students after a new student gets added._
 
 ### Editing a student: `edit`
 
@@ -128,7 +156,7 @@ At least one editable fields must be present. Not all editable values need to be
 Format: `edit {ID} -<Insert Field to Edit> {Value}`
 
 Example: 
-* `edit 1 -phone91234567 -emailjohndoe@example.com -nameJohnDoo`
+* `edit 1 -phone 91234567 -email johndoe@example.com -name JohnDoo`
 
 After entering the command, the interface will update as shown below:
 
@@ -168,8 +196,14 @@ This will ensure your outputs align with the examples provided in our guide. <br
 ### View student statistics: `view`
 This would display the following in a pop-up window 
 - the total number of students 
-- the total amount owed by students
-- the number of upcoming exams in the following month
+- the total amount owed by students (Currently shows the exact amount)
+- the number of upcoming exams in following 1 month period (from today up to the same day of the next month)
+
+<box type="tip" seamless>
+Tip:<br>
+Use ths feature to track the total amount of students you're teaching, how much is owed by all of them
+and how plan your schedule based on the number of upcoming exams that will come in the next month
+</box>
 
 Press `F2` on the keyboard to access the `stats` view or type the below commands
 
@@ -330,9 +364,10 @@ After entering the command, the interface will update as shown below: <br>
 This will add a log to the lessons of a student. The time field of the log entry will be the *system time* when the log was added.
 Format: `log -id {ID} -hours {HOURS} -content {CONTENT} -style {LEARNING STYLE} -notes {NOTES}`
 <box type="info" seamless>
-Note: Hours need not be an integer input. Values like `2 hours 45 mins`, `2+ hours` are valid as well.
+**Note:** 
+Hours need not be an integer input. Values like `2 hours 45 mins`, `2+ hours` are valid as well.
 </box>
-Examples:
+**Examples:**
 * `log -id 000001 -hours 2 -content English Comprehension -style Visual -notes Great improvement!`. would log a lesson for the student with ID #000001 noting that it had great improvement in English Comprehension, it also logs the learning style of the student. <br>
 After entering the command, the interface will update as shown below: <br>
 
@@ -368,8 +403,8 @@ _Details coming soon ..._
 ## Known issues
 
 1. **When using multiple screens**, if you move the application to a secondary screen, and later switch to using only the primary screen, the GUI will open off-screen. The remedy is to delete the `preferences.json` file created by the application before running the application again.
-
-
+2. **view -stats Command**, Currently the total fee owing by students can precision more than 2 decimal points
+3. **When inputting long names above 220 characters**, the Id number of the students will be blocked even after the work around ontop[in add command](#adding-a-student-add)
 4. **When using the payment commands**, the display will round the payment amounts to the nearest $0.01. So if you enter a payment of $0.001, it will be displayed as $0.00. However, the application will accurately track the exact amounts entered, without rounding.
 
 --------------------------------------------------------------------------------------------------------------------
