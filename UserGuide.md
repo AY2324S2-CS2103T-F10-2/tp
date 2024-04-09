@@ -98,7 +98,7 @@ e.g. `07:00` is a valid time input and refers to 7am, but not `7:00`
 * If you are using a PDF version of this document, be careful when copying and pasting commands that span multiple lines as space characters surrounding line-breaks may be omitted when copied over to the application.
 </box>
 
-** Notes on Fields for the students **
+**Notes on Fields for the students**
 
 | Field       | Prefix    | Required | Caveats                                                                                                                                                                                                                                                                                                                                                                                                |
 |-------------|-----------|----------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -364,10 +364,12 @@ After entering the command, the interface will update as shown below: <br>
 This will add a log to the lessons of a student. The time field of the log entry will be the *system time* when the log was added.
 Format: `log -id {ID} -hours {HOURS} -content {CONTENT} -style {LEARNING STYLE} -notes {NOTES}`
 <box type="info" seamless>
-**Note:** 
+**Note:**
 Hours need not be an integer input. Values like `2 hours 45 mins`, `2+ hours` are valid as well.
 </box>
+<br>
 **Examples:**
+<br>
 * `log -id 000001 -hours 2 -content English Comprehension -style Visual -notes Great improvement!`. would log a lesson for the student with ID #000001 noting that it had great improvement in English Comprehension, it also logs the learning style of the student. <br>
 After entering the command, the interface will update as shown below: <br>
 
