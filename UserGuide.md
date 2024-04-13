@@ -202,7 +202,7 @@ These student details can be found in the `test.json` file that we have included
 <box type="tip" seamless>
 
 **Tip:** <br>
-To match the results shown in the illustrations within our User Guide, we recommend replacing the contents of the `data/addressbook.json` file in your directory where `TuteeTally.jar` is saved with the data from [here](https://github.com/AY2324S2-CS2103T-F10-2/tp/tree/master/DummyData/dummydata.json). <br>
+To match the results shown in the illustrations within our User Guide, we recommend replacing the contents of the `data/tuteetally.json`file in your directory where `TuteeTally.jar` is saved with the data from [here](https://github.com/AY2324S2-CS2103T-F10-2/tp/tree/master/DummyData/dummydata.json). <br>
 This will ensure your outputs align with the examples provided in our guide. <br>
 
 </box>
@@ -431,9 +431,10 @@ Certain edits can cause the TuteeTally to behave in unexpected and magical ways 
 ## Known issues
 
 1. **When using multiple screens**, if you move the application to a secondary screen, and later switch to using only the primary screen, the GUI will open off-screen. The remedy is to delete the `preferences.json` file created by the application before running the application again.
-2. **view -stats Command**, Currently the total fee owing by students can precision more than 2 decimal points
-3. **When inputting long names above 220 characters**, the Id number of the students will be blocked even after the work around ontop[in add command](#adding-a-student-add)
-4. **When using the payment commands**, the display will round the payment amounts to the nearest $0.01. So if you enter a payment of $0.001, it will be displayed as $0.00. However, the application will accurately track the exact amounts entered, without rounding.
+2. **When inputting long names above 220 characters**, the ID number of the students will be blocked even after the work around.[above](#adding-a-student-add)
+3. **When using the payment commands**, the display will round the payment amounts to the nearest $0.01. So if you enter a payment of $0.001, it will be displayed as $0.00. However, the application will accurately track the exact amounts entered, without rounding.
+4. **Empty white block when maximised**, currently there is an empty white block in the bottom when the app is maximised
+5. **Empty white block in log when viewing students details**, currently there is an empty white block when viewing a student with no logs.
 
 --------------------------------------------------------------------------------------------------------------------
 ## Command summary
