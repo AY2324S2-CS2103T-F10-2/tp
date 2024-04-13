@@ -56,6 +56,16 @@
         "view-stats-feature": "View Stats feature",
         "view-name-feature": "View Name Feature",
         "view-id-feature": "View ID Feature",
+        "student-payment-management-system": "Student Payment Management System",
+        "introduction": "Introduction",
+        "features-overview": "Features Overview",
+        "add-payment-feature": "Add Payment Feature",
+        "implementation-7": "Implementation",
+        "mark-payment-feature": "Mark Payment Feature",
+        "implementation-8": "Implementation",
+        "reset-payments-feature": "Reset Payments Feature",
+        "implementation-9": "Implementation",
+        "conclusion": "Conclusion",
         "add-exam-feature": "Add Exam feature",
         "delete-exam-feature": "Delete Exam feature",
         "documentation-logging-testing-configuration-dev-ops": "Documentation, logging, testing, configuration, dev-ops",
@@ -67,9 +77,12 @@
         "non-functional-requirements": "Non-Functional Requirements",
         "glossary": "Glossary",
         "appendix-instructions-for-manual-testing": "Appendix: Instructions for manual testing",
-        "launch-and-shutdown": "Launch and shutdown",
-        "deleting-a-person": "Deleting a person",
-        "saving-data": "Saving data"
+        "launch-and-shutdown": "Launch and Shutdown",
+        "deleting-a-person": "Deleting a Person",
+        "payment-commands": "Payment Commands",
+        "additional-notes": "Additional Notes",
+        "additional-notes-2": "Additional Notes",
+        "saving-data": "Saving Data"
       },
       "headingKeywords": {}
     },
@@ -180,7 +193,15 @@
       "src": "team/kintat.md",
       "title": "Kin Tat's Project Portfolio Page",
       "headings": {
-        "personal-portfolio": "Personal Portfolio"
+        "personal-portfolio": "Personal Portfolio",
+        "project-tuteetally": "Project: TuteeTally",
+        "new-feature-payment-commands-for-private-tutors": "New Feature: Payment Commands for Private Tutors",
+        "overview": "Overview",
+        "what-it-does": "What It Does",
+        "justification": "Justification",
+        "highlights": "Highlights",
+        "credits": "Credits",
+        "documentation": "Documentation"
       },
       "headingKeywords": {}
     },

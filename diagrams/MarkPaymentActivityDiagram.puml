@@ -1,0 +1,29 @@
+@startuml
+!include style.puml
+skinparam style strictuml
+
+start
+:Receive "markpayment" command;
+:Parse command;
+:Execute command with Double;
+
+
+:Create MarkPaymentCommand;
+partition "MarkPaymentCommand Execution" {
+  :Check if user exists;
+  if ("User exists?") then (yes)
+    :Create payment entry;
+    if ("Valid amount?") then (yes)
+      :Mark payment to Model;
+      :Generate success CommandResult;
+    else (no)
+      :Generate error CommandResult;
+    endif
+  else (no)
+    :Generate error CommandResult;
+  endif
+}
+:Return CommandResult;
+stop
+
+@enduml

@@ -1,7 +1,7 @@
 ---
-  layout: default.md
-  title: "Developer Guide"
-  pageNav: 3
+layout: default.md
+title: "Developer Guide"
+pageNav: 3
 ---
 
 # AB-3 Developer Guide
@@ -151,9 +151,9 @@ The `Storage` component,
 ### Common classes
 
 Classes used by multiple components are in the `seedu.addressbook.commons` package.
-This consists of 
+This consists of
 - `Core`
-  -  Files like `Config`, `GuiSettings` and `LogsCenter`
+    -  Files like `Config`, `GuiSettings` and `LogsCenter`
 - `Exceptions`
 - `Util`
 
@@ -229,7 +229,7 @@ Below is a sequence diagram of how view all interacts with multiple classes.
 
 ### View Stats feature
 This feature supports the viewing of summary statistics, it currently shows the total number of students, the total amount
-owed by them and the number of exams in the upcoming months. 
+owed by them and the number of exams in the upcoming months.
 
 #### Implementation
 It's mechanism is similar to the `help` feature where a popout window is shown when called.
@@ -245,8 +245,65 @@ It gets it's info from the `logic` interface
 #### Implementation
 ** to add in v1.4**
 
+# Student Payment Management System
+
+## Introduction
+
+This section of the developer guide covers the functionalities provided for managing student payments. It includes adding payments, marking payments as paid, and resetting payment statuses for students. These features are integral to maintaining accurate and up-to-date financial records for each student.
+
+### Features Overview
+
+- **Add Payment**: Allows the addition of payment records to student accounts using unique identifiers.
+- **Mark Payment**: Marks payments as completed for students, indicating that a payment has been made.
+- **Reset Payments**: Resets the payment status of students, useful in scenarios where the total payment amount is fulfilled or adjustments are needed.
+
+## Add Payment Feature
+
+The `AddPaymentCommand` enables users to add payment records to students by specifying a unique student ID and the payment amount.
+<puml src="diagrams/AddPaymentSequenceDiagram.puml" alt="AddPaymentSequenceDiagram" />
+
+
+### Implementation
+
+1. The user inputs a command with the `-addpayment` flag, followed by the student's `uniqueId` and the amount.
+2. The system parses this command, extracting the necessary details.
+3. A new payment record is created and added to the student's account in the system.
+   <puml src="diagrams/AddPaymentActivityDiagram.puml" alt="AddPaymentActivityDiagram" />
+
+## Mark Payment Feature
+
+The `MarkPaymentCommand` allows marking a student's payment as completed. This is typically used once a payment has been processed or received.
+<puml src="diagrams/MarkPaymentSequenceDiagram.puml" alt="MarkPaymentSequenceDiagram" />
+
+
+### Implementation
+
+1. The user inputs a command with the `-markpayment` flag, followed by the student's `uniqueId`.
+2. The system identifies the corresponding student record and updates the payment status to reflect that it has been paid.
+3. A confirmation is returned to the user upon successful update.
+   <puml src="diagrams/MarkPaymentActivityDiagram.puml" alt="MarkPaymentActivityDiagram" />
+
+
+## Reset Payments Feature
+
+This feature enables the system to reset the payment status of students, which is useful when a student has fully paid their dues or when adjustments to their payment records are needed.
+<puml src="diagrams/ResetPaymentsSequenceDiagram.puml" alt="ResetPaymentsSequenceDiagram" />
+
+
+### Implementation
+
+1. A specific command with the `-resetpayments` flag and the student's `uniqueId` is issued by the user.
+2. The system locates the student's record and resets the payment information, clearing any completed payments or dues.
+3. A success message is sent to the user, confirming the reset.
+   <puml src="diagrams/ResetPaymentsActivityDiagram.puml" alt="ResetPaymentsActivityDiagram" />
+
+## Conclusion
+
+This guide provides a concise overview of the payment management functionalities within the system, designed to assist developers in understanding and utilizing these features effectively. For further details or clarification, please refer to the system documentation or contact the development team.
+
+
 ### Add Exam feature
-This feature allow users to add exams to students by uniqueId. Exams added will contain exam name, 
+This feature allow users to add exams to students by uniqueId. Exams added will contain exam name,
 exam date, optional exam time as information and student name and uniqueId for reference.
 This feature is implemented to ensure data integrity and provide users with the ability to track and manage student exams efficiently.
 
@@ -331,21 +388,21 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 * 1a. User inputs the command in an incorrect format.
 
-   * 1a1. AddressBook shows an error message and the correct command format.
+    * 1a1. AddressBook shows an error message and the correct command format.
 
-   Use case ends.
+  Use case ends.
 
 * 1b. User enters a name that already exists in the AddressBook.
 
-   * 1b1. AddressBook generates and assigns a unique ID to the new student to avoid duplication.
+    * 1b1. AddressBook generates and assigns a unique ID to the new student to avoid duplication.
 
-   Use case resumes at step 2.
+  Use case resumes at step 2.
 
 * 1c. User omits a required field in the command.
 
-   * 1c1. AddressBook shows an error message indicating the missing field.
+    * 1c1. AddressBook shows an error message indicating the missing field.
 
-   Use case ends.
+  Use case ends.
 
 **Use case: View Student Detail**
 
@@ -361,13 +418,13 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 * 2a. The requested student does not exist or the list is empty.
 
-   * 2a1. AddressBook displays a message indicating no such student exists or the list is empty.
+    * 2a1. AddressBook displays a message indicating no such student exists or the list is empty.
 
-   Use case ends.
+  Use case ends.
 
 * 2b. User inputs an incorrect command format for viewing details.
 
-   * 2b1. AddressBook shows an error message and the correct command format.
+    * 2b1. AddressBook shows an error message and the correct command format.
 
 Use case ends.
 
@@ -385,9 +442,9 @@ Use case ends.
 
 * 2a. There is an error in processing the request.
 
-   * 2a1. AddressBook displays an error message in red.
+    * 2a1. AddressBook displays an error message in red.
 
-   Use case ends.
+  Use case ends.
 
 **Use case: Delete a Student**
 
@@ -412,9 +469,61 @@ Use case ends.
 
       Use case resumes at step 2.
 
+**Use case: Add Payment**
+
+**MSS** (Main Success Story)
+1. The user selects the option to add a payment.
+2. The system prompts the user to enter the student's unique ID and the payment amount.
+3. The user enters the required information and submits the command.
+4. The system validates the information and confirms the student's account exists.
+5. The system adds the payment to the student's account and updates the balance.
+6. The system notifies the user that the payment has been successfully added.
+
+   Use case ends.
+
+**Extensions**
+* 1a. The user enters an invalid student ID.
+    * 1a1. The system displays an error message and prompts the user to re-enter the student ID.
+
+  Use case resumes at step 2.
+
+* 2a. The user enters an invalid payment amount.
+    * 2a1. The system displays an error message and prompts the user to re-enter the payment amount.
+
+  Use case resumes at step 3.
+
+**Use case: Mark Payment**
+
+**MSS** (Main Success Story)
+1. The user selects the option to mark a payment as complete.
+2. The system prompts the user to enter the student's unique ID and details of the payment to be marked as complete.
+3. The user enters the required information and submits the command.
+4. The system validates the information and confirms the student's account and pending payment exist.
+5. The system marks the specified payment as complete and updates the account status.
+6. The system notifies the user that the payment has been successfully marked as complete.
+
+   Use case ends.
+
+**Extensions**
+* 1a. The user enters an invalid student ID.
+    * 1a1. The system displays an error message and prompts the user to re-enter the student ID.
+
+      Use case resumes at step 2.
+
+* 2a. The user enters an invalid payment amount.
+    * 2a1. The system displays an error message and prompts the user to re-enter the payment amount.
+
+      Use case resumes at step 3.
+
+* 3a. There are no outstanding payments for the student.
+    * 3a1. The system informs the user there are no payments to mark as complete.
+
+      Use case ends.
+
+
 ### Planned Enhancements
-1. Improve Tuteetally such that automatic past exam removal information is updated at real time to storage. 
-Users need not use the command `exit` to save the automatic past exam removal to storage.
+1. Improve Tuteetally such that automatic past exam removal information is updated at real time to storage.
+   Users need not use the command `exit` to save the automatic past exam removal to storage.
 
 ### Non-Functional Requirements
 
@@ -441,44 +550,99 @@ testers are expected to do more *exploratory* testing.
 
 </box>
 
-### Launch and shutdown
+### Launch and Shutdown
 
-1. Initial launch
+#### 1. Initial Launch
+- Download the jar file and copy it into an empty folder.
+- Double-click the jar file.  
+  **Expected**: Shows the GUI with a set of sample contacts. The window size may not be optimum.
 
-   1. Download the jar file and copy into an empty folder
+#### 2. Saving Window Preferences
+- Resize the window to an optimum size. Move the window to a different location. Close the window.
+- Re-launch the app by double-clicking the jar file.  
+  **Expected**: The most recent window size and location is retained.
 
-   1. Double-click the jar file Expected: Shows the GUI with a set of sample contacts. The window size may not be optimum.
+#### 3. _{ more test cases …​ }_
 
-1. Saving window preferences
+### Deleting a Person
 
-   1. Resize the window to an optimum size. Move the window to a different location. Close the window.
+#### 1. Deleting a Person While All Persons Are Being Shown
+- **Prerequisites**: List/view all persons using the `list` or `view -all` command. Multiple persons in the list.
+- **Test Case**: `delete 000001`  
+  **Expected**: Contact with the ID #000001 is deleted from the list. Details of the deleted contact shown in the status message. Timestamp in the status bar is updated.
+- **Test Case**: `delete 000000`  
+  **Expected**: No person is deleted. Error details shown in the status message. Status bar remains the same.
+- **Other Incorrect Delete Commands to Try**: `delete`, `delete x`, `...` (where x is larger than the list size)  
+  **Expected**: Similar to previous.
 
-   1. Re-launch the app by double-clicking the jar file.<br>
-       Expected: The most recent window size and location is retained.
+#### 2. _{ more test cases …​ }_
 
-1. _{ more test cases …​ }_
+### Payment Commands
 
-### Deleting a person
+#### Adding a Payment to a Student Account
 
-1. Deleting a person while all persons are being shown
+- **Command**: `addpayment`
+- **Description**: Adds a payment record to a specified student's account by their unique identifier. This command allows for specifying the payment amount either as a numerical value or as a text string for more descriptive purposes.
 
-   1. Prerequisites: List all persons using the `list` command. Multiple persons in the list.
+##### Prerequisites
+- User must be logged in with sufficient privileges to add payments.
+- The student account associated with the given unique identifier must exist within the system.
 
-   1. Test case: `delete 1`<br>
-      Expected: First contact is deleted from the list. Details of the deleted contact shown in the status message. Timestamp in the status bar is updated.
+##### Usage
+- **To add a payment with a numerical amount**:  
+  `addpayment -id ID -amount 100.00`  
+  **Expected Outcome**: A payment of $100.00 is added to the student's account identified by `ID`. The system confirms the addition with a success message and updates the student's payment history accordingly.
 
-   1. Test case: `delete 0`<br>
-      Expected: No person is deleted. Error details shown in the status message. Status bar remains the same.
+#### Marking a Student's Payment
 
-   1. Other incorrect delete commands to try: `delete`, `delete x`, `...` (where x is larger than the list size)<br>
-      Expected: Similar to previous.
+- **Command**: `markpayment`
+- **Description**: Marks a specified payment as complete for a student's account. This command is used to update the status of a student's payments to reflect that they have been successfully processed or received.
 
-1. _{ more test cases …​ }_
+##### Prerequisites
+- User must be logged in with sufficient privileges to mark payments as complete.
+- The student account associated with the given unique identifier must exist and have outstanding payments.
 
-### Saving data
+##### Usage
+- **To mark a payment as complete**:  
+  `markpayment -id ID -payment PAYMENT_AMOUNT`  
+  **Expected Outcome**: The payment identified by `PAYMENT_AMOUNT` for the student `ID` is marked as complete. The system updates the payment status and provides a confirmation message.
 
-1. Dealing with missing/corrupted data files
+#### Extensions and Error Handling
+- **Invalid ID**: If an invalid `ID` or `PAYMENT_AMOUNT` is provided, the system will return an error message indicating the issue and suggesting corrective actions.
+- **No Outstanding Payments**: If there are no outstanding payments to mark as complete, the system will notify the user accordingly.
+- **Permission Denied**: If the user attempts to execute a command without sufficient privileges, the system will deny the request and provide an appropriate warning message.
 
-   1. _{explain how to simulate a missing/corrupted file, and the expected behavior}_
+### Additional Notes
+- These commands are designed to interact seamlessly with the system's payment management module, ensuring accurate tracking and reporting of student payment statuses.
+- Always ensure that the unique identifiers (`ID` and `PAYMENT_AMOUNT`) are correctly entered to avoid discrepancies or errors in payment processing.
 
-1. _{ more test cases …​ }_
+#### Resetting Payments for a Student Account
+
+- **Command**: `resetpayments`
+- **Description**: Resets the payment status for all recorded payments in a specified student's account. This command is used when a student's payment record needs to be cleared, typically after all dues have been settled or in case of account adjustments.
+
+##### Prerequisites
+- User must be logged in with sufficient privileges to reset payment records.
+- The student account associated with the given unique identifier must exist and have one or more payments recorded.
+
+##### Usage
+- **To reset all payments for a student**:  
+  `resetpayments -id ID`  
+  **Expected Outcome**: All payments recorded for the student account identified by `ID` are reset. The system confirms the reset with a success message, indicating that the student's payment history is now cleared.
+
+#### Extensions and Error Handling
+- **Invalid ID**: If an invalid `ID` is provided, the system will return an error message indicating that the student account could not be found.
+- **No Recorded Payments**: If the student account does not have any recorded payments, the system will notify the user that there are no payments to reset.
+- **Permission Denied**: Similar to the other commands, if the user attempts to execute the `resetpayments` command without sufficient privileges, the system will deny the request and display an appropriate warning message.
+
+### Additional Notes
+- Use the `resetpayments` command with caution, as it will clear all payment records for the specified student, potentially impacting their payment history and account status.
+- Ensure accuracy when entering the `ID` to avoid unintentional resets of payment information for the wrong student account.
+
+### Saving Data
+
+#### 1. Dealing with Missing/Corrupted Data Files
+- _{explain how to simulate a missing/corrupted file, and the expected behavior}_
+
+#### 2. _{ more test cases …​ }_
+

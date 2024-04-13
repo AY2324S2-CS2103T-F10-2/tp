@@ -1,0 +1,21 @@
+@startuml
+!include style.puml
+skinparam style strictuml
+
+start
+:Receive "resetpayments" command;
+:Parse command;
+
+:Create ResetPaymentsCommand;
+partition "ResetPaymentsCommand Execution" {
+  :Check if user exists;
+  if ("User exists?") then (yes)
+    :Reset current payments;
+  else (no)
+    :Generate error CommandResult;
+  endif
+}
+:Return CommandResult;
+stop
+
+@enduml

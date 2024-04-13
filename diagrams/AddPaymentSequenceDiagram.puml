@@ -1,0 +1,70 @@
+@startuml
+!include style.puml
+skinparam ArrowFontStyle plain
+
+box Logic LOGIC_COLOR_T1
+participant ":LogicManager" as LogicManager LOGIC_COLOR
+participant ":AddressBookParser" as AddressBookParser LOGIC_COLOR
+participant ":AddPaymentCommandParser" as AddPaymentCommandParser LOGIC_COLOR
+participant "d:AddPaymentCommand" as AddPaymentCommand LOGIC_COLOR
+participant "r:CommandResult" as CommandResult LOGIC_COLOR
+end box
+
+box Model MODEL_COLOR_T1
+participant "m:Model" as Model MODEL_COLOR
+end box
+
+[-> LogicManager : execute("addpayment -id 000001 -amount 100")
+activate LogicManager
+
+LogicManager -> AddressBookParser : parseCommand("addpayment -id 000001 -amount 100")
+activate AddressBookParser
+
+create AddPaymentCommandParser
+AddressBookParser -> AddPaymentCommandParser
+activate AddPaymentCommandParser
+
+AddPaymentCommandParser --> AddressBookParser
+deactivate AddPaymentCommandParser
+
+AddressBookParser -> AddPaymentCommandParser : parse("000001 100")
+activate AddPaymentCommandParser
+
+create AddPaymentCommand
+AddPaymentCommandParser -> AddPaymentCommand
+activate AddPaymentCommand
+
+AddPaymentCommand --> AddPaymentCommandParser :
+deactivate AddPaymentCommand
+
+AddPaymentCommandParser --> AddressBookParser : d
+deactivate AddPaymentCommandParser
+'Hidden arrow to position the destroy marker below the end of the activation bar.
+AddPaymentCommandParser -[hidden]-> AddressBookParser
+destroy AddPaymentCommandParser
+
+AddressBookParser --> LogicManager : d
+deactivate AddressBookParser
+
+LogicManager -> AddPaymentCommand : execute(m)
+activate AddPaymentCommand
+
+AddPaymentCommand -> Model : addPerson(person)
+activate Model
+
+Model --> AddPaymentCommand
+deactivate Model
+
+create CommandResult
+AddPaymentCommand -> CommandResult
+activate CommandResult
+
+CommandResult --> AddPaymentCommand
+deactivate CommandResult
+
+AddPaymentCommand --> LogicManager : r
+deactivate AddPaymentCommand
+
+[<--LogicManager
+deactivate LogicManager
+@enduml

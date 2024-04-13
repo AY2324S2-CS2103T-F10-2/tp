@@ -1,0 +1,70 @@
+@startuml
+!include style.puml
+skinparam ArrowFontStyle plain
+
+box Logic LOGIC_COLOR_T1
+participant ":LogicManager" as LogicManager LOGIC_COLOR
+participant ":AddressBookParser" as AddressBookParser LOGIC_COLOR
+participant ":MarkPaymentCommandParser" as MarkPaymentCommandParser LOGIC_COLOR
+participant "d:MarkPaymentCommand" as MarkPaymentCommand LOGIC_COLOR
+participant "r:CommandResult" as CommandResult LOGIC_COLOR
+end box
+
+box Model MODEL_COLOR_T1
+participant "m:Model" as Model MODEL_COLOR
+end box
+
+[-> LogicManager : execute("markpayment -id 000001 -amount 100")
+activate LogicManager
+
+LogicManager -> AddressBookParser : parseCommand("markpayment -id 000001 -amount 100")
+activate AddressBookParser
+
+create MarkPaymentCommandParser
+AddressBookParser -> MarkPaymentCommandParser
+activate MarkPaymentCommandParser
+
+MarkPaymentCommandParser --> AddressBookParser
+deactivate MarkPaymentCommandParser
+
+AddressBookParser -> MarkPaymentCommandParser : parse("000001 100")
+activate MarkPaymentCommandParser
+
+create MarkPaymentCommand
+MarkPaymentCommandParser -> MarkPaymentCommand
+activate MarkPaymentCommand
+
+MarkPaymentCommand --> MarkPaymentCommandParser :
+deactivate MarkPaymentCommand
+
+MarkPaymentCommandParser --> AddressBookParser : d
+deactivate MarkPaymentCommandParser
+'Hidden arrow to position the destroy marker below the end of the activation bar.
+MarkPaymentCommandParser -[hidden]-> AddressBookParser
+destroy MarkPaymentCommandParser
+
+AddressBookParser --> LogicManager : d
+deactivate AddressBookParser
+
+LogicManager -> MarkPaymentCommand : execute(m)
+activate MarkPaymentCommand
+
+MarkPaymentCommand -> Model : addPerson(person)
+activate Model
+
+Model --> MarkPaymentCommand
+deactivate Model
+
+create CommandResult
+MarkPaymentCommand -> CommandResult
+activate CommandResult
+
+CommandResult --> MarkPaymentCommand
+deactivate CommandResult
+
+MarkPaymentCommand --> LogicManager : r
+deactivate MarkPaymentCommand
+
+[<--LogicManager
+deactivate LogicManager
+@enduml

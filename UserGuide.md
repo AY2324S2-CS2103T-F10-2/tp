@@ -35,13 +35,23 @@ All commands are case-sensitive.
 
 2. Download the latest `tuteetally.jar` from [here](https://github.com/AY2324S2-CS2103T-F10-2/tp/releases).
 
-3. Copy the file to your desired home folder.
+3. Save the file to your desired home folder that will serve as the main folder for TuteeTally.
 
-4. Open a command terminal, `cd` into the folder you put the jar file in, and use the `java -jar tuteetally.jar` command to run the application.<br>
-   A GUI similar to the one below should appear in a few seconds. Note how the app contains some sample data.<br>
+4. Open a command terminal,
+    * For Windows users: Press `Win + R`, type `cmd` or `PowerShell`, and press `Enter`.
+    * For MacOS users: Press `Cmd + Space`, type `Terminal`, and press `Enter`.
+    * For Linux users: Press `Ctrl + Alt + T`.
+   
+5. Navigate into the folder where you saved `tuteetally.jar`.<br>
+   By default, it should be saved in your `Downloads` folder. <br>
+    * For Windows users: Type `cd Downloads`, and press `Enter`.
+    * For MacOS users: Type `cd ~/Downloads`, and press `Enter`.
+    * For Linux users: Type `cd ~/Downloads`, and press `Enter`.
+
+6. Type the command  `java -jar tuteetally.jar` to into the terminal to run the application. A GUI similar to the one below should appear in a few seconds. Note how the app contains some sample data.<br>
    ![Ui](images/Ui.png)
 
-5. Type the command in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will open the help window.<br>
+7. You can now type in any commands in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will open the help window.<br>
    Some example commands you can try:
 
    * `add` - adding student to list
@@ -52,20 +62,21 @@ All commands are case-sensitive.
    * `resetpayments` - resetting payment for student
    * `addexam` - adding exam to student
    * `deleteexam` - deleting exam from student
-   * `log` - logging a session's content, hours, learning styles and comments (notes) for each session
+   * `log` - logging a session's content, hours, learning styles and comments (notes) for each session <br>
 
-6. Refer to the [Features](#features) below for details of each command.
+6. Refer to the [Features](#features) below for details of each command. <br>
 
 --------------------------------------------------------------------------------------------------------------------
 ## Glossary
 
-| Term         | Explanation                                                                                                                                        |
-|--------------|----------------------------------------------------------------------------------------------------------------------------------------------------|
-| **CLI**      | `A command-line interface (CLI) is a text-based user interface used to interact with programs, in this case TuteeTally!`                           |
-| **GUI**      | `A graphical user interface (GUI) is a digital interface in which a user interacts with graphical components such as icons, buttons, and menus.`   |
-| **Exam**     | `An Exam is any assessment or Test that the tutor choose to keep track of a student`                                                               |
-| **Index**    | `The index of the student refers to the position of student counting from the top of current displayed list, with the first student being index 1` |
-| **UniqueID** | `The UniqueID of a student refers to a uniquely generated identity that is assigned to a student when is he added to TuteeTally.`                  |
+| Term          | Explanation                                                                                                                                        |
+|---------------|----------------------------------------------------------------------------------------------------------------------------------------------------|
+| **CLI**       | `A command-line interface (CLI) is a text-based user interface used to interact with programs, in this case TuteeTally!`                           |
+| **GUI**       | `A graphical user interface (GUI) is a digital interface in which a user interacts with graphical components such as icons, buttons, and menus.`   |
+| **Payment**   | `A Payment is the amount of money that a student owes to the tutor for the lessons that have been conducted.`                                      |
+| **Exam**      | `An Exam is any assessment or Test that the tutor choose to keep track of a student`                                                               |
+| **Index**     | `The index of the student refers to the position of student counting from the top of current displayed list, with the first student being index 1` |
+| **UniqueID**  | `The UniqueID of a student refers to a uniquely generated identity that is assigned to a student when he or she is added to TuteeTally.`           |
 --------------------------------------------------------------------------------------------------------------------
 
 ## Features
@@ -85,7 +96,7 @@ All commands are case-sensitive.
 * All id inputs in commands labelled `{ID}` can omit any leading 0s.<br>
 e.g. `1`, `01`, `000001` are all valid id inputs for the id `#000001`
 
-* All `{ID}` are by default *6 digits*. Any id that exceeds a 6 digit number (e.g. 1234567) may cause errors.
+* All `{ID}` are by default *6 digits*. Any ID that exceeds a 6 digit number (e.g. 1234567) may cause errors.
 
 * The maximum number of students that can be stored in TuteeTally is 999999. 
 
@@ -100,38 +111,41 @@ e.g. `07:00` is a valid time input and refers to 7am, but not `7:00`
 
 **Notes on Fields for the students**
 
-| Field       | Prefix    | Required | Caveats                                                                                                                                                                                                                                                                                                                                                                                                |
-|-------------|-----------|----------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Name**    | `-name`   | Yes      | Names should only contain alphanumeric characters and spaces, it cannot contain special characters. |
-| **Phone**   | `-phone`  | Yes      | Phone numbers should only contain numbers, and it should be at least 3 digits long <br/> There is no limit on the length of the phone number to accommodate worldwide phone numbers.                                                                                                                                                                                                                   |
-| **Email**   | `-email`  | Yes      | Emails does not require top level domain, it only requires `@`, for example admin@example. More info on valid email formatting can be found  on this wikipedia article<a href="https://en.wikipedia.org/wiki/Email_address#Examples"> here</a>.                                                                                                                                                        |
-| **Address** | `-address` | Yes      | Addresses can take any values, and it should not be blank                                                                                                                                                                                                                                                                                                                                              |
-| **Subject** | `-subject` | Yes      | Subjects can take any values, and it should not be blank.                                                                                                                                                                                                                                                                                                                                              |
-| **Tag**     | `t/`      | Nope     | Tags names should be alphanumeric and not contain any special characters.                                                                                                                                                                                                                                                                                                                              | 
+| Field       | Prefix        | Required | Caveats                                                                                                                                                                                                                                                                                                                                                                                                |
+|-------------|---------------|--------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Name**    | `-name`       | Yes    | Names should only contain alphanumeric characters and spaces, it cannot contain special characters. |
+| **Phone**   | `-phone`      | Yes    | Phone numbers should only contain numbers, and it should be at least 3 digits long <br/> There is no limit on the length of the phone number to accommodate worldwide phone numbers.                                                                                                                                                                                                                   |
+| **Email**   | `-email`      | Yes    | Emails does not require top level domain, it only requires `@`, for example admin@example. More info on valid email formatting can be found  on this wikipedia article<a href="https://en.wikipedia.org/wiki/Email_address#Examples"> here</a>.                                                                                                                                                        |
+| **Address** | `-address`    | Yes    | Addresses can take any values, and it should not be blank                                                                                                                                                                                                                                                                                                                                              |
+| **Subject** | `-subject`    | Yes    | Subjects can take any values, and it should not be blank.                                                                                                                                                                                                                                                                                                                                              |
+| **Tag**     | `t/`          | No     | Tags names should be alphanumeric and not contain any special characters.                                                                                                                                                                                                                                                                                                                              | 
 
 ### Adding a student: `add`
 
 Adds a student's particulars into the address book.
 
-Format: `add -name {NAME} -phone {NUMBER} -email {EMAIL} -address {ADDRESS} -subject {SUBJECT} t/{tag}`
+**Format:** `add -name {NAME} -phone {NUMBER} -email {EMAIL} -address {ADDRESS} -subject {SUBJECT} t/{tag}`
 
 <box type="tip" seamless>
-Tip:<br>
+
+**Tip:**<br>
 If the addition is successful, the new student record will be shown at the bottom of the list.
-Long names might also cause the Id field to be blocked. In this case, you can opt to drag the middle portion of the UI to 
+Long names might also cause the ID field to be blocked. In this case, you can opt to drag the middle portion of the UI to 
 reveal the ID. However, the upper limit of this workaround is 220 characters long. If a student's name exceeds 220 characters,
 it is advisable to use nicknames instead.
+
 </box>
 
 There is currently no detection for duplicates, this is under planned enhancements. 
 
 <box type="info" seamless>
-Note:<br>
 
-The `t/{tag}` field is optional and can be used to add a tag to the student record and no spaces are allowed in the {tag}.
+**Note:**<br>
+
+The `t/{tag}` field is **OPTIONAL** and can be used to add tag(s) to the student record and no spaces are allowed for `t/{tag}`.
 </box>
 
-Examples:
+**Example:**
 * `add -name Xiao Ming -address 13, Computing Dr, 117417 -email xiaoming@email.com -phone 88888888 -subject Math`
 
 After entering the command, the interface will update as shown below:
@@ -153,9 +167,9 @@ Editable Fields
 
 At least one editable fields must be present. Not all editable values need to be present at one time.
 
-Format: `edit {ID} -<Insert Field to Edit> {Value}`
+**Format:** `edit {ID} -<Insert Field to Edit> {Value}`
 
-Example: 
+**Example:** 
 * `edit 1 -phone 91234567 -email johndoe@example.com -name JohnDoo`
 
 After entering the command, the interface will update as shown below:
@@ -166,11 +180,11 @@ After entering the command, the interface will update as shown below:
 
 Deletes the specified student from the address book.
 
-Format: `delete -id {ID}`
+**Format:** `delete -id {ID}`
 
 * Deletes the person at the specified `id`.
 
-Examples:
+**Examples:**
 * `delete -id 000001` or `delete -id 1` deletes the student with the ID #000001
 
 After entering the command, the interface will update as shown below:
@@ -188,7 +202,7 @@ These student details can be found in the `test.json` file that we have included
 <box type="tip" seamless>
 
 **Tip:** <br>
-To match the results shown in the illustrations within our User Guide, we recommend replacing the contents of the `data/addressbook.json` file with the data from the `data/test.json` file. <br>
+To match the results shown in the illustrations within our User Guide, we recommend replacing the contents of the `data/addressbook.json` file in your directory where `TuteeTally.jar` is saved with the data from [here](https://github.com/AY2324S2-CS2103T-F10-2/tp/tree/master/DummyData/dummydata.json). <br>
 This will ensure your outputs align with the examples provided in our guide. <br>
 
 </box>
@@ -200,23 +214,25 @@ This would display the following in a pop-up window
 - the number of upcoming exams in following 1 month period (from today up to the same day of the next month)
 
 <box type="tip" seamless>
-Tip:<br>
-Use ths feature to track the total amount of students you're teaching, how much is owed by all of them
+
+**Tip:**<br>
+Use this feature to track the total amount of students you're teaching, how much is owed by all of them
 and how plan your schedule based on the number of upcoming exams that will come in the next month
+
 </box>
 
 Press `F2` on the keyboard to access the `stats` view or type the below commands
 
-Format 1: `view -statistics`
-Format 2: `view -stats` <br>
+**Format 1:** `view -statistics` <br>
+**Format 2:** `view -stats` <br>
 
 After entering the command, the interface will update as shown below:
 
 ![View STATS Display](images/view/view_stats.jpg) _The display showing the stats of *ALL* the students._
 
 ### View full student list on the home page: `view`
-This would display all students currently added to the list. Each student's contact information and subject information will be displayed with this command.
-Format: `view -all` <br>
+This would display all students currently added to the list. Each student's contact information and subject information will be displayed with this command. <br>
+**Format:** `view -all` <br>
 
 After entering the command, the interface will update as shown below:
 
@@ -224,9 +240,10 @@ After entering the command, the interface will update as shown below:
 
 ### View student particular by name: `view`
 This will display students whose name matches any single word in the `{NAME}` search field.
-* i.e. `view -name alex tan` will retrieve any student with the word `alex` or `tan` in their name. `Alex Yeo` and `James Tan` are both valid students to display in this case.
-Format: `view -name {NAME}`
-Examples:
+* i.e. `view -name alex tan` will retrieve any student with the word `alex` or `tan` in their name. `Alex Yeo` and `James Tan` are both valid students to display in this case. <br>
+**Format:** `view -name {NAME}` <br>
+
+**Example:**
 * `view -name Benson Meier` would display the student particular of Benson Meier if existed or any student with the word `Benson` or `Meier` in their name. <br>
 
 After entering the command, the interface will update as shown below:
@@ -235,10 +252,10 @@ After entering the command, the interface will update as shown below:
 
 
 ### View student particular by id: `view`
-This will display a specific student by searching for their id, this also pops up the lesson logs of the student.
-Format: `view -id {ID}`
+This will display a specific student by searching for their id, this also pops up the lesson logs of the student. <br>
+**Format:** `view -id {ID}`
 
-Examples:
+**Example:**
 * `view -id 000003` would display the student particular for the student with ID #000003 if it exists. <br>
 
 After entering the command, the interface will update as shown below:
@@ -260,27 +277,27 @@ TuteeTally's payment management commands are designed to streamline the financia
 
 Record new payments easily with the `addpayment` command, keeping track of what each student owes. This command simplifies the maintenance of financial records, ensuring you never overlook an outstanding payment.
 
-Format: `addpayment -id {ID} -payment {AMOUNT}`
+**Format:** `addpayment -id {ID} -payment {AMOUNT}`
 
-Example: 
+**Example:** 
 * `addpayment -id 000001 -payment 150` or `addpayment -id 1 -payment 150` would add a payment of 150 to the student with ID #000001 if it exists. <br>
 
 After entering the command, the interface will update as shown below:
 
-![Add Payment Update Display](images/payment/add_payment.jpg) _The display showing "Payment owed: $150" after adding a payment._
+![Add Payment Update Display](images/payment/add_payment.jpg) _The display showing "Payment owed: $150.00" after adding a payment._
 
 ### Marking Payment of the student: `markpayment`
 
 The `markpayment` command allows you to update the status of a student's payment to reflect payments that have been made. This feature helps maintain a clear record of completed transactions, building trust and transparency. <br>
 
-Format: `markpayment -id {ID} -payment {AMOUNT}`
+**Format:** `markpayment -id {ID} -payment {AMOUNT}`
 
-Example:
+**Example:**
 * `markpayment -id 000001 -payment 100` or `markpayment -id 1 -payment 100` with ID #000001 if it exists. <br>
 
 After entering the command, the interface will update as shown below: <br>
 
-![Mark Payment Update Display](images/payment/mark_payment.jpg) _The display showing "Payment owed: $50" after marking a payment of $100, with $150 owed initially._
+![Mark Payment Update Display](images/payment/mark_payment.jpg) _The display showing "Payment owed: $5.000" after marking a payment of $100.00, with $150.00 owed initially._
 
 <box type="info" seamless>
 
@@ -293,20 +310,20 @@ After entering the command, the interface will update as shown below: <br>
 ### Resetting all Payments of the student: `resetpayments`
 <box type="info" seamless>
 
-**Note:** <br>
+**For your information:** <br>
 The command `resetpayments` intentionally includes an 's' after `payment` because it is designed to reset all owed payments for a student. <br>
 </box>
 
 Use the `resetpayments` command to clear a student's outstanding payment amount, useful for starting anew or correcting mistakes. This command ensures your financial records remain accurate and up-to-date.<br>
 
-Format: `resetpayments -id {ID}`
+**Format:** `resetpayments -id {ID}`
 
-Example: 
+**Example:** 
 * `resetpayments -id 000001` or `resetpayments -id 1` would reset the payment for the student with ID #000001 if it exists.
 
 After entering the command, the interface will update as shown below: <br>
 
-![Reset Payments Update Display](images/payment/reset_payments.jpg) _The display showing "No payment owed" after resetting payments, with $50 owed previously._
+![Reset Payments Update Display](images/payment/reset_payments.jpg) _The display showing "No payment owed" after resetting payments, with $50.00 owed previously._
 
 <box type="info" seamless>
 
@@ -319,13 +336,13 @@ After entering the command, the interface will update as shown below: <br>
 Each of these features contributes to a comprehensive financial management system within TuteeTally, enabling tutors to manage their tutoring finances more effectively and efficiently.
 
 ### Add student's exam by id: `addexam`
-This will add an exam to a student by searching for their `id`. Time is an optional field. Do note that only exams from the current date onwards can be added.
+This will add an exam to a student by searching for their `ID`. Time is an optional field. Do note that only exams from the current date onwards can be added.
 
-Format 1: `addexam -id {ID} -exam {EXAMNAME} -date {DATE}`
-Format 2: `addexam -id {ID} -exam {EXAMNAME} -date {DATE} -time {TIME}`
+**Format 1:** `addexam -id {ID} -exam {EXAMNAME} -date {DATE}` <br>
+**Format 2:** `addexam -id {ID} -exam {EXAMNAME} -date {DATE} -time {TIME}`
 
-Examples:
-* `addexam -id 000001 -exam Computing -date 2024-04-27 -time 09:00` would add an exam of Computing with date of 2024-04-27 and time of 09:00 to a student whose id is 888888 if the student exists.
+**Examples:**
+* `addexam -id 000001 -exam Computing -date 2024-04-27 -time 09:00` would add an exam of Computing with date of 2024-04-27 and time of 09:00 to a student whose ID is #000001 if the student exists.
 After entering the command, the interface will update as shown below: <br>
 
 ![Add Exam Update Display](images/exam/add_exam.jpg) _The display showing a new `COMPUTING` exam of the student with ID #000001 after being added._
@@ -339,12 +356,12 @@ After entering the command, the interface will update as shown below: <br>
 </box>
 
 ### Delete student's exam by id: `deleteexam`
-This will delete an exam from a student by searching for their `id`. Fields should follow exactly from the exam from the exam list that you wish to delete.
+This will delete an exam from a student by searching for their `ID`. Fields should follow exactly from the exam from the exam list that you wish to delete.
 
-Format 1: `deleteexam -id {ID} -exam {EXAMNAME} -date {DATE}`
-Format 2: `deleteexam -id {ID} -exam {EXAMNAME} -date {DATE} -time {TIME}`
-Examples:
-* `deleteexam -id 000001 -exam Computing -date 2024-04-27 -time 09:00` would delete an exam of Computing with date of 2024-04-27 and time of 09:00 from a student whose id is 888888 if the student exists.
+**Format 1:** `deleteexam -id {ID} -exam {EXAMNAME} -date {DATE}` <br>
+**Format 2:** `deleteexam -id {ID} -exam {EXAMNAME} -date {DATE} -time {TIME}`<br>
+**Examples:**
+* `deleteexam -id 000001 -exam Computing -date 2024-04-27 -time 09:00` would delete an exam of Computing with date of 2024-04-27 and time of 09:00 from a student whose ID is #000001 if the student exists.
 After entering the command, the interface will update as shown below: <br>
 
 ![Delete Exam Update Display](images/exam/delete_exam.jpg) _The display, after the COMPUTING exam for the student with ID #000001 has been deleted, shows the updated status, confirming the successful removal of the exam._
@@ -361,29 +378,33 @@ After entering the command, the interface will update as shown below: <br>
 </box>
 
 ### Logging the Lessons of a student: `log`
-This will add a log to the lessons of a student. The time field of the log entry will be the *system time* when the log was added.
-Format: `log -id {ID} -hours {HOURS} -content {CONTENT} -style {LEARNING STYLE} -notes {NOTES}`
+This will add a log to the lessons of a student of a specific `ID`. The time field of the log entry will be the *system time* when the log was added. <br>
+
+**Format:** `log -id {ID} -hours {HOURS} -content {CONTENT} -style {LEARNING STYLE} -notes {NOTES}`
 <box type="info" seamless>
+
 **Note:** <br>
 Hours need not be an integer input. Values like `2 hours 45 mins`, `2+ hours` are valid as well.
+
 </box>
 
-**Examples:** <br>
-* `log -id 000001 -hours 2 -content English Comprehension -style Visual -notes Great improvement!`. would log a lesson for the student with ID #000001 noting that it had great improvement in English Comprehension, it also logs the learning style of the student. <br>
+**Example:** <br>
+* `log -id 000001 -hours 2 -content English Comprehension -style Visual -notes Great improvement!`. would log a lesson for the student with ID #000001 noting that he/she has had a great improvement in English Comprehension, it also logs the learning style of the student. <br>
 After entering the command, the interface will update as shown below: <br>
 
 ![Log Update Display](images/log/log.jpg) _The display reflects the successful logging for the student with ID #000001._
 
 <box type="tip" seamless>
-Tip:<br>
+
+**Tip:**<br>
 After successful addition, you can check your updated log list using the `view -id {ID}` command!
+
 </box>
 
 After entering the `view -id 000001` command, the interface will update as shown below: <br>
 
 ![Log Update Display](images/log/log_view.jpg) <br>
 _The display reflects the updated log entries for the student with ID #000001._
-
 
 ### More features `[coming in v1.4]`
 

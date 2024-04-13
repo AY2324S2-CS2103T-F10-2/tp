@@ -1,0 +1,31 @@
+@startuml
+!include style.puml
+skinparam style strictuml
+
+start
+:Receive "addpayment" command;
+:Parse command;
+if ("Amount as Double?") then (yes)
+  :Execute command with Double;
+else (no)
+  :Execute command with String;
+endif
+:Create AddPaymentCommand;
+partition "AddPaymentCommand Execution" {
+  :Check if user exists;
+  if ("User exists?") then (yes)
+    :Create payment entry;
+    if ("Valid amount?") then (yes)
+      :Add payment to Model;
+      :Generate success CommandResult;
+    else (no)
+      :Generate error CommandResult;
+    endif
+  else (no)
+    :Generate error CommandResult;
+  endif
+}
+:Return CommandResult;
+stop
+
+@enduml

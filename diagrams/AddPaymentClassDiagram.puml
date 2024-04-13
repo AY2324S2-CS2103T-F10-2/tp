@@ -1,0 +1,41 @@
+@startuml
+!include style.puml
+skinparam style strictuml
+
+class LogicManager {
+  +execute(command: String): CommandResult
+}
+
+class AddressBookParser {
+  +parseCommand(commandString: String): Command
+}
+
+class AddPaymentCommandParser {
+  +parse(arguments: String): AddPaymentCommand
+}
+
+class AddPaymentCommand {
+  -id: String
+  -amount: Double
+  +execute(model: Model, amount: Double): CommandResult
+  +execute(model: Model, amountAsString: String): CommandResult
+  {field} amount can be Double or String
+}
+
+class Model {
+  +addPerson(person: Person)
+}
+
+class CommandResult {
+  -message: String
+}
+
+LogicManager --> AddressBookParser
+AddressBookParser .down.> AddPaymentCommandParser : creates
+AddPaymentCommandParser .down.> AddPaymentCommand : creates
+AddPaymentCommand --> Model : uses
+AddPaymentCommand --> CommandResult : creates
+
+note right of AddPaymentCommand : amount can be either\nDouble (for calculations) or\nString (for display or logging)
+
+@enduml
