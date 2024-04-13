@@ -416,7 +416,7 @@ with(this){return _c('ul',[_c('li',[_c('p',[_v("1a. The user enters an invalid s
 with(this){return _c('h3',{attrs:{"id":"planned-enhancements"}},[_v("Planned Enhancements"),_c('a',{staticClass:"fa fa-anchor",attrs:{"href":"#planned-enhancements","onclick":"event.stopPropagation()"}})])}
 },function anonymous(
 ) {
-with(this){return _c('ol',[_c('li',[_v("Improve Tuteetally such that automatic past exam removal information is updated at real time to storage.\nUsers need not use the command "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("exit")]),_v(" to save the automatic past exam removal to storage.")])])}
+with(this){return _c('ol',[_c('li',[_v("Improve Tuteetally such that automatic past exam removal information is updated at real time to storage.\nUsers need not use the command "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("exit")]),_v(" to save the automatic past exam removal to storage.")]),_v(" "),_c('li',[_v("Check the validity of ID in tuteetally.json and loads a empty data file if it's invalid.")])])}
 },function anonymous(
 ) {
 with(this){return _c('h3',{attrs:{"id":"non-functional-requirements"}},[_v("Non-Functional Requirements"),_c('a',{staticClass:"fa fa-anchor",attrs:{"href":"#non-functional-requirements","onclick":"event.stopPropagation()"}})])}
@@ -440,13 +440,13 @@ with(this){return _c('h3',{attrs:{"id":"launch-and-shutdown"}},[_v("Launch and S
 with(this){return _c('h4',{attrs:{"id":"1-initial-launch"}},[_v("1. Initial Launch"),_c('a',{staticClass:"fa fa-anchor",attrs:{"href":"#1-initial-launch","onclick":"event.stopPropagation()"}})])}
 },function anonymous(
 ) {
-with(this){return _c('ul',[_c('li',[_v("Download the jar file and copy it into an empty folder.")]),_v(" "),_c('li',[_v("Double-click the jar file."),_c('br'),_v(" "),_c('strong',[_v("Expected")]),_v(": Shows the GUI with a set of sample contacts. The window size may not be optimum.")])])}
+with(this){return _c('ul',[_c('li',[_v("Download the jar file and copy it into an empty folder.")]),_v(" "),_c('li',[_v("Double-click the jar file.\n"),_c('strong',[_v("Expected")]),_v(": Shows the GUI with a set of sample contacts. The window size may not be optimum.")])])}
 },function anonymous(
 ) {
 with(this){return _c('h4',{attrs:{"id":"2-saving-window-preferences"}},[_v("2. Saving Window Preferences"),_c('a',{staticClass:"fa fa-anchor",attrs:{"href":"#2-saving-window-preferences","onclick":"event.stopPropagation()"}})])}
 },function anonymous(
 ) {
-with(this){return _c('ul',[_c('li',[_v("Resize the window to an optimum size. Move the window to a different location. Close the window.")]),_v(" "),_c('li',[_v("Re-launch the app by double-clicking the jar file."),_c('br'),_v(" "),_c('strong',[_v("Expected")]),_v(": The most recent window size and location is retained.")])])}
+with(this){return _c('ul',[_c('li',[_v("Resize the window to an optimum size. Move the window to a different location. Close the window.")]),_v(" "),_c('li',[_v("Re-launch the app by double-clicking the jar file.\n"),_c('strong',[_v("Expected")]),_v(": The most recent window size and location is retained.")])])}
 },function anonymous(
 ) {
 with(this){return _c('h4',{attrs:{"id":"3-more-test-cases"}},[_v("3. "),_c('em',[_v("{ more test cases …​ }")]),_c('a',{staticClass:"fa fa-anchor",attrs:{"href":"#3-more-test-cases","onclick":"event.stopPropagation()"}})])}
@@ -458,7 +458,7 @@ with(this){return _c('h3',{attrs:{"id":"deleting-a-person"}},[_v("Deleting a Per
 with(this){return _c('h4',{attrs:{"id":"1-deleting-a-person-while-all-persons-are-being-shown"}},[_v("1. Deleting a Person While All Persons Are Being Shown"),_c('a',{staticClass:"fa fa-anchor",attrs:{"href":"#1-deleting-a-person-while-all-persons-are-being-shown","onclick":"event.stopPropagation()"}})])}
 },function anonymous(
 ) {
-with(this){return _c('ul',[_c('li',[_c('strong',[_v("Prerequisites")]),_v(": List/view all persons using the "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("list")]),_v(" or "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("view -all")]),_v(" command. Multiple persons in the list.")]),_v(" "),_c('li',[_c('strong',[_v("Test Case")]),_v(": "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("delete 000001")]),_c('br'),_v(" "),_c('strong',[_v("Expected")]),_v(": Contact with the ID #000001 is deleted from the list. Details of the deleted contact shown in the status message. Timestamp in the status bar is updated.")]),_v(" "),_c('li',[_c('strong',[_v("Test Case")]),_v(": "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("delete 000000")]),_c('br'),_v(" "),_c('strong',[_v("Expected")]),_v(": No person is deleted. Error details shown in the status message. Status bar remains the same.")]),_v(" "),_c('li',[_c('strong',[_v("Other Incorrect Delete Commands to Try")]),_v(": "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("delete")]),_v(", "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("delete x")]),_v(", "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("...")]),_v(" (where x is larger than the list size)"),_c('br'),_v(" "),_c('strong',[_v("Expected")]),_v(": Similar to previous.")])])}
+with(this){return _c('ul',[_c('li',[_c('strong',[_v("Prerequisites")]),_v(": List/view all persons using the "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("list")]),_v(" or "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("view -all")]),_v(" command. Multiple persons in the list.")]),_v(" "),_c('li',[_c('strong',[_v("Test Case")]),_v(": "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("delete 000001")]),_v(" "),_c('strong',[_v("Expected")]),_v(": Contact with the ID #000001 is deleted from the list. Details of the deleted contact shown in the status message. Timestamp in the status bar is updated.")]),_v(" "),_c('li',[_c('strong',[_v("Test Case")]),_v(": "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("delete 000000")]),_v(" "),_c('strong',[_v("Expected")]),_v(": No person is deleted. Error details shown in the status message. Status bar remains the same.")]),_v(" "),_c('li',[_c('strong',[_v("Other Incorrect Delete Commands to Try")]),_v(": "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("delete")]),_v(", "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("delete x")]),_v(", "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("...")]),_v(" (where x is larger than the list size)\n"),_c('strong',[_v("Expected")]),_v(": Similar to previous.")])])}
 },function anonymous(
 ) {
 with(this){return _c('h4',{attrs:{"id":"2-more-test-cases"}},[_v("2. "),_c('em',[_v("{ more test cases …​ }")]),_c('a',{staticClass:"fa fa-anchor",attrs:{"href":"#2-more-test-cases","onclick":"event.stopPropagation()"}})])}
@@ -482,7 +482,7 @@ with(this){return _c('ul',[_c('li',[_v("User must be logged in with sufficient p
 with(this){return _c('h5',{attrs:{"id":"usage"}},[_v("Usage"),_c('a',{staticClass:"fa fa-anchor",attrs:{"href":"#usage","onclick":"event.stopPropagation()"}})])}
 },function anonymous(
 ) {
-with(this){return _c('ul',[_c('li',[_c('strong',[_v("To add a payment with a numerical amount")]),_v(":"),_c('br'),_v(" "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("addpayment -id ID -amount 100.00")]),_c('br'),_v(" "),_c('strong',[_v("Expected Outcome")]),_v(": A payment of $100.00 is added to the student's account identified by "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("ID")]),_v(". The system confirms the addition with a success message and updates the student's payment history accordingly.")])])}
+with(this){return _c('ul',[_c('li',[_c('strong',[_v("To add a payment with a numerical amount")]),_v(":\n"),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("addpayment -id ID -amount 100.00")]),_v(" "),_c('strong',[_v("Expected Outcome")]),_v(": A payment of $100.00 is added to the student's account identified by "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("ID")]),_v(". The system confirms the addition with a success message and updates the student's payment history accordingly.")])])}
 },function anonymous(
 ) {
 with(this){return _c('h4',{attrs:{"id":"marking-a-student-s-payment"}},[_v("Marking a Student's Payment"),_c('a',{staticClass:"fa fa-anchor",attrs:{"href":"#marking-a-student-s-payment","onclick":"event.stopPropagation()"}})])}
@@ -500,7 +500,7 @@ with(this){return _c('ul',[_c('li',[_v("User must be logged in with sufficient p
 with(this){return _c('h5',{attrs:{"id":"usage-2"}},[_v("Usage"),_c('a',{staticClass:"fa fa-anchor",attrs:{"href":"#usage-2","onclick":"event.stopPropagation()"}})])}
 },function anonymous(
 ) {
-with(this){return _c('ul',[_c('li',[_c('strong',[_v("To mark a payment as complete")]),_v(":"),_c('br'),_v(" "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("markpayment -id ID -payment PAYMENT_AMOUNT")]),_c('br'),_v(" "),_c('strong',[_v("Expected Outcome")]),_v(": The payment identified by "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("PAYMENT_AMOUNT")]),_v(" for the student "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("ID")]),_v(" is marked as complete. The system updates the payment status and provides a confirmation message.")])])}
+with(this){return _c('ul',[_c('li',[_c('strong',[_v("To mark a payment as complete")]),_v(":\n"),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("markpayment -id ID -payment PAYMENT_AMOUNT")]),_v(" "),_c('strong',[_v("Expected Outcome")]),_v(": The payment identified by "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("PAYMENT_AMOUNT")]),_v(" for the student "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("ID")]),_v(" is marked as complete. The system updates the payment status and provides a confirmation message.")])])}
 },function anonymous(
 ) {
 with(this){return _c('h4',{attrs:{"id":"extensions-and-error-handling"}},[_v("Extensions and Error Handling"),_c('a',{staticClass:"fa fa-anchor",attrs:{"href":"#extensions-and-error-handling","onclick":"event.stopPropagation()"}})])}
@@ -530,7 +530,7 @@ with(this){return _c('ul',[_c('li',[_v("User must be logged in with sufficient p
 with(this){return _c('h5',{attrs:{"id":"usage-3"}},[_v("Usage"),_c('a',{staticClass:"fa fa-anchor",attrs:{"href":"#usage-3","onclick":"event.stopPropagation()"}})])}
 },function anonymous(
 ) {
-with(this){return _c('ul',[_c('li',[_c('strong',[_v("To reset all payments for a student")]),_v(":"),_c('br'),_v(" "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("resetpayments -id ID")]),_c('br'),_v(" "),_c('strong',[_v("Expected Outcome")]),_v(": All payments recorded for the student account identified by "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("ID")]),_v(" are reset. The system confirms the reset with a success message, indicating that the student's payment history is now cleared.")])])}
+with(this){return _c('ul',[_c('li',[_c('strong',[_v("To reset all payments for a student")]),_v(":\n"),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("resetpayments -id ID")]),_v(" "),_c('strong',[_v("Expected Outcome")]),_v(": All payments recorded for the student account identified by "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("ID")]),_v(" are reset. The system confirms the reset with a success message, indicating that the student's payment history is now cleared.")])])}
 },function anonymous(
 ) {
 with(this){return _c('h4',{attrs:{"id":"extensions-and-error-handling-2"}},[_v("Extensions and Error Handling"),_c('a',{staticClass:"fa fa-anchor",attrs:{"href":"#extensions-and-error-handling-2","onclick":"event.stopPropagation()"}})])}
@@ -557,6 +557,6 @@ with(this){return _c('ul',[_c('li',[_c('em',[_v("{explain how to simulate a miss
 with(this){return _c('h4',{attrs:{"id":"2-more-test-cases-2"}},[_v("2. "),_c('em',[_v("{ more test cases …​ }")]),_c('a',{staticClass:"fa fa-anchor",attrs:{"href":"#2-more-test-cases-2","onclick":"event.stopPropagation()"}})])}
 },function anonymous(
 ) {
-with(this){return _c('footer',[_c('div',{staticClass:"text-center"},[_c('small',[_v("["),_c('span',[_c('strong',[_v("Powered by")])]),_v(" "),_c('img',{attrs:{"src":"https://markbind.org/favicon.ico","width":"30"}}),_v(" "),_c('a',{attrs:{"href":"https://markbind.org/"}},[_v("MarkBind 5.4.0")]),_v(", generated on Sat, 13 Apr 2024, 15:25:53 GMT+8]")])])])}
+with(this){return _c('footer',[_c('div',{staticClass:"text-center"},[_c('small',[_v("["),_c('span',[_c('strong',[_v("Powered by")])]),_v(" "),_c('img',{attrs:{"src":"https://markbind.org/favicon.ico","width":"30"}}),_v(" "),_c('a',{attrs:{"href":"https://markbind.org/"}},[_v("MarkBind 5.4.0")]),_v(", generated on Sat, 13 Apr 2024, 17:01:32 GMT+8]")])])])}
 }];
   

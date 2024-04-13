@@ -6,9 +6,9 @@ pageNav: 3
 
 # TuteeTally User Guide
 
-TuteeTally is a **desktop app for managing student contacts for private tutors, optimized for use via a Command Line Interface** (CLI) 
-while still having the benefits of a Graphical User Interface (GUI). If you can type fast, TuteeTally can make student 
-management much easier and faster than traditional GUI apps. 
+TuteeTally is a **desktop app for managing student contacts for private tutors, optimized for use via a Command Line Interface** (CLI)
+while still having the benefits of a Graphical User Interface (GUI). If you can type fast, TuteeTally can make student
+management much easier and faster than traditional GUI apps.
 
 The system includes features for adding students, viewing student details, viewing summary statistics, and deleting student entries. <br>
 <box type="info" seamless>
@@ -41,7 +41,7 @@ All commands are case-sensitive.
     * For Windows users: Press `Win + R`, type `cmd` or `PowerShell`, and press `Enter`.
     * For MacOS users: Press `Cmd + Space`, type `Terminal`, and press `Enter`.
     * For Linux users: Press `Ctrl + Alt + T`.
-   
+
 5. Navigate into the folder where you saved `tuteetally.jar`.<br>
    By default, it should be saved in your `Downloads` folder. <br>
     * For Windows users: Type `cd Downloads`, and press `Enter`.
@@ -94,17 +94,17 @@ All commands are case-sensitive.
   e.g. if the command specifies `-name {NAME} -address {ADDRESS}`, `-address {ADDRESS} -name {NAME}` is also acceptable.
 
 * All id inputs in commands labelled `{ID}` can omit any leading 0s.<br>
-e.g. `1`, `01`, `000001` are all valid id inputs for the id `#000001`
+e.g. `1`, `01`, `000000001` are all valid id inputs for the id `#000001`
 
 * All `{ID}` are by default *6 digits*. Any ID that exceeds a 6 digit number (e.g. 1234567) may cause errors.
 
-* The maximum number of students that can be stored in TuteeTally is 999999. 
+* The maximum number of students that can be stored in TuteeTally is 999999.
 
 * Date inputs must be in the format `yyyy-MM-dd` format. <br>
 e.g. `2024-04-01` is a valid input for date, but not `2024-4-01` or `2024-04-1`
 
 * Time inputs are in the 24-hour format in the form `HH-mm`. <br>
-e.g. `07:00` is a valid time input and refers to 7am, but not `7:00` 
+e.g. `07:00` is a valid time input and refers to 7am, but not `7:00`
 
 * If you are using a PDF version of this document, be careful when copying and pasting commands that span multiple lines as space characters surrounding line-breaks may be omitted when copied over to the application.
 </box>
@@ -118,7 +118,7 @@ e.g. `07:00` is a valid time input and refers to 7am, but not `7:00`
 | **Email**   | `-email`      | Yes    | Emails does not require top level domain, it only requires `@`, for example admin@example. More info on valid email formatting can be found  on this wikipedia article<a href="https://en.wikipedia.org/wiki/Email_address#Examples"> here</a>.                                                                                                                                                        |
 | **Address** | `-address`    | Yes    | Addresses can take any values, and it should not be blank                                                                                                                                                                                                                                                                                                                                              |
 | **Subject** | `-subject`    | Yes    | Subjects can take any values, and it should not be blank.                                                                                                                                                                                                                                                                                                                                              |
-| **Tag**     | `t/`          | No     | Tags names should be alphanumeric and not contain any special characters.                                                                                                                                                                                                                                                                                                                              | 
+| **Tag**     | `t/`          | No     | Tags names should be alphanumeric and not contain any special characters.                                                                                                                                                                                                                               |
 
 ### Adding a student: `add`
 
@@ -130,13 +130,13 @@ Adds a student's particulars into the address book.
 
 **Tip:**<br>
 If the addition is successful, the new student record will be shown at the bottom of the list.
-Long names might also cause the ID field to be blocked. In this case, you can opt to drag the middle portion of the UI to 
+Long names might also cause the ID field to be blocked. In this case, you can opt to drag the middle portion of the UI to
 reveal the ID. However, the upper limit of this workaround is 220 characters long. If a student's name exceeds 220 characters,
 it is advisable to use nicknames instead.
 
 </box>
 
-There is currently no detection for duplicates, this is under planned enhancements. 
+There is currently no detection for duplicates, this is under planned enhancements.
 
 <box type="info" seamless>
 
@@ -157,7 +157,7 @@ After entering the command, the interface will update as shown below:
 Edit the specific student detail from TuteeTally using the *INDEX* of the student. <br>
 The index of the student refers to the position of student counting from the top of current displayed list, with the first student being index 1.
 <br>
-Parameters: INDEX (must be a positive integer) [-name NAME] [-phone PHONE] [-email EMAIL] [-address ADDRESS] [t/TAG]... 
+Parameters: INDEX (must be a positive integer) [-name NAME] [-phone PHONE] [-email EMAIL] [-address ADDRESS] [t/TAG]...
 Editable Fields
 - `Name`
 - `Phone`
@@ -169,7 +169,7 @@ At least one editable fields must be present. Not all editable values need to be
 
 **Format:** `edit {ID} -<Insert Field to Edit> {Value}`
 
-**Example:** 
+**Example:**
 * `edit 1 -phone 91234567 -email johndoe@example.com -name JohnDoo`
 
 After entering the command, the interface will update as shown below:
@@ -208,8 +208,8 @@ This will ensure your outputs align with the examples provided in our guide. <br
 </box>
 
 ### View student statistics: `view`
-This would display the following in a pop-up window 
-- the total number of students 
+This would display the following in a pop-up window
+- the total number of students
 - the total amount owed by students (Currently shows the exact amount)
 - the number of upcoming exams in following 1 month period (from today up to the same day of the next month)
 
@@ -279,7 +279,7 @@ Record new payments easily with the `addpayment` command, keeping track of what 
 
 **Format:** `addpayment -id {ID} -payment {AMOUNT}`
 
-**Example:** 
+**Example:**
 * `addpayment -id 000001 -payment 150` or `addpayment -id 1 -payment 150` would add a payment of 150 to the student with ID #000001 if it exists. <br>
 
 After entering the command, the interface will update as shown below:
@@ -318,7 +318,7 @@ Use the `resetpayments` command to clear a student's outstanding payment amount,
 
 **Format:** `resetpayments -id {ID}`
 
-**Example:** 
+**Example:**
 * `resetpayments -id 000001` or `resetpayments -id 1` would reset the payment for the student with ID #000001 if it exists.
 
 After entering the command, the interface will update as shown below: <br>
@@ -352,7 +352,7 @@ After entering the command, the interface will update as shown below: <br>
 **Note:** <br>
 * This feature support adding an exam that is on current date but with a past time to allow for tracking exams happening on the same day.
 * If the entered date is yyyy-02-29 in non leap year, 29th will be automatically converted to 28th. Exam of yyyy-02-28 will be added.
-  
+
 </box>
 
 ### Delete student's exam by id: `deleteexam`
@@ -406,9 +406,15 @@ After entering the `view -id 000001` command, the interface will update as shown
 ![Log Update Display](images/log/log_view.jpg) <br>
 _The display reflects the updated log entries for the student with ID #000001._
 
-### More features `[coming in v1.4]`
+### Editing the data file
 
 _Details coming soon ..._
+TuteeTally's data is saved automatically as a JSON file at `[JAR file location]/data/addressbook.json`. Do proceed carefully if you intend to edit this file directly.
+
+<div markdown="span" class="alert alert-warning">:exclamation: **Caution:**
+Hence, it is recommended to make a backup of the file (by copying and pasting to another location) before editing it.<br>
+Certain edits can cause the TuteeTally to behave in unexpected and magical ways (e.g., if a value entered is outside of the acceptable range). Therefore, edit the data file only if you are confident that you can update it correctly. It's up to you to ensure the validity of the data if you choose to edit it.
+</div>
 
 --------------------------------------------------------------------------------------------------------------------
 

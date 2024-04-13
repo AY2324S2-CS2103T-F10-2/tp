@@ -524,6 +524,7 @@ Use case ends.
 ### Planned Enhancements
 1. Improve Tuteetally such that automatic past exam removal information is updated at real time to storage.
    Users need not use the command `exit` to save the automatic past exam removal to storage.
+2. Check the validity of ID in tuteetally.json and loads a empty data file if it's invalid.
 
 ### Non-Functional Requirements
 
@@ -554,12 +555,12 @@ testers are expected to do more *exploratory* testing.
 
 #### 1. Initial Launch
 - Download the jar file and copy it into an empty folder.
-- Double-click the jar file.  
+- Double-click the jar file.
   **Expected**: Shows the GUI with a set of sample contacts. The window size may not be optimum.
 
 #### 2. Saving Window Preferences
 - Resize the window to an optimum size. Move the window to a different location. Close the window.
-- Re-launch the app by double-clicking the jar file.  
+- Re-launch the app by double-clicking the jar file.
   **Expected**: The most recent window size and location is retained.
 
 #### 3. _{ more test cases …​ }_
@@ -568,11 +569,11 @@ testers are expected to do more *exploratory* testing.
 
 #### 1. Deleting a Person While All Persons Are Being Shown
 - **Prerequisites**: List/view all persons using the `list` or `view -all` command. Multiple persons in the list.
-- **Test Case**: `delete 000001`  
+- **Test Case**: `delete 000001`
   **Expected**: Contact with the ID #000001 is deleted from the list. Details of the deleted contact shown in the status message. Timestamp in the status bar is updated.
-- **Test Case**: `delete 000000`  
+- **Test Case**: `delete 000000`
   **Expected**: No person is deleted. Error details shown in the status message. Status bar remains the same.
-- **Other Incorrect Delete Commands to Try**: `delete`, `delete x`, `...` (where x is larger than the list size)  
+- **Other Incorrect Delete Commands to Try**: `delete`, `delete x`, `...` (where x is larger than the list size)
   **Expected**: Similar to previous.
 
 #### 2. _{ more test cases …​ }_
@@ -589,8 +590,8 @@ testers are expected to do more *exploratory* testing.
 - The student account associated with the given unique identifier must exist within the system.
 
 ##### Usage
-- **To add a payment with a numerical amount**:  
-  `addpayment -id ID -amount 100.00`  
+- **To add a payment with a numerical amount**:
+  `addpayment -id ID -amount 100.00`
   **Expected Outcome**: A payment of $100.00 is added to the student's account identified by `ID`. The system confirms the addition with a success message and updates the student's payment history accordingly.
 
 #### Marking a Student's Payment
@@ -603,8 +604,8 @@ testers are expected to do more *exploratory* testing.
 - The student account associated with the given unique identifier must exist and have outstanding payments.
 
 ##### Usage
-- **To mark a payment as complete**:  
-  `markpayment -id ID -payment PAYMENT_AMOUNT`  
+- **To mark a payment as complete**:
+  `markpayment -id ID -payment PAYMENT_AMOUNT`
   **Expected Outcome**: The payment identified by `PAYMENT_AMOUNT` for the student `ID` is marked as complete. The system updates the payment status and provides a confirmation message.
 
 #### Extensions and Error Handling
@@ -626,8 +627,8 @@ testers are expected to do more *exploratory* testing.
 - The student account associated with the given unique identifier must exist and have one or more payments recorded.
 
 ##### Usage
-- **To reset all payments for a student**:  
-  `resetpayments -id ID`  
+- **To reset all payments for a student**:
+  `resetpayments -id ID`
   **Expected Outcome**: All payments recorded for the student account identified by `ID` are reset. The system confirms the reset with a success message, indicating that the student's payment history is now cleared.
 
 #### Extensions and Error Handling
