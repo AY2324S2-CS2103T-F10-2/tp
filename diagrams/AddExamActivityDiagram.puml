@@ -1,0 +1,29 @@
+@startuml
+start
+:Parse Command;
+if ("Command Valid?") then (yes)
+    :Find Person by ID;
+    if ("Person Found?") then (yes)
+        :Validate Exam Details;
+        if ("Details Valid?") then (yes)
+            :Create Exam Instance;
+            :Add Exam to Person's Record;
+            :Update Person Record;
+            :Return Success Message;
+            stop
+        else (no)
+            :Error Handling;
+            :Return "Invalid Exam Details";
+            stop
+        endif
+    else (no)
+        :Error Handling;
+        :Return "Person Not Found";
+        stop
+    endif
+else (no)
+    :Error Handling;
+    :Return "Invalid Command";
+    stop
+endif
+@enduml

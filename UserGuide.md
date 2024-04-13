@@ -96,15 +96,9 @@ All commands are case-sensitive.
 * All id inputs in commands labelled `{ID}` can omit any leading 0s.<br>
 e.g. `1`, `01`, `000000001` are all valid id inputs for the id `#000001`
 
-* All `{ID}` are by default *6 digits*. Any ID that exceeds a 6 digit number (e.g. 1234567) may cause errors.
+* All `{ID}` are by default a positive integer of maximum *6 digits*. Any ID that exceeds a positive 6 digit integer number (e.g. 1234567) may cause errors.
 
 * The maximum number of students that can be stored in TuteeTally is 999999.
-
-* Date inputs must be in the format `yyyy-MM-dd` format. <br>
-e.g. `2024-04-01` is a valid input for date, but not `2024-4-01` or `2024-04-1`
-
-* Time inputs are in the 24-hour format in the form `HH-mm`. <br>
-e.g. `07:00` is a valid time input and refers to 7am, but not `7:00`
 
 * If you are using a PDF version of this document, be careful when copying and pasting commands that span multiple lines as space characters surrounding line-breaks may be omitted when copied over to the application.
 </box>
@@ -191,9 +185,9 @@ After entering the command, the interface will update as shown below:
 
 ![Delete ID Display](images/delete/delete.jpg) _The display showing *ALL* the students after the student with the ID #000001 gets deleted._
 
-## View student details: `view`
+## Enhanced Students Profile Viewing: `view`
 
-View the details of a student by searching for their `id`, `name`, or view all students. <br>
+View the details of a student by searching for their `id`, `name`, or view all students. More specific details of different view commands are in the sections below. <br>
 
 For this feature, we have added more students in the list to demonstrate the different views available. <br>
 
@@ -202,12 +196,13 @@ These student details can be found in the `test.json` file that we have included
 <box type="tip" seamless>
 
 **Tip:** <br>
-To match the results shown in the illustrations within our User Guide, we recommend replacing the contents of the `data/tuteetally.json`file in your directory where `TuteeTally.jar` is saved with the data from [here](https://github.com/AY2324S2-CS2103T-F10-2/tp/tree/master/DummyData/dummydata.json). <br>
+To match the results shown in the illustrations within our User Guide, we recommend replacing the contents of the `data/tuteetally.json`file in your directory where `TuteeTally.jar` is saved with the data from [here](https://github.com/AY2324S2-CS2103T-F10-2/tp/tree/
+  /DummyData/dummydata.json). <br>
 This will ensure your outputs align with the examples provided in our guide. <br>
 
 </box>
 
-### View student statistics: `view`
+### View student statistics: `view -stats`
 This would display the following in a pop-up window
 - the total number of students
 - the total amount owed by students (Currently shows the exact amount)
@@ -230,7 +225,7 @@ After entering the command, the interface will update as shown below:
 
 ![View STATS Display](images/view/view_stats.jpg) _The display showing the stats of *ALL* the students._
 
-### View full student list on the home page: `view`
+### View full student list on the home page: `view -all`
 This would display all students currently added to the list. Each student's contact information and subject information will be displayed with this command. <br>
 **Format:** `view -all` <br>
 
@@ -238,9 +233,10 @@ After entering the command, the interface will update as shown below:
 
 ![View ALL Display](images/view/view_all.jpg) _The display showing *ALL* the students._
 
-### View student particular by name: `view`
+### View student particular by name: `view -name`
 This will display students whose name matches any single word in the `{NAME}` search field.
 * i.e. `view -name alex tan` will retrieve any student with the word `alex` or `tan` in their name. `Alex Yeo` and `James Tan` are both valid students to display in this case. <br>
+
 **Format:** `view -name {NAME}` <br>
 
 **Example:**
@@ -251,7 +247,7 @@ After entering the command, the interface will update as shown below:
 ![View name Display](images/view/view_name.jpg) _The display showing *ALL* the students with the word `Benson` or `Meier` in their name._
 
 
-### View student particular by id: `view`
+### View student particular by id: `view -id`
 This will display a specific student by searching for their id, this also pops up the lesson logs of the student. <br>
 **Format:** `view -id {ID}`
 
@@ -341,8 +337,18 @@ This will add an exam to a student by searching for their `ID`. Time is an optio
 **Format 1:** `addexam -id {ID} -exam {EXAMNAME} -date {DATE}` <br>
 **Format 2:** `addexam -id {ID} -exam {EXAMNAME} -date {DATE} -time {TIME}`
 
+**Notes on Fields for add exam command**
+
+| Field       | Prefix   | Required | Caveats                                                                                                                                                                                                                                                           |
+|-------------|----------|----------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Unique ID** | `-id`    | Yes      | Unique ID must be a positive integer with a maximum length of 6 digits excluding leading zeros. <br> Leading zeros are optional. For example, `1`, `01`, and `000000001` are all valid representations for the ID #000001. IDs between `1` and `999999` (inclusive) are considered valid. |
+| **Exam**    | `-exam`  | Yes      | Exam should be a string, special characters are allowed.                                                                                                                                                                                                          |
+| **Date**    | `-date`  | Yes      | Date inputs must be in the format yyyy-MM-dd format. Date must be from current date onwards. <br> e.g. 2024-04-01 is a valid input for date, but not 2024-4-01 or 2024-04-1                                                                                       |
+| **Time**    | `-time`  | Nope     | Time inputs are in the 24-hour format in the form HH:mm. <br> e.g. 07:00 is a valid time input and refers to 7am, but not 7:00                                                                                                                                    |
+
 **Examples:**
 * `addexam -id 000001 -exam Computing -date 2024-04-27 -time 09:00` would add an exam of Computing with date of 2024-04-27 and time of 09:00 to a student whose ID is #000001 if the student exists.
+
 After entering the command, the interface will update as shown below: <br>
 
 ![Add Exam Update Display](images/exam/add_exam.jpg) _The display showing a new `COMPUTING` exam of the student with ID #000001 after being added._
@@ -362,6 +368,7 @@ This will delete an exam from a student by searching for their `ID`. Fields shou
 **Format 2:** `deleteexam -id {ID} -exam {EXAMNAME} -date {DATE} -time {TIME}`<br>
 **Examples:**
 * `deleteexam -id 000001 -exam Computing -date 2024-04-27 -time 09:00` would delete an exam of Computing with date of 2024-04-27 and time of 09:00 from a student whose ID is #000001 if the student exists.
+
 After entering the command, the interface will update as shown below: <br>
 
 ![Delete Exam Update Display](images/exam/delete_exam.jpg) _The display, after the COMPUTING exam for the student with ID #000001 has been deleted, shows the updated status, confirming the successful removal of the exam._
@@ -369,7 +376,7 @@ After entering the command, the interface will update as shown below: <br>
 <box type="info" seamless>
 
 **Note:** <br>
-* Past exams specified below will be automatically removed when the user opens TuteeTally at the current date.
+* Past exams specified below will be automatically removed when the user opens TuteeTally at the current date to streamline exam management by Tutors.
    - Exam of past date and past time
    - Exam of past date
    - Exam of current date and past time
@@ -378,18 +385,27 @@ After entering the command, the interface will update as shown below: <br>
 </box>
 
 ### Logging the Lessons of a student: `log`
-This will add a log to the lessons of a student of a specific `ID`. The time field of the log entry will be the *system time* when the log was added. <br>
+
+This will add a log to the lessons of a student. The time field of the log entry will be the *system time* when the log was added.
 
 **Format:** `log -id {ID} -hours {HOURS} -content {CONTENT} -style {LEARNING STYLE} -notes {NOTES}`
 <box type="info" seamless>
 
-**Note:** <br>
-Hours need not be an integer input. Values like `2 hours 45 mins`, `2+ hours` are valid as well.
+**Notes on Fields for log command**
+
+| Field              | Prefix     | Required | Caveats                                                                                                                                                                                                                                                                                   |
+|--------------------|------------|----------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Unique ID**      | `-id`      | Yes      | Unique ID must be a positive integer with a maximum length of 6 digits excluding leading zeros. <br> Leading zeros are optional. For example, `1`, `01`, and `000000001` are all valid representations for the ID #000001. IDs between `1` and `999999` (inclusive) are considered valid. |
+| **Hours**          | `-hours`   | Yes      | Hours need not be an integer input to give you more flexibility. Values like `2 hours 45 mins`, `2+ hours` are valid as well.                                                                                                                                                             |
+| **Content**        | `-content` | Yes      | Content should be a string, special characters are allowed.                                                                                                                                                                                                                               |
+| **Learning Style** | `-style`   | Yes      | Learning style should be a string, special characters are allowed.                                                                                                                                                                                                                        |
+| **Notes**          | `-notes`   | Yes      | Notes should be a string, special characters are allowed.                                                                                                                                                                                                                                 |
 
 </box>
 
 **Example:** <br>
 * `log -id 000001 -hours 2 -content English Comprehension -style Visual -notes Great improvement!`. would log a lesson for the student with ID #000001 noting that he/she has had a great improvement in English Comprehension, it also logs the learning style of the student. <br>
+
 After entering the command, the interface will update as shown below: <br>
 
 ![Log Update Display](images/log/log.jpg) _The display reflects the successful logging for the student with ID #000001._
@@ -397,6 +413,7 @@ After entering the command, the interface will update as shown below: <br>
 <box type="tip" seamless>
 
 **Tip:**<br>
+
 After successful addition, you can check your updated log list using the `view -id {ID}` command!
 
 </box>

@@ -1,0 +1,29 @@
+@startuml
+start
+:Parse Command;
+if ("Command Valid?") then (yes)
+    :Find Person by ID;
+    if ("Person Found?") then (yes)
+        :List Person’s Exams;
+        :Identify Exam to Delete;
+        if ("Exam Found?") then (yes)
+            :Delete Exam;
+            :Update Person Record;
+            :Return Success Message;
+            stop
+        else (no)
+            :Error Handling;
+            :Return "Exam Not Found";
+            stop
+        endif
+    else (no)
+        :Error Handling;
+        :Return "Person Not Found";
+        stop
+    endif
+else (no)
+    :Error Handling;
+    :Return "Invalid Command";
+    stop
+endif
+@enduml

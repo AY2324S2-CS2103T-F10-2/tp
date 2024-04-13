@@ -1,0 +1,93 @@
+@startuml
+!include style.puml
+skinparam ArrowFontStyle plain
+
+box Logic LOGIC_COLOR_T1
+participant ":LogicManager" as LogicManager LOGIC_COLOR
+participant ":AddressBookParser" as AddressBookParser LOGIC_COLOR
+participant ":DeleteExamCommandParser" as DeleteExamCommandParser LOGIC_COLOR
+participant "e:DeleteExamCommand" as DeleteExamCommand LOGIC_COLOR
+participant "r:CommandResult" as CommandResult LOGIC_COLOR
+end box
+
+box Model MODEL_COLOR_T1
+participant "m:Model" as Model MODEL_COLOR
+participant "p:Person" as Person MODEL_COLOR
+participant "ex:Exam" as Exam MODEL_COLOR
+end box
+
+[-> LogicManager : execute("deleteexam -id 000001 -exam Math -date 2024-05-27 -time 09:00")
+activate LogicManager
+
+LogicManager -> AddressBookParser : parseCommand("deleteexam -id 000001 -exam Math -date 2024-05-27 -time 09:00")
+activate AddressBookParser
+
+create DeleteExamCommandParser
+AddressBookParser -> DeleteExamCommandParser
+activate DeleteExamCommandParser
+
+DeleteExamCommandParser --> AddressBookParser
+deactivate DeleteExamCommandParser
+
+AddressBookParser -> DeleteExamCommandParser : parse(" -id 000001 -exam Math -date 2024-05-27 -time 09:00")
+activate DeleteExamCommandParser
+
+create DeleteExamCommand
+DeleteExamCommandParser -> DeleteExamCommand
+activate DeleteExamCommand
+
+DeleteExamCommand --> DeleteExamCommandParser : e
+deactivate DeleteExamCommand
+
+DeleteExamCommandParser --> AddressBookParser : e
+deactivate DeleteExamCommandParser
+'Hidden arrow to position the destroy marker below the end of the activation bar.
+DeleteExamCommandParser -[hidden]-> AddressBookParser
+destroy DeleteExamCommandParser
+
+AddressBookParser --> LogicManager : e
+deactivate AddressBookParser
+
+LogicManager -> DeleteExamCommand : execute(m)
+activate DeleteExamCommand
+
+DeleteExamCommand -> Model : getPersonByUniqueId("000001")
+activate Model
+Model --> DeleteExamCommand : p
+deactivate Model
+
+DeleteExamCommand -> p : getExams()
+activate Person
+Person --> DeleteExamCommand : examList
+deactivate Person
+
+loop for each exam in examList
+    DeleteExamCommand -> ex : matchesCriteria("Math", "2024-04-10", "14:00")
+    activate Exam
+    alt matches
+        Exam --> DeleteExamCommand : true
+        deactivate Exam
+        DeleteExamCommand -> Model : deleteExam(ex)
+        activate Model
+        Model --> DeleteExamCommand
+        deactivate Model
+        break
+    else not matches
+        Exam --> DeleteExamCommand : false
+        deactivate Exam
+    end
+end
+
+create CommandResult
+DeleteExamCommand -> CommandResult : new(MESSAGE_SUCCESS)
+activate CommandResult
+
+CommandResult --> DeleteExamCommand
+deactivate CommandResult
+
+DeleteExamCommand --> LogicManager : r
+deactivate DeleteExamCommand
+
+[<--LogicManager : r
+deactivate LogicManager
+@enduml

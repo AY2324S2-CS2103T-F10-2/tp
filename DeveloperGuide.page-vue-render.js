@@ -416,7 +416,7 @@ with(this){return _c('ul',[_c('li',[_c('p',[_v("1a. The user enters an invalid s
 with(this){return _c('h3',{attrs:{"id":"planned-enhancements"}},[_v("Planned Enhancements"),_c('a',{staticClass:"fa fa-anchor",attrs:{"href":"#planned-enhancements","onclick":"event.stopPropagation()"}})])}
 },function anonymous(
 ) {
-with(this){return _c('ol',[_c('li',[_v("Improve Tuteetally such that automatic past exam removal information is updated at real time to storage.\nUsers need not use the command "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("exit")]),_v(" to save the automatic past exam removal to storage.")]),_v(" "),_c('li',[_v("Update Edit command to use ID instead of index.")]),_v(" "),_c('li',[_v("Remove all white spaces from the UI")]),_v(" "),_c('li',[_v("Learning styles can be tagged to Person so that it doesn't need to be logged every lesson.")]),_v(" "),_c('li',[_v("Logging of a lesson will automatically update the payment info.")])])}
+with(this){return _c('ol',[_c('li',[_v("Update Edit command to use ID instead of index.")]),_v(" "),_c('li',[_v("Remove all white spaces from the UI.")]),_v(" "),_c('li',[_v("Learning styles can be tagged to Person so that it doesn't need to be logged every lesson.")]),_v(" "),_c('li',[_v("Logging of a lesson will automatically update the payment info.")]),_v(" "),_c('li',[_v("View -id or -name should automatically filter and show the exams of the person on the right.")])])}
 },function anonymous(
 ) {
 with(this){return _c('h3',{attrs:{"id":"non-functional-requirements"}},[_v("Non-Functional Requirements"),_c('a',{staticClass:"fa fa-anchor",attrs:{"href":"#non-functional-requirements","onclick":"event.stopPropagation()"}})])}
@@ -557,6 +557,6 @@ with(this){return _c('ul',[_c('li',[_c('em',[_v("{explain how to simulate a miss
 with(this){return _c('h4',{attrs:{"id":"2-more-test-cases-2"}},[_v("2. "),_c('em',[_v("{ more test cases …​ }")]),_c('a',{staticClass:"fa fa-anchor",attrs:{"href":"#2-more-test-cases-2","onclick":"event.stopPropagation()"}})])}
 },function anonymous(
 ) {
-with(this){return _c('footer',[_c('div',{staticClass:"text-center"},[_c('small',[_v("["),_c('span',[_c('strong',[_v("Powered by")])]),_v(" "),_c('img',{attrs:{"src":"https://markbind.org/favicon.ico","width":"30"}}),_v(" "),_c('a',{attrs:{"href":"https://markbind.org/"}},[_v("MarkBind 5.4.0")]),_v(", generated on Sat, 13 Apr 2024, 17:18:00 GMT+8]")])])])}
+with(this){return _c('footer',[_c('div',{staticClass:"text-center"},[_c('small',[_v("["),_c('span',[_c('strong',[_v("Powered by")])]),_v(" "),_c('img',{attrs:{"src":"https://markbind.org/favicon.ico","width":"30"}}),_v(" "),_c('a',{attrs:{"href":"https://markbind.org/"}},[_v("MarkBind 5.4.0")]),_v(", generated on Sat, 13 Apr 2024, 21:23:43 GMT+8]")])])])}
 }];
   
