@@ -76,7 +76,7 @@ All commands are case-sensitive.
 | **Payment**   | `A Payment is the amount of money that a student owes to the tutor for the lessons that have been conducted.`                                      |
 | **Exam**      | `An Exam is any assessment or Test that the tutor choose to keep track of a student`                                                               |
 | **Index**     | `The index of the student refers to the position of student counting from the top of current displayed list, with the first student being index 1` |
-| **UniqueID**  | `The UniqueID of a student refers to a uniquely generated identity that is assigned to a student when he or she is added to TuteeTally.`           |
+| **Unique ID** | `The Unique ID of a student refers to a uniquely generated identity that is assigned to a student when he or she is added to TuteeTally.`          |
 --------------------------------------------------------------------------------------------------------------------
 
 ## Features
@@ -105,14 +105,14 @@ e.g. `1`, `01`, `000000001` are all valid id inputs for the id `#000001`
 
 **Notes on Fields for the students**
 
-| Field       | Prefix        | Required | Caveats                                                                                                                                                                                                                                                                                                                                                                                                |
-|-------------|---------------|--------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Name**    | `-name`       | Yes    | Names should only contain alphanumeric characters and spaces, it cannot contain special characters. |
-| **Phone**   | `-phone`      | Yes    | Phone numbers should only contain numbers, and it should be at least 3 digits long <br/> There is no limit on the length of the phone number to accommodate worldwide phone numbers.                                                                                                                                                                                                                   |
-| **Email**   | `-email`      | Yes    | Emails does not require top level domain, it only requires `@`, for example admin@example. More info on valid email formatting can be found  on this wikipedia article<a href="https://en.wikipedia.org/wiki/Email_address#Examples"> here</a>.                                                                                                                                                        |
-| **Address** | `-address`    | Yes    | Addresses can take any values, and it should not be blank                                                                                                                                                                                                                                                                                                                                              |
-| **Subject** | `-subject`    | Yes    | Subjects can take any values, and it should not be blank.                                                                                                                                                                                                                                                                                                                                              |
-| **Tag**     | `t/`          | No     | Tags names should be alphanumeric and not contain any special characters.                                                                                                                                                                                                                               |
+| Field       | Prefix        | Required | Caveats                                                                                                                                                                                                                                        |
+|-------------|---------------|--------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Name**    | `-name`       | Yes    | Names should only contain alphanumeric characters and spaces, it cannot contain special characters.                                                                                                                                            |
+| **Phone**   | `-phone`      | Yes    | Phone numbers should only contain numbers, and it should be at least 3 digits long <br/> There is no limit on the length of the phone number to accommodate worldwide phone numbers.                                                           |
+| **Email**   | `-email`      | Yes    | Emails does not require top level domain, it only requires `@`, for example admin@example. More info on valid email formatting can be found in this wikipedia article<a href="https://en.wikipedia.org/wiki/Email_address#Examples"> here</a>. |
+| **Address** | `-address`    | Yes    | Addresses can take any values, and it should not be blank                                                                                                                                                                                      |
+| **Subject** | `-subject`    | Yes    | Subjects can take any values, and it should not be blank.                                                                                                                                                                                      |
+| **Tag**     | `t/`          | No     | Tags names should be alphanumeric and not contain any special characters.                                                                                                                                                                      |
 
 ### Adding a student: `add`
 
@@ -123,20 +123,17 @@ Adds a student's particulars into the address book.
 <box type="tip" seamless>
 
 **Tip:**<br>
-If the addition is successful, the new student record will be shown at the bottom of the list.
-Long names might also cause the ID field to be blocked. In this case, you can opt to drag the middle portion of the UI to
-reveal the ID. However, the upper limit of this workaround is 220 characters long. If a student's name exceeds 220 characters,
-it is advisable to use nicknames instead.
-
+If the addition is successful, the new student record will be shown at the bottom of the list. <br>
 </box>
 
-There is currently no detection for duplicates, this is under planned enhancements.
 
 <box type="info" seamless>
 
 **Note:**<br>
 
 The `t/{tag}` field is **OPTIONAL** and can be used to add tag(s) to the student record and no spaces are allowed for `t/{tag}`.
+Currently, we don't accept name with special characters, in such cases it's advisable to use nicknames instead. <br>
+There is currently no detection for duplicates, this is under planned enhancements. <br>
 </box>
 
 **Example:**
@@ -145,6 +142,10 @@ The `t/{tag}` field is **OPTIONAL** and can be used to add tag(s) to the student
 After entering the command, the interface will update as shown below:
 
 ![Add Student Display](images/add/add.png) _The display showing *ALL* the students after a new student gets added._
+
+**Tip:**<br>
+You can opt to drag the middle portion of the UI to vary the space allocated for student and exam details. <br>
+</box>
 
 ### Editing a student: `edit`
 
@@ -196,8 +197,8 @@ These student details can be found in the `test.json` file that we have included
 <box type="tip" seamless>
 
 **Tip:** <br>
-To match the results shown in the illustrations within our User Guide, we recommend replacing the contents of the `data/tuteetally.json`file in your directory where `TuteeTally.jar` is saved with the data from [here](https://github.com/AY2324S2-CS2103T-F10-2/tp/tree/
-  /DummyData/dummydata.json). <br>
+To match the results shown in the illustrations within our User Guide, we recommend replacing the contents of the `data/tuteetally.json`file in your directory where `TuteeTally.jar` is saved with the data from 
+[here](https://github.com/AY2324S2-CS2103T-F10-2/tp/tree//DummyData/dummydata.json). <br>
 This will ensure your outputs align with the examples provided in our guide. <br>
 
 </box>
@@ -425,33 +426,44 @@ _The display reflects the updated log entries for the student with ID #000001._
 
 ### Editing the data file
 
-_Details coming soon ..._
-TuteeTally's data is saved automatically as a JSON file at `[JAR file location]/data/addressbook.json`. Do proceed carefully if you intend to edit this file directly.
+TuteeTally's data is saved automatically as a JSON file at `[JAR file location]/data/tuteetally.json`. Do proceed carefully if you intend to edit this file directly.
 
-<div markdown="span" class="alert alert-warning">:exclamation: **Caution:**
-Hence, it is recommended to make a backup of the file (by copying and pasting to another location) before editing it.<br>
-Certain edits can cause the TuteeTally to behave in unexpected and magical ways (e.g., if a value entered is outside of the acceptable range). Therefore, edit the data file only if you are confident that you can update it correctly. It's up to you to ensure the validity of the data if you choose to edit it.
-</div>
+[!CAUTION]
+> Certain edits can cause the TuteeTally to behave in unexpected and magical ways (e.g., if a value entered is outside of the acceptable range). 
+> Therefore, edit the data file only if you are confident that you can update it correctly. 
+> It's up to you to ensure the validity of the data if you choose to edit it.
+> Hence, it is recommended to make a backup of the file (by copying and pasting to another location) before editing it.<br>
 
 --------------------------------------------------------------------------------------------------------------------
 
 ## FAQ
 
 **Q**: How do I transfer my data to another Computer?<br>
-**A**: Install the app on the other computer and overwrite the empty data file it creates with the file that contains the data of your previous TuteeTally home folder.
+**A**: Install the app on the other computer and overwrite the empty data file it creates with the `tuteetally.json` file that contains the data from your previous TuteeTally home folder.
 
 **Q**: What are the system requirements for TuteeTally?<br>
 **A**: TuteeTally requires Java 11 or above to run. It is compatible with Windows, MacOS, and Linux operating systems.
 
+**Q**: Can I back up my TuteeTally data?
+**A**: Yes, it is recommended to regularly back up your tuteetally.json data file by copying it to a secure location. This ensures that your data can be restored in case of software or hardware issues.
+
+**Q**: What are the common mistakes to avoid when using TuteeTally?
+**A**: Common mistakes include inputting commands in the wrong format,in such instances you may reference either the error message or this User Guide on the correct format.
+
+**Q**: How can I recover deleted student data?
+**A**: Once student data is deleted, it cannot be recovered through the application. Regular backups of your data file are recommended to prevent loss of data.
+
+**Q**: What happens if I encounter a bug?
+**A**: You may report any bugs on our [GitHub](https://github.com/AY2324S2-CS2103T-F10-2/tp/issues). If possible, do provide a detailed description of the problem, steps to reproduce it, and any screenshots.
 --------------------------------------------------------------------------------------------------------------------
 
 ## Known issues
 
 1. **When using multiple screens**, if you move the application to a secondary screen, and later switch to using only the primary screen, the GUI will open off-screen. The remedy is to delete the `preferences.json` file created by the application before running the application again.
-2. **When inputting long names above 220 characters**, the ID number of the students will be blocked even after the work around.[above](#adding-a-student-add)
-3. **When using the payment commands**, the display will round the payment amounts to the nearest $0.01. So if you enter a payment of $0.001, it will be displayed as $0.00. However, the application will accurately track the exact amounts entered, without rounding.
-4. **Empty white block when maximised**, currently there is an empty white block in the bottom when the app is maximised
-5. **Empty white block in log when viewing students details**, currently there is an empty white block when viewing a student with no logs.
+2. **When using the payment commands**, the display will round the payment amounts to the nearest $0.01. So if you enter a payment of $0.001, it will be displayed as $0.00. However, the application will accurately track the exact amounts entered, without rounding.
+3. **Empty white block when maximised**, currently there is an empty white block in the bottom when the app is maximised
+4. **Empty white block in log when viewing students details**, currently there is an empty white block when viewing a student with no logs.
+5. **Summary Stats Window**, currently it shows the exact value instead of showing only 2 decimal place. For example, a payment of $100.50 owed by the students is shown as `$100.500000`.
 
 --------------------------------------------------------------------------------------------------------------------
 ## Command summary

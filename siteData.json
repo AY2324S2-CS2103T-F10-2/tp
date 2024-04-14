@@ -40,7 +40,7 @@
       "src": "DeveloperGuide.md",
       "title": "Developer Guide",
       "headings": {
-        "ab-3-developer-guide": "AB-3 Developer Guide",
+        "tuteetally-developer-guide": "TuteeTally Developer Guide",
         "acknowledgements": "Acknowledgements",
         "setting-up-getting-started": "Setting up, getting started",
         "design": "Design",
@@ -152,6 +152,7 @@
         "logging-the-lessons-of-a-student-log": "Logging the Lessons of a student: log",
         "editing-the-data-file": "Editing the data file",
         "faq": "FAQ",
+        "q-what-happens-if-i-encounter-a-bug-a-you-may-report-any-bugs-on-our-github-if-possible-do-provide-a-detailed-description-of-the-problem-steps-to-reproduce-it-and-any-screenshots": "Q: What happens if I encounter a bug?\nA: You may report any bugs on our GitHub. If possible, do provide a detailed description of the problem, steps to reproduce it, and any screenshots.",
         "known-issues": "Known issues",
         "command-summary": "Command summary"
       },

@@ -6,7 +6,7 @@ box Logic LOGIC_COLOR_T1
 participant ":LogicManager" as LogicManager LOGIC_COLOR
 participant ":AddressBookParser" as AddressBookParser LOGIC_COLOR
 participant ":ViewCommandParser" as ViewCommandParser LOGIC_COLOR
-participant "v:ViewCommand" as ViewCommand LOGIC_COLOR
+participant "v:StatCommand" as StatCommand LOGIC_COLOR
 participant "r:CommandResult" as CommandResult LOGIC_COLOR
 participant "p:IsSameIdPredicate" as IsSameIdPredicate LOGIC_COLOR
 end box
@@ -37,8 +37,8 @@ ViewCommandParser -> ViewCommandParser : arePrefixesPresent(argsMultimap, "name"
 
 ViewCommandParser -> ViewCommandParser : arePrefixesPresent(argsMultimap, "id")
 
-create ViewCommand
-ViewCommandParser -> ViewCommand : ViewCommand()
-activate ViewCommand
+create StatCommand
+ViewCommandParser -> StatCommand : StatCommand()
+activate StatCommand
 
 @enduml
