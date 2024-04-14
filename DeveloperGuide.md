@@ -318,19 +318,45 @@ This feature enables the system to reset the payment status of students, which i
 
 This guide provides a concise overview of the payment management functionalities within the system, designed to assist developers in understanding and utilizing these features effectively. For further details or clarification, please refer to the system documentation or contact the development team.
 
+## Student Exam Management
 
-### Add Exam feature
-This feature allow users to add exams to students by uniqueId. Exams added will contain exam name,
-exam date, optional exam time as information and student name and uniqueId for reference.
-This feature is implemented to ensure data integrity and provide users with the ability to track and manage student exams efficiently.
+### Introduction
+
+This section covers the exam management system including add exam and delete exam.
+
+#### Features Overview
+
+Add Exam: Allows the addition of exam records to student accounts using unique identifiers.
+Delete Exam: Enables the deletion of exam records from student accounts.
+
+### Add Exam Feature
+
+The AddExamCommand enables users to add exam records to students by specifying a unique student ID, exam name, exam date, and optionally, exam time.
+<puml src="diagrams/AddExamSequenceDiagram.puml" alt="AddExamSequenceDiagram" />
 
 #### Implementation
 
+1. The user inputs a command with the -addexam flag, followed by the student's uniqueId, exam name, exam date, and optionally, exam time. 
+2. The system parses this command, extracting the necessary details. 
+3. A new exam record is created and added to the student and the AllExamsList in the system.
+<puml src="diagrams/AddExamActivityDiagram.puml" alt="AddExamActivityDiagram" />
 
-### Delete Exam feature
-** to add in v1.4**
+### Delete Exam Feature
+
+The DeleteExamCommand allows deleting a specific exam record from a student.
+<puml src="diagrams/DeleteExamSequenceDiagram.puml" alt="DeleteExamSequenceDiagram" />
+
 #### Implementation
-** to add in v1.4**
+
+The user inputs a command with the -deleteexam flag, followed by the student's uniqueId, exam name, exam date, and optionally, exam time.
+The system identifies the corresponding student and the specified exam.
+The system removes the specified exam record from the student and AllExamsList.
+<puml src="diagrams/DeleteExamActivityDiagram.puml" alt="DeleteExamActivityDiagram" />
+
+### Conclusion
+
+These descriptions provide an overview of the exam management features, their purposes, and how they are implemented in the system. They also include sequence diagrams illustrating the interactions between the user and the system for each feature. For further details or clarification, please refer to the system documentation or contact the development team.
+
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -363,7 +389,7 @@ This feature is implemented to ensure data integrity and provide users with the 
 * Easier time to track Student’s grades and weaknesses
 * Manage parent’s expectations
 * Easy tracking of payment
-* Logging of Lessons for retrevial in the future
+* Logging of Lessons for retrieval in the future
 * Easily track Exams dates
 
 
@@ -372,15 +398,15 @@ This feature is implemented to ensure data integrity and provide users with the 
 
 Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
 
-| Priority | As a …​ | I want to …​                              | So that I can…​                                           |
-|----------|---------|-------------------------------------------|-----------------------------------------------------------|
-| `* * *`  | Tutor   | add a student                             | track the details of the student                          |
+| Priority | As a …​ | I want to …​                        | So that I can…​                                           |
+|----------|---------|-------------------------------------|-----------------------------------------------------------|
+| `* * *`  | Tutor   | add a student                       | track the details of the student                          |
 | `* * *`  | Tutor   | view student details summary on main page | get a brief idea of the student while navigating the list |
-| `* * *`  | Tutor   | delete a person                           | remove entries that I no longer need                      |
-| `* * *`  | Tutor   | view single students detail               | see the individual detail for a single student            |
-| `* * *`  | Tutor   | view total number of students             | check if I have space for more students                   |
-| `* * *`  | Tutor   | track my payments                         | won't miss out on any payments                            |
-| `* * *`  | Tutor   | track my student's exam dates             | personalise and plan better for lessons                   |
+| `* * *`  | Tutor   | delete a person                     | remove entries that I no longer need                      |
+| `* * *`  | Tutor   | view single students detail         | see the individual detail for a single student            |
+| `* * *`  | Tutor   | view total number of students       | check if I have space for more students                   |
+| `* * *`  | Tutor   | track my payments                   | won't miss out on any payments                            |
+| `* * *`  | Tutor   | track my students' exams            | personalise and plan better for lessons                   |
 
 
 *{More to be added}*
@@ -537,6 +563,55 @@ Use case ends.
 
       Use case ends.
 
+**Use case: Add Exam**
+
+**MSS** (Main Success Story)
+
+1. The user selects the option to add an exam. 
+2. The system prompts the user to enter the student's unique ID, exam name, exam date, and optional exam time. 
+3. The user enters the required information and submits the command. 
+4. The system validates the information and confirms the student exists with student ID. 
+5. The system adds the exam to the student. 
+6. The system notifies the user that the exam has been successfully added.
+
+   Use case ends.
+
+**Extensions**
+
+* 1a. The user enters an invalid student ID. 
+    * 1a1. The system displays an error message and prompts the user to re-enter the student ID.
+      
+      Use case resumes at step 2.
+
+* 2a. The user enters an invalid exam date or time. 
+    * 2a1. The system displays an error message and prompts the user to re-enter the exam date or time in the command. 
+      
+      Use case resumes at step 3.
+
+**Use case: Delete Exam**
+
+**MSS (Main Success Story)**
+1. The user selects the option to delete an exam. 
+2. The system prompts the user to enter the student's unique ID, exam name, exam date, and optional exam time. 
+3. The user enters the required information and submits the command. 
+4. The system validates the information and confirms the student exists and the specified exam exist. 
+5. The system removes the exam from the student. 
+6. The system notifies the user that the exam has been successfully deleted.
+
+   Use case ends.
+
+**Extensions**
+
+* 1a. The user enters an invalid student ID. 
+    * 1a1. The system displays an error message and prompts the user to re-enter the student ID.
+      
+      Use case resumes at step 2.
+  
+* 2a. The user enters incorrect exam details.
+    * 2a1. The system displays an error message and prompts the user to re-enter the exam details.
+
+      Use case resumes at step 3.
+
 ### Planned Enhancements
 1. Update Edit command to use ID instead of index.
 2. Improve the UI such as removing all white spaces from it.
@@ -659,6 +734,43 @@ testers are expected to do more *exploratory* testing.
 ### Additional Notes
 - Use the `resetpayments` command with caution, as it will clear all payment records for the specified student, potentially impacting their payment history and account status.
 - Ensure accuracy when entering the `ID` to avoid unintentional resets of payment information for the wrong student account.
+
+### Exam commands
+
+#### Adding an Exam to a Student Account
+- **Command**: `addexam`
+- **Description**: Adds an exam record to a specified student by their unique id. This command allows for specifying the exam name, exam date, and optionally, exam time.
+
+##### Prerequisites
+- The student associated with the given unique id must exist within the system.
+
+##### Usage
+- **To add an exam**:
+    `addexam -id ID -examname EXAM_NAME -date EXAM_DATE [-time EXAM_TIME]`
+- Only EXAM_DATE from current date onwards can be used. 
+- EXAM_DATE should be in the format of yyyy-MM-DD.
+- EXAM_TIME should be in the format of HH:mm
+    **Expected Outcome**: An exam with the specified name, date, and optionally time is added to the student identified by ID. The system confirms the addition with a success message and updates the student's exam records accordingly.
+
+#### Deleting an Exam from a Student Account
+- **Command**: `deleteexam`
+- **Description**: Deletes a specific exam record from a student by specifying the student's unique identifier, exam name, exam date, and optionally, exam time.
+
+##### Prerequisites
+- The student associated with the given unique id must exist and have the specified exam recorded.
+
+##### Usage
+- **To delete an exam**:
+    `deleteexam -id ID -examname EXAM_NAME -date EXAM_DATE [-time EXAM_TIME]`
+    **Expected Outcome**: The exam with the specified name, date, and optionally time is removed from the student identified by ID. The system confirms the deletion with a success message, and the student's exam records are updated accordingly.
+
+#### Extensions and Error Handling
+- **Invalid ID**: If an invalid ID is provided, the system will return an error message indicating the issue and suggesting corrective actions.
+- **No Recorded Exam**: If the student does not have the specified exam recorded, the system will notify the user that there are no exams to delete.
+
+### Additional Notes
+Always ensure that the unique id, exam name, and date are correctly entered to avoid discrepancies or errors in exam management.
+These commands are designed to interact seamlessly with the system's exam management module, ensuring accurate tracking and reporting of student exam records.
 
 ### Saving Data
 

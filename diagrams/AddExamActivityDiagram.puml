@@ -8,6 +8,7 @@ if ("Command Valid?") then (yes)
         if ("Details Valid?") then (yes)
             :Create Exam Instance;
             :Add Exam to Person's Record;
+            :Add Exam from All Exams List;
             :Update Person Record;
             :Return Success Message;
             stop

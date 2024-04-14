@@ -9,6 +9,7 @@ if ("Command Valid?") then (yes)
         if ("Exam Found?") then (yes)
             :Delete Exam;
             :Update Person Record;
+            :Remove Exam from All Exams List;
             :Return Success Message;
             stop
         else (no)

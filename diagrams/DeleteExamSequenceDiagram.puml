@@ -62,9 +62,17 @@ Person --> DeleteExamCommand : examList
 deactivate Person
 
 loop for each exam in examList
-    DeleteExamCommand -> ex : matchesCriteria("Math", "2024-04-10", "14:00")
+    DeleteExamCommand -> ex : getExamName()
     activate Exam
-    alt matches
+    ex --> DeleteExamCommand : "Math"
+    DeleteExamCommand -> ex : getExamDate()
+    ex --> DeleteExamCommand : "2024-05-27"
+    DeleteExamCommand -> ex : getExamTime()
+    ex --> DeleteExamCommand : "09:00"
+    deactivate Exam
+    DeleteExamCommand -> ex : equals("Math", "2024-05-27", "09:00")
+    activate Exam
+    alt equals
         Exam --> DeleteExamCommand : true
         deactivate Exam
         DeleteExamCommand -> Model : deleteExam(ex)
@@ -72,7 +80,7 @@ loop for each exam in examList
         Model --> DeleteExamCommand
         deactivate Model
         break
-    else not matches
+    else not equals
         Exam --> DeleteExamCommand : false
         deactivate Exam
     end

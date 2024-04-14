@@ -336,7 +336,7 @@ Each of these features contributes to a comprehensive financial management syste
 This will add an exam to a student by searching for their `ID`. Time is an optional field. Do note that only exams from the current date onwards can be added.
 
 **Format 1:** `addexam -id {ID} -exam {EXAMNAME} -date {DATE}` <br>
-**Format 2:** `addexam -id {ID} -exam {EXAMNAME} -date {DATE} -time {TIME}`
+**Format 2:** `addexam -id {ID} -exam {EXAMNAME} -date {DATE} -time {TIME}` <br>
 
 **Notes on Fields for add exam command**
 
@@ -346,6 +346,7 @@ This will add an exam to a student by searching for their `ID`. Time is an optio
 | **Exam**    | `-exam`  | Yes      | Exam should be a string, special characters are allowed.                                                                                                                                                                                                          |
 | **Date**    | `-date`  | Yes      | Date inputs must be in the format yyyy-MM-dd format. Date must be from current date onwards. <br> e.g. 2024-04-01 is a valid input for date, but not 2024-4-01 or 2024-04-1                                                                                       |
 | **Time**    | `-time`  | Nope     | Time inputs are in the 24-hour format in the form HH:mm. <br> e.g. 07:00 is a valid time input and refers to 7am, but not 7:00                                                                                                                                    |
+For this particular command, not leaving a space between prefix and input e.g. `addexam -id{ID} -exam{EXAMNAME} -date{DATE}` is also accepted. GUI error message is the version without spaces between prefix and input.<br>
 
 **Examples:**
 * `addexam -id 000001 -exam Computing -date 2024-04-27 -time 09:00` would add an exam of Computing with date of 2024-04-27 and time of 09:00 to a student whose ID is #000001 if the student exists.
@@ -367,6 +368,8 @@ This will delete an exam from a student by searching for their `ID`. Fields shou
 
 **Format 1:** `deleteexam -id {ID} -exam {EXAMNAME} -date {DATE}` <br>
 **Format 2:** `deleteexam -id {ID} -exam {EXAMNAME} -date {DATE} -time {TIME}`<br>
+For this particular command, not leaving a space between prefix and input e.g. `deleteexam -id{ID} -exam{EXAMNAME} -date{DATE}` is also accepted. GUI error message is the version without spaces between prefix and input. <br>
+
 **Examples:**
 * `deleteexam -id 000001 -exam Computing -date 2024-04-27 -time 09:00` would delete an exam of Computing with date of 2024-04-27 and time of 09:00 from a student whose ID is #000001 if the student exists.
 
