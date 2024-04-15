@@ -813,8 +813,6 @@ testers are expected to do more *exploratory* testing.
 - Re-launch the app by double-clicking the jar file.
   **Expected**: The most recent window size and location is retained.
 
-#### 3. _{ more test cases …​ }_
-
 ### Deleting a Person
 
 #### 1. Deleting a Person While All Persons Are Being Shown
@@ -825,8 +823,6 @@ testers are expected to do more *exploratory* testing.
   **Expected**: No person is deleted. Error details shown in the status message. Status bar remains the same.
 - **Other Incorrect Delete Commands to Try**: `delete`, `delete x`, `...` (where x is larger than the list size)
   **Expected**: Similar to previous.
-
-#### 2. _{ more test cases …​ }_
 
 ### Payment Commands
 
