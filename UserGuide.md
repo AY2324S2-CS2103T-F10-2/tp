@@ -338,7 +338,6 @@ This will add an exam to a student by searching for their `ID`. Time is an optio
 <box type="info" seamless>
 
 **Note:**
-
 * For this particular command, not leaving a space between prefix and input e.g. `addexam -id{ID} -exam{EXAMNAME} -date{DATE}` is also accepted. GUI error message is the version without spaces between prefix and input.<br>
 
 </box>
@@ -486,6 +485,8 @@ TuteeTally's data is saved automatically as a JSON file at `[JAR file location]/
 6. **Summary Stats Window Precision**: The Summary Stats Window displays exact values with more than two decimal places. For example, a payment of `$100.50` owed by students will be shown as `$100.500000`. <br>
 
 7. **Adding New Logs**: If a previous log window for a student remains open and new logs are added, the log window must be reopened using the command `view -id {ID}` to reflect the updates. <br>
+
+8. **Command Input Flexibility**: Commands such as `addexam` and `deleteexam` accept inputs both with and without spaces between the prefix and the input, e.g., `addexam -id{ID} -exam{EXAMNAME} -date{DATE}`. However, the GUI error messages may incorrectly suggest that spaces are required. All commands, except `view -name {NAME}`, can be used flexibly with or without space between prefixes and inputs.
 
 
 --------------------------------------------------------------------------------------------------------------------
