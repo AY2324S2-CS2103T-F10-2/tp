@@ -14,7 +14,7 @@ The system includes features for adding students, viewing student details, viewi
 <box type="info" seamless>
 
 **Note**: <br>
-All commands are case-sensitive.
+All commands are **case-sensitive**.
 </box>
 
 
@@ -64,7 +64,7 @@ All commands are case-sensitive.
    * `deleteexam` - deleting exam from student
    * `log` - logging a session's content, hours, learning styles and comments (notes) for each session <br>
 
-6. Refer to the [Features](#features) below for details of each command. <br>
+8. Refer to the [Features](#features) below for details of each command. <br>
 
 --------------------------------------------------------------------------------------------------------------------
 ## Glossary
@@ -95,9 +95,9 @@ All commands are case-sensitive.
 * Prefixes for parameters need to have a space before the `-`. <br>
 e.g. `add -name Xiao Ming -address 13, Computing Dr, 117417 -email xiaoming@email.com -phone 88888888 -subject Math` is valid, but `add-name Xiao Ming-address 13, Computing Dr, 117417-email xiaoming@email.com-phone 88888888-subject Math` is not.
 * All id inputs in commands labelled `{ID}` can omit any leading 0s.<br>
-e.g. `1`, `01`, `000000001` are all valid id inputs for the id `#000001` as leading 0s are ignored.
+e.g. `1`, `01`, `000000001` are all valid id inputs for the ID `#000001` as leading 0s are ignored.
 
-* All `{ID}` are by default a positive integer of maximum *6 digits* excluding leading 0s. Any ID that exceeds a positive 6 digit integer number (e.g. 1234567) may cause errors. However, 000000999999 is still a valid ID.
+* All `{ID}` are by default a positive integer of maximum ***6 digits*** excluding leading 0s. Any ID that exceeds a positive 6 digit integer number (e.g. 1234567) may cause errors. However, 000000999999 is still a valid ID.
 
 * The maximum number of students that can be stored in TuteeTally is 999999.
 
@@ -107,13 +107,13 @@ e.g. `1`, `01`, `000000001` are all valid id inputs for the id `#000001` as lead
 **Notes on Fields for the students**
 
 | Field       | Prefix        | Required | Caveats                                                                                                                                                                                                                                        |
-|-------------|---------------|--------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Name**    | `-name`       | Yes    | Names should only contain alphanumeric characters and spaces, it cannot contain special characters.                                                                                                                                            |
-| **Phone**   | `-phone`      | Yes    | Phone numbers should only contain numbers, and it should be at least 3 digits long <br/> There is no limit on the length of the phone number to accommodate worldwide phone numbers.                                                           |
-| **Email**   | `-email`      | Yes    | Emails does not require top level domain, it only requires `@`, for example admin@example. More info on valid email formatting can be found in this wikipedia article<a href="https://en.wikipedia.org/wiki/Email_address#Examples"> here</a>. |
-| **Address** | `-address`    | Yes    | Addresses can take any values, and it should not be blank                                                                                                                                                                                      |
-| **Subject** | `-subject`    | Yes    | Subjects can take any values, and it should not be blank.                                                                                                                                                                                      |
-| **Tag**     | `t/`          | No     | Tags names should be alphanumeric and not contain any special characters.                                                                                                                                                                      |
+|-------------|---------------|----------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Name**    | `-name`       | Yes      | Names should only contain alphanumeric characters and spaces, it cannot contain special characters.                                                                                                                                            |
+| **Phone**   | `-phone`      | Yes      | Phone numbers should only contain numbers, and it should be at least 3 digits long <br/> There is no limit on the length of the phone number to accommodate worldwide phone numbers.                                                           |
+| **Email**   | `-email`      | Yes      | Emails does not require top level domain, it only requires `@`, for example admin@example. More info on valid email formatting can be found in this wikipedia article<a href="https://en.wikipedia.org/wiki/Email_address#Examples"> here</a>. |
+| **Address** | `-address`    | Yes      | Addresses can take any values, and it should not be blank                                                                                                                                                                                      |
+| **Subject** | `-subject`    | Yes      | Subjects can take any values, and it should not be blank.                                                                                                                                                                                      |
+| **Tag**     | `t/`          | No       | Tags names should be alphanumeric and not contain any special characters.                                                                                                                                                                      |
 
 ### Adding a student: `add`
 
@@ -124,17 +124,16 @@ Adds a student's particulars into the address book.
 <box type="tip" seamless>
 
 **Tip:**<br>
-If the addition is successful, the new student record will be shown at the bottom of the list. <br>
+* If the addition is successful, the new student record will be shown at the bottom of the list. <br>
 </box>
-
 
 <box type="info" seamless>
 
 **Note:**<br>
 
-The `t/{tag}` field is **OPTIONAL** and can be used to add tag(s) to the student record and no spaces are allowed for `t/{tag}`.
-Currently, we don't accept name with special characters, in such cases it's advisable to use nicknames instead. <br>
-There is currently no detection for duplicates, this is under planned enhancements. <br>
+* The `t/{tag}` field is **OPTIONAL** and can be used to add tag(s) to the student record and no spaces are allowed for `t/{tag}`. <br>
+* Currently, we don't accept name with special characters, in such cases it's advisable to use nicknames instead. <br>
+* There is currently no detection for duplicates, this is under planned enhancements. <br>
 </box>
 
 **Example:**
@@ -144,14 +143,16 @@ After entering the command, the interface will update as shown below:
 
 ![Add Student Display](images/add/add.png) _The display showing *ALL* the students after a new student gets added._
 
+<box type="info" seamless>
+
 **Tip:**<br>
-You can opt to drag the middle portion of the UI to vary the space allocated for student and exam details. <br>
+* You can opt to drag the middle portion of the UI to vary the space allocated for student and exam details. <br>
 </box>
 
 ### Editing a student: `edit`
 
-Edit the specific student detail from TuteeTally using the *INDEX* of the student. <br>
-The index of the student refers to the position of student counting from the top of current displayed list, with the first student being index 1.
+Edit the specific student detail from TuteeTally using the _**INDEX**_ of the student. <br>
+The _**INDEX**_ of the student refers to the position of student counting from the top of current displayed list, with the first student being index 1.
 <br>
 Parameters: INDEX (must be a positive integer) [-name NAME] [-phone PHONE] [-email EMAIL] [-address ADDRESS] [t/TAG]...
 Editable Fields
@@ -170,7 +171,7 @@ At least one editable fields must be present. Not all editable values need to be
 
 After entering the command, the interface will update as shown below:
 
-![Edit Student Display](images/edit/edit.jpg) _The display showing the edited student with the INDEX 1._
+![Edit Student Display](images/edit/edit.jpg) _The display updates to show the student at INDEX 1 with their name and email edited._
 
 ### Deleting a student: `delete`
 
@@ -198,22 +199,22 @@ These student details can be found in the `test.json` file that we have included
 <box type="tip" seamless>
 
 **Tip:** <br>
-To match the results shown in the illustrations within our User Guide, we recommend replacing the contents of the `data/tuteetally.json`file in your directory where `TuteeTally.jar` is saved with the data from 
+* To match the results shown in the illustrations within our User Guide, we recommend replacing the contents of the `data/tuteetally.json`file in your directory where `TuteeTally.jar` is saved with the data from 
 [here](https://github.com/AY2324S2-CS2103T-F10-2/tp/tree//DummyData/dummydata.json). <br>
-This will ensure your outputs align with the examples provided in our guide. <br>
+* This will ensure your outputs align with the examples provided in our guide. <br>
 
 </box>
 
 ### View student statistics: `view -stats`
-This would display the following in a pop-up window
+* This would display the following in a pop-up window
 - the total number of students
 - the total amount owed by students (Currently shows the exact amount)
-- the number of upcoming exams in following 1 month period (from today up to the same day of the next month)
+- the number of upcoming exams in following 1-month period (from today up to the same day of the next month)
 
 <box type="tip" seamless>
 
 **Tip:**<br>
-Use this feature to track the total amount of students you're teaching, how much is owed by all of them
+* Use this feature to track the total amount of students you're teaching, how much is owed by all of them
 and how plan your schedule based on the number of upcoming exams that will come in the next month
 
 </box>
@@ -323,9 +324,9 @@ This will add an exam to a student by searching for their `ID`. Time is an optio
 **Format 1:** `addexam -id {ID} -exam {EXAMNAME} -date {DATE}` <br>
 **Format 2:** `addexam -id {ID} -exam {EXAMNAME} -date {DATE} -time {TIME}` <br>
 
-<box type="note" seamless>
+<box type="tip" seamless>
 
-**Notes on Fields for add exam command:**
+**Notes on the fields for addexam command:**
 
 | Field         | Prefix  | Required | Caveats                                                                                                                                                                                                                                                                                    |
 |---------------|---------|----------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -338,13 +339,11 @@ This will add an exam to a student by searching for their `ID`. Time is an optio
 
 **Note:**
 
-For this particular command, not leaving a space between prefix and input e.g. `addexam -id{ID} -exam{EXAMNAME} -date{DATE}` is also accepted. GUI error message is the version without spaces between prefix and input.<br>
+* For this particular command, not leaving a space between prefix and input e.g. `addexam -id{ID} -exam{EXAMNAME} -date{DATE}` is also accepted. GUI error message is the version without spaces between prefix and input.<br>
 
 </box>
 
 </box>
-
-For this particular command, not leaving a space between prefix and input e.g. `addexam -id{ID} -exam{EXAMNAME} -date{DATE}` is also accepted. GUI error message is the version without spaces between prefix and input.<br>
 
 **Examples:**
 * `addexam -id 000001 -exam Computing -date 2024-04-27 -time 09:00` would add an exam of Computing with date of 2024-04-27 and time of 09:00 to a student whose ID is #000001 if the student exists.
@@ -438,13 +437,14 @@ _The display reflects the updated log entries for the student with ID #000001._
 
 TuteeTally's data is saved automatically as a JSON file at `[JAR file location]/data/tuteetally.json`. Do proceed carefully if you intend to edit this file directly.
 
-[!CAUTION]
+<box type="caution" seamless>
 
-> Certain edits can cause the TuteeTally to behave in unexpected and magical ways (e.g., if a value entered is outside the acceptable range, or invalid characters are added). 
-> Therefore, edit the data file only if you are confident that you can update it correctly. 
-> It's up to you to ensure the validity of the data if you choose to edit it.
-> Hence, it is recommended to make a backup of the file (by copying and pasting to another location) before editing it.<br>
+* Certain edits can cause the TuteeTally to behave in unexpected and magical ways (e.g., if a value entered is outside the acceptable range, or invalid characters are added). 
+* Therefore, edit the data file only if you are confident that you can update it correctly. 
+* It's up to you to ensure the validity of the data if you choose to edit it.
+* Hence, it is recommended to make a backup of the file (by copying and pasting to another location) before editing it.<br>
 
+</box>
 
 
 --------------------------------------------------------------------------------------------------------------------
