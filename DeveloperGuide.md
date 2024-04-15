@@ -13,7 +13,16 @@ pageNav: 3
 
 ## **Acknowledgements**
 
-_{ list here sources of all reused/adapted ideas, code, documentation, and third-party libraries -- include links to the original source as well }_
+The following table contains the numerous third party libaries, API and documentation consulted during the course of developing TuteeTally.
+
+| Name                                                                              | Description                                                                                           |
+|-----------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------|
+| [AddressBook-Level 3 (AB-3)](https://se-education.org/addressbook-level3/)        | Tuteetally is adapted from AB-3 that is created by the [SE-EDU initiative](https://se-education.org). |
+| [Gradle](https://gradle.org/)                                                     | Used for build automation                                                                             |
+| [Jackson](https://github.com/FasterXML/jackson)                                   | Used for parsing JSON files.                                                                          |
+| [JavaFX](https://openjfx.io)                                                      | Used in rendering the GUI.                                                                            |
+| [JUnit5](https://junit.org/junit5/)                                               | Used for testing the codebase.                                                                        |
+| [Oracle Java Docs](https://docs.oracle.com/en/java/javase/11/docs/api/index.html) | Used for understanding the default Java API                                                           |
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -142,7 +151,7 @@ This allows `AddressBook` to only require one `Tag` object per unique tag and co
 
 **API** : [`Storage.java`](https://github.com/AY2324S2-CS2103T-F10-2/tp/blob/master/src/main/java/seedu/address/storage/Storage.java)
 
-<puml src="diagrams/StorageClassDiagram.puml" width="550" />
+<puml src="diagrams/StorageClassDiagram.puml"/>
 
 The `Storage` component,
 * can save both address book data and user preference data in JSON format, and read them back into corresponding objects.
@@ -157,15 +166,15 @@ updating or enhancing functionality in one place.
 
 Below is a breakdown of the main categories within this package:
 
--`Core`
+- `Core`
 This category includes essential classes that are central to the application's operation:
 
-    -Config: Manages configuration settings of the application, such as file paths and application-level settings. 
+    * Config: Manages configuration settings of the application, such as file paths and application-level settings. 
             It helps in maintaining a flexible codebase that can adapt to different deployment environments without requiring code changes.
 
-    -GuiSettings: Holds GUI configuration details which can be serialized for persistence across sessions. This class includes settings such as window size, window position, and other UI-related preferences that enhance the user's experience by maintaining a consistent application state.
+    * GuiSettings: Holds GUI configuration details which can be serialized for persistence across sessions. This class includes settings such as window size, window position, and other UI-related preferences that enhance the user's experience by maintaining a consistent application state.
 
-    -LogsCenter: Provides a central management facility for logging messages throughout the application. It configures the logging libraries and specifies the uniform format and logging levels, making the debugging process and monitoring of runtime behaviors more systematic.
+    * LogsCenter: Provides a central management facility for logging messages throughout the application. It configures the logging libraries and specifies the uniform format and logging levels, making the debugging process and monitoring of runtime behaviors more systematic.
 
 
 - `Exceptions`
@@ -313,18 +322,8 @@ The CommandResult will then be returned to the UIManager and a SummaryStatsWindo
 it get the SummaryStats from `Logic`the respective frame will show `SummaryStatsWindow::updateSummaryStats` clearly. 
 
 <puml src="diagrams/ViewStatsSequenceDiagramUpdateTotalCountofPersons.puml" alt="ViewStatsSequenceDiagramUpdateTotalCountofPerson" />
-<puml src="diagrams/ViewStatsSequenceDiagramUpdateTotalOwingsOfPerson.puml" alt="ViewStatsSequenceDiagramUpdateTotalOwingsOfPerson" />
+<puml src="diagrams/ViewStatsSequenceDiagramUpdateTotalOwingsOfPersons.puml" alt="ViewStatsSequenceDiagramUpdateTotalOwingsOfPersons" />
 <puml src="diagrams/ViewStatsSequenceDiagramUpdateUpcomingExams.puml" alt="ViewStatsSequenceDiagramUpdateUpcomingExams" />
-
-
-
-
-
-
-
-
-
-
 
 #### Design Considerations
 **Aspect: Where to store the SummaryStats:**
@@ -335,7 +334,7 @@ it get the SummaryStats from `Logic`the respective frame will show `SummaryStats
 
 * **Alternative 2:** Compute statistics on demand
     * Pros: Decreases the coupling between the data management and data viewing functionalities.
-    * Cons: Could lead to a delay in presenting statistics to the user since computations are performed at the time of request.
+    * Cons: Could lead to a delay in presenting statistics to the user since computations are performed at the time of request. <br>
 
 **User Experience**
 
@@ -505,22 +504,21 @@ These descriptions provide an overview of the exam management features, their pu
 
 Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
 
-| Priority | As a …​ | I want to …​                        | So that I can…​                                           |
-|----------|---------|-------------------------------------|-----------------------------------------------------------|
-| `* * *`  | Tutor   | add a student                       | track the details of the student                          |
-| `* * *`  | Tutor   | view student details summary on main page | get a brief idea of the student while navigating the list |
-| `* * *`  | Tutor   | delete a person                     | remove entries that I no longer need                      |
-| `* * *`  | Tutor   | view single students detail         | see the individual detail for a single student            |
-| `* * *`  | Tutor   | view total number of students       | check if I have space for more students                   |
-| `* * *`  | Tutor   | track my payments                   | won't miss out on any payments                            |
-| `* * *`  | Tutor   | track my students' exams            | personalise and plan better for lessons                   |
-
-
-*{More to be added}*
+| Priority | As a …​ | I want to …​                              | So that I can…​                                           |
+|---------|---------|-------------------------------------------|-----------------------------------------------------------|
+| `* * *` | Tutor   | add a student                             | track the details of the student                          |
+| `* * *` | Tutor   | view student details summary on main page | get a brief idea of the student while navigating the list |
+| `* * *` | Tutor   | delete a person                           | remove entries that I no longer need                      |
+| `* * *` | Tutor   | view single students detail               | see the individual detail for a single student            |
+| `* * *` | Tutor   | view total number of students             | check if I have space for more students                   |
+| `* * *` | Tutor   | track my payments                         | won't miss out on any payments                            |
+| `* * *` | Tutor   | track my students' exams                  | personalise and plan better for lessons                   |
+| `**`    | Tutor   | log the lessons of a student              | analyse past lessons when planning                        |
+| `*`      | Tutor   | filter students by their subjects         | manage my students better                                 |
 
 ### Use cases
 
-<puml src="diagrams/UseCaseDiagram.puml" alt="UseCaseDiagram" />
+<puml src="diagrams/UseCaseDiagram.puml" alt="UseCaseDiagram" /> <br>
 (For all use cases below, the **System** is`TuteeTally` and the **Actor** is the `user`, unless specified otherwise)
 
 **Use case: Add a Student**
@@ -886,11 +884,4 @@ testers are expected to do more *exploratory* testing.
 ### Additional Notes
 Always ensure that the unique id, exam name, and date are correctly entered to avoid discrepancies or errors in exam management.
 These commands are designed to interact seamlessly with the system's exam management module, ensuring accurate tracking and reporting of student exam records.
-
-### Saving Data
-
-#### 1. Dealing with Missing/Corrupted Data Files
-- _{explain how to simulate a missing/corrupted file, and the expected behavior}_
-
-#### 2. _{ more test cases …​ }_
 

@@ -3,10 +3,10 @@ left to right direction
 actor PrivateTutor as g
 
 package TuteeTally {
-  usecase "Add Student" as UC1
-  usecase "Add Exam of Student" as UC2
-  usecase "Logging of Tuition Lessons"" as UC3
-  usecase "Adding of Exams" as UC4
+  usecase "Adding of Student" as UC1
+  usecase "Adding of Exam" as UC2
+  usecase "Logging of Tuition Lessons" as UC3
+  usecase "Deleting of Exam" as UC4
   usecase "Adding of Payment Details" as UC5
   usecase "Marking of Payment Details" as UC6
   usecase "Viewing of Summary Stats" as UC7

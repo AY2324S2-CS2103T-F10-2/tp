@@ -63,9 +63,9 @@ SummaryStatsWindow -> SummaryStatsWindow:setText(TotalPersons)
 
 activate SummaryStatsWindow #Blue
 
-SummaryStatsWindow -> SummaryStatsWindow
 
-SummaryStatsWindow -> SummaryStatsWindow
+
+SummaryStatsWindow --> SummaryStatsWindow
 deactivate SummaryStatsWindow
 
 

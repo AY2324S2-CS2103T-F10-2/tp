@@ -63,9 +63,8 @@ SummaryStatsWindow -> SummaryStatsWindow:setText(upcomingMonthExamCount)
 
 activate SummaryStatsWindow #Blue
 
-SummaryStatsWindow -> SummaryStatsWindow
 
-SummaryStatsWindow -> SummaryStatsWindow
+SummaryStatsWindow --> SummaryStatsWindow
 deactivate SummaryStatsWindow
 
 @enduml
