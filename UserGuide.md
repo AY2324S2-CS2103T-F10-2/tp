@@ -149,7 +149,7 @@ After entering the command, the interface will update as shown below:
 * You can opt to drag the middle portion of the UI to vary the space allocated for student and exam details. <br>
 </box>
 
-### Editing a student: `edit`
+### Editing a student by INDEX: `edit`
 
 Edit the specific student detail from TuteeTally using the _**INDEX**_ of the student. <br>
 The _**INDEX**_ of the student refers to the position of student counting from the top of current displayed list, with the first student being index 1.
@@ -173,7 +173,7 @@ After entering the command, the interface will update as shown below:
 
 ![Edit Student Display](images/edit/edit.jpg) _The display updates to show the student at INDEX 1 with their name and email edited._
 
-### Deleting a student: `delete`
+### Deleting of students by ID: `delete`
 
 Deletes the specified student from the address book.
 
@@ -250,7 +250,7 @@ After entering the command, the interface will update as shown below:
 ![View name Display](images/view/view_name.jpg) _The display showing *ALL* the students with the word `Benson` or `Meier` in their name._
 
 
-### View student particular by id: `view -id`
+### View student particular by ID: `view -id`
 This will display a specific student by searching for their id, this also pops up the lesson logs of the student. <br>
 **Format:** `view -id {ID}`
 
@@ -265,7 +265,7 @@ After entering the command, the interface will update as shown below:
 
 TuteeTally's payment management commands are designed to streamline the financial interactions between tutors and students, ensuring accuracy and transparency. Below are detailed explanations of each command's purpose and benefits:
 
-### Adding a Payment: `addpayment`
+### Adding a Payment to students by ID: `addpayment`
 
 Record new payments easily with the `addpayment` command, keeping track of what each student owes. This command simplifies the maintenance of financial records, ensuring you never overlook an outstanding payment.
 
@@ -285,7 +285,7 @@ After entering the command, the interface will update as shown below:
 
 ![Add Payment Update Display](images/payment/add_payment.jpg) _The display showing "Payment owed: $150.00" after adding a payment._
 
-### Marking Payment of the student: `markpayment`
+### Marking Payment of students by ID: `markpayment`
 
 The `markpayment` command allows you to update the status of a student's payment to reflect payments that have been made. This feature helps maintain a clear record of completed transactions, building trust and transparency. <br>
 
@@ -305,7 +305,7 @@ After entering the command, the interface will update as shown below: <br>
 
 </box>
 
-### Resetting all Payments of the student: `resetpayments`
+### Resetting all Payments of students by ID: `resetpayments`
 <box type="info" seamless>
 
 **For your information:** <br>
@@ -325,7 +325,7 @@ After entering the command, the interface will update as shown below: <br>
 
 Each of these features contributes to a comprehensive financial management system within TuteeTally, enabling tutors to manage their tutoring finances more effectively and efficiently.
 
-### Add student's exam by id: `addexam`
+### Add student's exam by ID: `addexam`
 This will add an exam to a student by searching for their `ID`. Time is an optional field. Do note that only exams from the current date onwards can be added.
 
 **Format 1:** `addexam -id {ID} -exam {EXAMNAME} -date {DATE}` <br>
@@ -366,7 +366,7 @@ After entering the command, the interface will update as shown below: <br>
 
 </box>
 
-### Delete student's exam by id: `deleteexam`
+### Delete student's exam by ID: `deleteexam`
 This will delete an exam from a student by searching for their `ID`. Fields should follow exactly from the exam from the exam list that you wish to delete.
 
 **Format 1:** `deleteexam -id {ID} -exam {EXAMNAME} -date {DATE}` <br>
@@ -391,7 +391,7 @@ After entering the command, the interface will update as shown below: <br>
 
 </box>
 
-### Logging the Lessons of a student: `log`
+### Logging the lessons of a student by ID: `log`
 
 This will add a log to the lessons of a student. The time field of the log entry will be the *system time* when the log was added.
 
