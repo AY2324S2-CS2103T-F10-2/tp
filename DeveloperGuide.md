@@ -323,7 +323,7 @@ The CommandResult will then be returned to the UIManager and a SummaryStatsWindo
 it get the SummaryStats from `Logic`the respective frame will show `SummaryStatsWindow::updateSummaryStats` clearly. 
 
 <puml src="diagrams/ViewStatsSequenceDiagramUpdateTotalCountofPersons.puml" alt="ViewStatsSequenceDiagramUpdateTotalCountofPerson" />
-<puml src="diagrams/ViewStatsSequenceDiagramUpdateTotalOwingsOfPersons.puml" alt="ViewStatsSequenceDiagramUpdateTotalOwingsOfPersons" />
+<puml src="diagrams/ViewStatsSequenceDiagramUpdateTotalOwingsofPersons.puml" alt="ViewStatsSequenceDiagramUpdateTotalOwingsOfPersons" />
 <puml src="diagrams/ViewStatsSequenceDiagramUpdateUpcomingExams.puml" alt="ViewStatsSequenceDiagramUpdateUpcomingExams" />
 
 #### Design Considerations
@@ -559,7 +559,9 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 ### Use cases
 
 <puml src="diagrams/UseCaseDiagram.puml" alt="UseCaseDiagram" /> <br>
-(For all use cases below, the **System** is`TuteeTally` and the **Actor** is the `user`, unless specified otherwise)
+
+> [!NOTE]
+> For all use cases below, the **System** is`TuteeTally` and the **Actor** is the `user`, unless specified otherwise
 
 **Use case: Add a Student**
 
