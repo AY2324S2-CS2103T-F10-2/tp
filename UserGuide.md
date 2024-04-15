@@ -264,13 +264,6 @@ After entering the command, the interface will update as shown below:
 
 TuteeTally's payment management commands are designed to streamline the financial interactions between tutors and students, ensuring accuracy and transparency. Below are detailed explanations of each command's purpose and benefits:
 
-<box type="info" seamless>
-
-**Note:** <br>
-* Displayed payment amounts are rounded to the nearest $0.01. However, TuteeTally accurately tracks the exact amounts entered, without rounding. <br>
-
-</box>
-
 ### Adding a Payment: `addpayment`
 
 Record new payments easily with the `addpayment` command, keeping track of what each student owes. This command simplifies the maintenance of financial records, ensuring you never overlook an outstanding payment.
@@ -295,13 +288,12 @@ The `markpayment` command allows you to update the status of a student's payment
 
 After entering the command, the interface will update as shown below: <br>
 
-![Mark Payment Update Display](images/payment/mark_payment.jpg) _The display showing "Payment owed: $5.000" after marking a payment of $100.00, with $150.00 owed initially._
+![Mark Payment Update Display](images/payment/mark_payment.jpg) _The display showing "Payment owed: $50.00" after marking a payment of $100.00, with $150.00 owed initially._
 
 <box type="info" seamless>
 
 **Note:** <br>
 * If the amount marked as paid exceeds the total outstanding payment, the total outstanding payment will be set to 0. <br>
-* If the amount owed by student is already 0, you are still allowed to enter the command, but there will be no changes. <br>
 
 </box>
 
@@ -323,14 +315,6 @@ After entering the command, the interface will update as shown below: <br>
 
 ![Reset Payments Update Display](images/payment/reset_payments.jpg) _The display showing "No payment owed" after resetting payments, with $50.00 owed previously._
 
-<box type="info" seamless>
-
-**Note:** <br>
-* If the amount marked as paid exceeds the total outstanding payment, the total outstanding payment will be set to 0. <br>
-* If the amount owed by student is already 0, you are still allowed to enter the command, but there will be no changes. <br>
-
-</box>
-
 Each of these features contributes to a comprehensive financial management system within TuteeTally, enabling tutors to manage their tutoring finances more effectively and efficiently.
 
 ### Add student's exam by id: `addexam`
@@ -339,14 +323,27 @@ This will add an exam to a student by searching for their `ID`. Time is an optio
 **Format 1:** `addexam -id {ID} -exam {EXAMNAME} -date {DATE}` <br>
 **Format 2:** `addexam -id {ID} -exam {EXAMNAME} -date {DATE} -time {TIME}` <br>
 
-**Notes on Fields for add exam command**
+<box type="note" seamless>
 
-| Field       | Prefix   | Required | Caveats                                                                                                                                                                                                                                                           |
-|-------------|----------|----------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Unique ID** | `-id`    | Yes      | Unique ID must be a positive integer with a maximum length of 6 digits excluding leading zeros. <br> Leading zeros are optional. For example, `1`, `01`, and `000000001` are all valid representations for the ID #000001. IDs between `1` and `999999` (inclusive) are considered valid. |
-| **Exam**    | `-exam`  | Yes      | Exam should be a string, special characters are allowed.                                                                                                                                                                                                          |
-| **Date**    | `-date`  | Yes      | Date inputs must be in the format yyyy-MM-dd format. Date must be from current date onwards. <br> e.g. 2024-04-01 is a valid input for date, but not 2024-4-01 or 2024-04-1                                                                                       |
-| **Time**    | `-time`  | Nope     | Time inputs are in the 24-hour format in the form HH:mm. <br> e.g. 07:00 is a valid time input and refers to 7am, but not 7:00                                                                                                                                    |
+**Notes on Fields for add exam command:**
+
+| Field         | Prefix  | Required | Caveats                                                                                                                                                                                                                                                                                    |
+|---------------|---------|----------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Unique ID** | `-id`   |  Yes     |  Unique ID must be a positive integer with a maximum length of 6 digits excluding leading zeros. <br> Leading zeros are optional. For example, `1`, `01`, and `000000001` are all valid representations for the ID #000001. IDs between `1` and `999999` (inclusive) are considered valid. |
+| **Exam**      | `-exam` | Yes      | Exam should be a string, special characters are allowed.                                                                                                                                                                                                                                   |
+| **Date**      | `-date` | Yes      | Date inputs must be in the format yyyy-MM-dd format. Date must be from current date onwards. <br> e.g. 2024-04-01 is a valid input for date, but not 2024-4-01 or 2024-04-1                                                                                                                |
+| **Time**      | `-time` | Nope     | Time inputs are in the 24-hour format in the form HH:mm. <br> e.g. 07:00 is a valid time input and refers to 7am, but not 7:00                                                                                                                                                             |
+
+<box type="info" seamless>
+
+**Note:**
+
+For this particular command, not leaving a space between prefix and input e.g. `addexam -id{ID} -exam{EXAMNAME} -date{DATE}` is also accepted. GUI error message is the version without spaces between prefix and input.<br>
+
+</box>
+
+</box>
+
 For this particular command, not leaving a space between prefix and input e.g. `addexam -id{ID} -exam{EXAMNAME} -date{DATE}` is also accepted. GUI error message is the version without spaces between prefix and input.<br>
 
 **Examples:**
@@ -398,19 +395,26 @@ This will add a log to the lessons of a student. The time field of the log entry
 
 **Notes on Fields for log command**
 
-| Field              | Prefix     | Required | Caveats                                                                                                                                                                                                                                                                                   |
-|--------------------|------------|----------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Unique ID**      | `-id`      | Yes      | Unique ID must be a positive integer with a maximum length of 6 digits excluding leading zeros. <br> Leading zeros are optional. For example, `1`, `01`, and `000000001` are all valid representations for the ID #000001. IDs between `1` and `999999` (inclusive) are considered valid. |
-| **Hours**          | `-hours`   | Yes      | Hours need not be an integer input to give you more flexibility. Values like `2 hours 45 mins`, `2+ hours` are valid as well.                                                                                                                                                             |
-| **Content**        | `-content` | Yes      | Content should be a string, special characters are allowed.                                                                                                                                                                                                                               |
-| **Learning Style** | `-style`   | Yes      | Learning style should be a string, special characters are allowed.                                                                                                                                                                                                                        |
-| **Notes**          | `-notes`   | Yes      | Notes should be a string, special characters are allowed.                                                                                                                                                                                                                                 |
-Even though the prefixes are compulsory, their content can be left blank (except ID). <br>
-E.g. `log -id 000001 -hours -content -style -notes` adds a log with blank `hours`, `content`, `style` and `notes` field.
+| Field              | Prefix        | Required | Caveats                                                                                                                                                                                                                                                                                   |
+|--------------------|---------------|----------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Unique ID**      | `-id`         | Yes      | Unique ID must be a positive integer with a maximum length of 6 digits excluding leading zeros. <br> Leading zeros are optional. For example, `1`, `01`, and `000000001` are all valid representations for the ID #000001. IDs between `1` and `999999` (inclusive) are considered valid. |
+| **Hours**          | `-hours`      | Yes      | Hours need not be an integer input to give you more flexibility. Values like `2 hours 45 mins`, `2+ hours` are valid as well.                                                                                                                                                             |
+| **Content**        | `-content`    | Yes      | Content should be a string, special characters are allowed.                                                                                                                                                                                                                               |
+| **Learning Style** | `-style`      | Yes      | Learning style should be a string, special characters are allowed.                                                                                                                                                                                                                        |
+| **Notes**          | `-notes`      | Yes      | Notes should be a string, special characters are allowed.                                                                                                                                                                                                                                 |
+</box>
+
+<box type="info" seamless>
+
+**Note:**<br>
+
+* Even though the prefixes are compulsory, their content can be left blank (except ID). <br>
+* Example: `log -id 000001 -hours -content -style -notes` adds a log with blank `hours`, `content`, `style` and `notes` field.
+
 </box>
 
 **Example:** <br>
-* `log -id 000001 -hours 2 -content English Comprehension -style Visual -notes Great improvement!`. would log a lesson for the student with ID #000001 noting that he/she has had a great improvement in English Comprehension, it also logs the learning style of the student. <br>
+* `log -id 000001 -hours 2 -content English Comprehension -style Visual -notes Great improvement!` would log a lesson for the student with ID #000001 noting that he/she has had a great improvement in English Comprehension, it also logs the learning style of the student. <br>
 
 After entering the command, the interface will update as shown below: <br>
 
@@ -420,8 +424,8 @@ After entering the command, the interface will update as shown below: <br>
 
 **Tip:**<br>
 
-After successful addition, you can check your updated log list using the `view -id {ID}` command! <br>
-Do remember to close the tab before you add or view a different student's logs. This will ensure the log tab refreshes properly.
+* After successful addition, you can check your updated log list using the `view -id {ID}` command! <br>
+* Do remember to close the tab before you add or view a different student's logs. This will ensure the log tab refreshes properly.
 
 </box>
 
@@ -435,10 +439,13 @@ _The display reflects the updated log entries for the student with ID #000001._
 TuteeTally's data is saved automatically as a JSON file at `[JAR file location]/data/tuteetally.json`. Do proceed carefully if you intend to edit this file directly.
 
 [!CAUTION]
-> Certain edits can cause the TuteeTally to behave in unexpected and magical ways (e.g., if a value entered is outside of the acceptable range, or invalid characters are added). 
+
+> Certain edits can cause the TuteeTally to behave in unexpected and magical ways (e.g., if a value entered is outside the acceptable range, or invalid characters are added). 
 > Therefore, edit the data file only if you are confident that you can update it correctly. 
 > It's up to you to ensure the validity of the data if you choose to edit it.
 > Hence, it is recommended to make a backup of the file (by copying and pasting to another location) before editing it.<br>
+
+
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -450,27 +457,36 @@ TuteeTally's data is saved automatically as a JSON file at `[JAR file location]/
 **Q**: What are the system requirements for TuteeTally?<br>
 **A**: TuteeTally requires Java 11 or above to run. It is compatible with Windows, MacOS, and Linux operating systems.
 
-**Q**: Can I back up my TuteeTally data?
+**Q**: Can I back up my TuteeTally data?<br>
 **A**: Yes, it is recommended to regularly back up your tuteetally.json data file by copying it to a secure location. This ensures that your data can be restored in case of software or hardware issues.
 
-**Q**: What are the common mistakes to avoid when using TuteeTally?
+**Q**: What are the common mistakes to avoid when using TuteeTally?<br>
 **A**: Common mistakes include inputting commands in the wrong format,in such instances you may reference either the error message or this User Guide on the correct format.
 
-**Q**: How can I recover deleted student data?
+**Q**: How can I recover deleted student data?<br>
 **A**: Once student data is deleted, it cannot be recovered through the application. Regular backups of your data file are recommended to prevent loss of data.
 
-**Q**: What happens if I encounter a bug?
+**Q**: What happens if I encounter a bug?<br>
 **A**: You may report any bugs on our [GitHub](https://github.com/AY2324S2-CS2103T-F10-2/tp/issues). If possible, do provide a detailed description of the problem, steps to reproduce it, and any screenshots.
+
 --------------------------------------------------------------------------------------------------------------------
 
 ## Known issues
 
-1. **When using multiple screens**, if you move the application to a secondary screen, and later switch to using only the primary screen, the GUI will open off-screen. The remedy is to delete the `preferences.json` file created by the application before running the application again.
-2. **When using the payment commands**, the display will round the payment amounts to the nearest $0.01. So if you enter a payment of $0.001, it will be displayed as $0.00. However, the application will accurately track the exact amounts entered, without rounding.
-3. **Empty white block when maximised**, currently there is an empty white block in the bottom when the app is maximised
-4. **Empty white block in log when viewing students details**, currently there is an empty white block when viewing a student with no logs.
-5. **Summary Stats Window**, currently it shows the exact value instead of showing only 2 decimal place. For example, a payment of $100.50 owed by the students is shown as `$100.500000`.
-6. **Log window not updating**, if the log window for the student was not closed when adding a new log, the user will need to close and reopen the log window using `view -id {ID}` to see the changes.
+1. **Multi-Screen Usage Issue**: When transitioning from using multiple screens to only the primary screen, the application's GUI may appear off-screen if it was previously moved to a secondary display. To resolve this issue, delete the `preferences.json` file and restart the application. <br>
+
+2. **Payment Rounding Display**: Payment amounts are displayed rounded to the nearest cent ($0.01). For example, an entry of `$0.001` will be shown as `$0.00`. However, the application accurately tracks and records the exact amounts entered. <br>
+
+3. **Zero Balance Command Entry**: If a student's balance is already $0, entering a `markpayment` or `resetpayments` command is permitted, but no changes will be made. <br>
+
+4. **Maximized View Anomaly**: When the application is maximized, an empty white block may appear at the bottom of the screen. <br>
+
+5. **Student Log Viewing**: When a student with no logs is viewed, an empty white block is displayed. <br>
+
+6. **Summary Stats Window Precision**: The Summary Stats Window displays exact values with more than two decimal places. For example, a payment of `$100.50` owed by students will be shown as `$100.500000`. <br>
+
+7. **Adding New Logs**: If a previous log window for a student remains open and new logs are added, the log window must be reopened using the command `view -id {ID}` to reflect the updates. <br>
+
 
 --------------------------------------------------------------------------------------------------------------------
 ## Command summary
