@@ -613,13 +613,15 @@ Use case ends.
       Use case resumes at step 3.
 
 ### Planned Enhancements
+Team size: 4 <br>
 1. Update Edit command to use ID instead of index.
 2. Improve the UI such as removing all white spaces from it.
 3. Learning styles can be tagged to Person so that it doesn't need to be logged every lesson.
 4. Logging of a lesson will automatically update the payment info.
 5. View -id or -name should automatically filter and show the exams of the person on the right.
-6. Checking of duplicate persons.
-7. 
+6. Log window will update its content to respond to addition of logs to a student.
+7. Log entry can be deleted and its fields can be edited, including editing the date and time of the log to a custom date to match the lesson time.
+8. Implement checking of duplicate persons to ensure the same person is not recorded multiple times.
 
 ### Non-Functional Requirements
 

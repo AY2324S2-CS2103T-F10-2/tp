@@ -92,11 +92,12 @@ All commands are case-sensitive.
 
 * Parameters can be in any order.<br>
   e.g. if the command specifies `-name {NAME} -address {ADDRESS}`, `-address {ADDRESS} -name {NAME}` is also acceptable.
-
+* Prefixes for parameters need to have a space before the `-`. <br>
+e.g. `add -name Xiao Ming -address 13, Computing Dr, 117417 -email xiaoming@email.com -phone 88888888 -subject Math` is valid, but `add-name Xiao Ming-address 13, Computing Dr, 117417-email xiaoming@email.com-phone 88888888-subject Math` is not.
 * All id inputs in commands labelled `{ID}` can omit any leading 0s.<br>
-e.g. `1`, `01`, `000000001` are all valid id inputs for the id `#000001`
+e.g. `1`, `01`, `000000001` are all valid id inputs for the id `#000001` as leading 0s are ignored.
 
-* All `{ID}` are by default a positive integer of maximum *6 digits*. Any ID that exceeds a positive 6 digit integer number (e.g. 1234567) may cause errors.
+* All `{ID}` are by default a positive integer of maximum *6 digits* excluding leading 0s. Any ID that exceeds a positive 6 digit integer number (e.g. 1234567) may cause errors. However, 000000999999 is still a valid ID.
 
 * The maximum number of students that can be stored in TuteeTally is 999999.
 
@@ -404,7 +405,8 @@ This will add a log to the lessons of a student. The time field of the log entry
 | **Content**        | `-content` | Yes      | Content should be a string, special characters are allowed.                                                                                                                                                                                                                               |
 | **Learning Style** | `-style`   | Yes      | Learning style should be a string, special characters are allowed.                                                                                                                                                                                                                        |
 | **Notes**          | `-notes`   | Yes      | Notes should be a string, special characters are allowed.                                                                                                                                                                                                                                 |
-
+Even though the prefixes are compulsory, their content can be left blank (except ID). <br>
+E.g. `log -id 000001 -hours -content -style -notes` adds a log with blank `hours`, `content`, `style` and `notes` field.
 </box>
 
 **Example:** <br>
@@ -418,7 +420,8 @@ After entering the command, the interface will update as shown below: <br>
 
 **Tip:**<br>
 
-After successful addition, you can check your updated log list using the `view -id {ID}` command!
+After successful addition, you can check your updated log list using the `view -id {ID}` command! <br>
+Do remember to close the tab before you add or view a different student's logs. This will ensure the log tab refreshes properly.
 
 </box>
 
@@ -432,7 +435,7 @@ _The display reflects the updated log entries for the student with ID #000001._
 TuteeTally's data is saved automatically as a JSON file at `[JAR file location]/data/tuteetally.json`. Do proceed carefully if you intend to edit this file directly.
 
 [!CAUTION]
-> Certain edits can cause the TuteeTally to behave in unexpected and magical ways (e.g., if a value entered is outside of the acceptable range). 
+> Certain edits can cause the TuteeTally to behave in unexpected and magical ways (e.g., if a value entered is outside of the acceptable range, or invalid characters are added). 
 > Therefore, edit the data file only if you are confident that you can update it correctly. 
 > It's up to you to ensure the validity of the data if you choose to edit it.
 > Hence, it is recommended to make a backup of the file (by copying and pasting to another location) before editing it.<br>
@@ -467,6 +470,7 @@ TuteeTally's data is saved automatically as a JSON file at `[JAR file location]/
 3. **Empty white block when maximised**, currently there is an empty white block in the bottom when the app is maximised
 4. **Empty white block in log when viewing students details**, currently there is an empty white block when viewing a student with no logs.
 5. **Summary Stats Window**, currently it shows the exact value instead of showing only 2 decimal place. For example, a payment of $100.50 owed by the students is shown as `$100.500000`.
+6. **Log window not updating**, if the log window for the student was not closed when adding a new log, the user will need to close and reopen the log window using `view -id {ID}` to see the changes.
 
 --------------------------------------------------------------------------------------------------------------------
 ## Command summary
