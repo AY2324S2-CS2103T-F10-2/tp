@@ -242,6 +242,7 @@ The ``LogicManager`` then executes ``StatCommand`` which returns a  ``CommandRes
 
 ### View all feature
 This feature allows the user to see all current students stored in the app.
+
 #### Implementation
 
 The mechanism is similar to list feature in `AddressBook`. Parser checks for `-all` flag using the sequence above and execute showing the entire list of students.
@@ -368,6 +369,10 @@ Below is the sequence diagram of how the `log` command interacts with multiple c
     * Pros: More systematic, less prone to user errors and typos.
     * Cons: More complicated to implement and use.
 
+### Conclusion
+
+This guide provides a concise overview of the student details retrieval system, designed to assist developers in understanding and utilizing these features effectively. For further details or clarification, please contact the development team.
+
 ## Student Payment Management System
 
 ### Introduction
@@ -422,9 +427,9 @@ This feature enables the system to reset the payment status of students, which i
 
 ### Conclusion
 
-This guide provides a concise overview of the payment management functionalities within the system, designed to assist developers in understanding and utilizing these features effectively. For further details or clarification, please refer to the system documentation or contact the development team.
+This guide provides a concise overview of the payment management functionalities within the system, designed to assist developers in understanding and utilizing these features effectively. For further details or clarification, please contact the development team.
 
-## Student Exam Management
+## Student Exam Management System
 
 ### Introduction
 
@@ -447,6 +452,41 @@ The AddExamCommand enables users to add exam records to students by specifying a
 3. A new exam record is created and added to the student and the AllExamsList in the system.
 <puml src="diagrams/AddExamActivityDiagram.puml" alt="AddExamActivityDiagram" />
 
+#### Design Considerations
+
+**Aspect: Compulsory Fields**
+
+* **Alternative 1:** Both Date and Time are Compulsory
+    * Pros: Ensures that users provide complete information for scheduling exams, reducing ambiguity.
+    * Cons: Adds extra burden on users to provide both date and time even if they may not have exact timing.
+
+* **Alternative 2 (current choice):** Only Date is Compulsory, Time is Optional
+    * Pros: Provides flexibility to users who may not have specific time information for exams.
+    * Cons: May lead to incomplete scheduling if users don't specify exam times.
+
+**Aspect: Restrictions on Date and Time**
+
+* **Alternative 1: Allow Past Dates and Times**
+    * Pros: Gives users the freedom to schedule exams retroactively if needed.
+    * Cons: May lead to confusion or misuse if users inadvertently schedule exams for past dates or times.
+
+* **Alternative 2 (current choice): Allow Current Date with Past Time**
+    * Pros: Allows users to schedule exams for the current day, even if the time has already passed.
+    * Cons: Still prevents scheduling exams for past dates to avoid confusion and errors.
+
+* **Alternative 3: Do Not Allow Past Dates or Times**
+    * Pros: Ensures that all scheduled exams are for future dates and times, reducing the likelihood of scheduling errors.
+    * Cons: Restricts users from scheduling exams for immediate or past instances, which may be necessary in certain situations.
+
+**Aspect: Time Slot Conflicts**
+* **Alternative 1: Allow Exams at the Same Time Slot**
+    * Pros: Provides flexibility for users to schedule exams without strict limitations on time slots.
+    * Cons: May lead to scheduling conflicts or confusion if multiple exams are scheduled for the same time slot.
+
+* **Alternative 2: Does Not Allow Exams at the Same Time Slot**
+    * Pros: Helps prevent scheduling conflicts and ensures each exam has its dedicated time slot and prevent errors. More similar to real world contexts.
+    * Cons: Less flexibility.
+
 ### Delete Exam Feature
 
 The DeleteExamCommand allows deleting a specific exam record from a student.
@@ -461,7 +501,7 @@ The system removes the specified exam record from the student and AllExamsList.
 
 ### Conclusion
 
-These descriptions provide an overview of the exam management features, their purposes, and how they are implemented in the system. They also include sequence diagrams illustrating the interactions between the user and the system for each feature. For further details or clarification, please refer to the system documentation or contact the development team.
+These descriptions provide an overview of the exam management features, their purposes, and how they are implemented in the system. They also include sequence diagrams illustrating the interactions between the user and the system for each feature. For further details or clarification, please contact the development team.
 
 
 --------------------------------------------------------------------------------------------------------------------
