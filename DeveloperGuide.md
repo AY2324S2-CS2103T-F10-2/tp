@@ -257,11 +257,14 @@ Below is a sequence diagram of how view all interacts with multiple classes.
 For the prefixes ``-name`` and ``-id``, a filtered list containing the search results will be returned.
 Both variants utilize a similar logic to of passing in a ``prefix`` to ``model#updateFilteredPersonList`` to adjust the entries displayed by the GUI.
 <puml src="diagrams/ViewNameSequenceDiagram.puml" alt="ViewNameSequenceDiagram" />
+
 ### View Name
 This feature allows the user to find all students with at least one matching keyword in their name.
+
 #### Implementation
 This mechanism is similar to the `find` command in `AddressBook`. Parser checks for the `-name` flag using the sequence above and places the keywords into a `NameContainsKeywordsPredicate`.<br>
 This command will display any student with at least **one keyword** fully matching with a part of the name. (e.g. `John` keyword will display `John Lim` but not `Joh Ng`). If there are no such students, an empty list will be displayed.<br>
+
 #### Design considerations:
 **Aspect: How view name finds students to display:**
 * **Alternative 1 (current choice):** Returns students only if a part of their name **fully** matches a keyword.
@@ -271,8 +274,10 @@ This command will display any student with at least **one keyword** fully matchi
 * **Alternative 2:** Returns students as long as their name contains **all the characters** of any keyword, and they appear in the **right order**.
     * Pros: Enables more extensive searching, will allow room for typos.
     * Cons: Harder to implement, user need to look through redundant names. (e.g. User wants to find student called `John`, but has to first scroll through `Jo` `Jon` and even `James Ong`)
+
 ### View student and their logs by ID Feature
 This feature allows the user to search for a specific student with the corresponding ID. The list of all logs of the target student will also be displayed in a popup.
+
 #### Implementation
 Parser checks for the `-id` flag using the sequence above and checks if the id is a valid id. Then, it passes the id into a `IsSameIdPredicate` to filter for the student. <br>
 This command will display the student with the matching id, and open a popup containing their log information. If such a student does not exist, a prompt will be given to the user to retry.
@@ -332,17 +337,20 @@ it get the SummaryStats from `Logic`the respective frame will show `SummaryStats
     * Pros: Decreases the coupling between the data management and data viewing functionalities.
     * Cons: Could lead to a delay in presenting statistics to the user since computations are performed at the time of request.
 
-**User Experience
+**User Experience**
+
 * **Useful Information**: We want the user to have useful information in a quick manner to aid their tuition administration.
 * **Many ways to access**: We want the user to have many ways to open the Summary Stats Window.
 
 ### Add Log feature
 This command is has a similar mechanism to the `add` feature, but targets a specific student instead. <br>
 This feature enables tutors to log session specific details for record to a specific student. Each log entry includes the total hours of the lesson, lesson content, the learning style of the student, as well as any additional notes. The date of the log entry is recorded as the system time when the user added the log.
+
 #### Implementation
 The parser first checks if the there exists a student with the `ID` specified using the `-id` in current records. Then, the app adds the log entry to the end of the log list attached as a field to the student.
 Below is the sequence diagram of how the `log` command interacts with multiple classes.
-<puml src="diagrams/LogSequenceDiagram.puml">
+<puml src="diagrams/LogSequenceDiagram.puml" alt="LogSequenceDiagram.puml" />
+
 #### Design Considerations
 **Aspect: Whether all fields in log should be compulsory**
 * **Alternative 1 (current choice):** All fields are compulsory
