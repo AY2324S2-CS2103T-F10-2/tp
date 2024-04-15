@@ -227,6 +227,6 @@ with(this){return _c('h4',{attrs:{"id":"implementation-4"}},[_v("Implementation"
 with(this){return _c('p',[_v("Parser checks for the "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("-id")]),_v(" flag using the sequence above and checks if the id is a valid id. Then, it passes the id into a "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("IsSameIdPredicate")]),_v(" to filter for the student. "),_c('br'),_v("\nThis command will display the student with the matching id, and open a popup containing their log information. If such a student does not exist, a prompt will be given to the user to retry.\nBelow is the activity diagram of how "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("view -id")]),_v(" executes.")])}
 },function anonymous(
 ) {
-with(this){return _c('footer',[_c('div',{staticClass:"text-center"},[_c('small',[_v("["),_c('span',[_c('strong',[_v("Powered by")])]),_v(" "),_c('img',{attrs:{"src":"https://markbind.org/favicon.ico","width":"30"}}),_v(" "),_c('a',{attrs:{"href":"https://markbind.org/"}},[_v("MarkBind 5.4.0")]),_v(", generated on Mon, 15 Apr 2024, 17:10:38 GMT+8]")])])])}
+with(this){return _c('footer',[_c('div',{staticClass:"text-center"},[_c('small',[_v("["),_c('span',[_c('strong',[_v("Powered by")])]),_v(" "),_c('img',{attrs:{"src":"https://markbind.org/favicon.ico","width":"30"}}),_v(" "),_c('a',{attrs:{"href":"https://markbind.org/"}},[_v("MarkBind 5.4.0")]),_v(", generated on Mon, 15 Apr 2024, 17:25:00 GMT+8]")])])])}
 }];
   
