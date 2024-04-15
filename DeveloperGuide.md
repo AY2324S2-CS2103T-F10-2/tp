@@ -277,7 +277,7 @@ This feature allows the user to search for a specific student with the correspon
 Parser checks for the `-id` flag using the sequence above and checks if the id is a valid id. Then, it passes the id into a `IsSameIdPredicate` to filter for the student. <br>
 This command will display the student with the matching id, and open a popup containing their log information. If such a student does not exist, a prompt will be given to the user to retry.
 Below is the activity diagram of how `view -id` executes.
-<puml src="diagrams/ViewIdActivityDiagram.puml">
+<puml src="diagrams/ViewIdActivityDiagram.puml"/>
 
 ### View Stats feature
 This feature supports the viewing of summary statistics, it currently shows the 
