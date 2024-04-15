@@ -605,7 +605,7 @@ with(this){return _c('h3',{attrs:{"id":"deleting-a-person"}},[_v("Deleting a Per
 with(this){return _c('h4',{attrs:{"id":"1-deleting-a-person-while-all-persons-are-being-shown"}},[_v("1. Deleting a Person While All Persons Are Being Shown"),_c('a',{staticClass:"fa fa-anchor",attrs:{"href":"#1-deleting-a-person-while-all-persons-are-being-shown","onclick":"event.stopPropagation()"}})])}
 },function anonymous(
 ) {
-with(this){return _c('ul',[_c('li',[_c('strong',[_v("Prerequisites")]),_v(": List/view all persons using the "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("list")]),_v(" or "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("view -all")]),_v(" command. Multiple persons in the list.")]),_v(" "),_c('li',[_c('strong',[_v("Test Case")]),_v(": "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("delete 000001")]),_v(" "),_c('strong',[_v("Expected")]),_v(": Contact with the ID #000001 is deleted from the list. Details of the deleted contact shown in the status message. Timestamp in the status bar is updated.")]),_v(" "),_c('li',[_c('strong',[_v("Test Case")]),_v(": "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("delete 000000")]),_v(" "),_c('strong',[_v("Expected")]),_v(": No person is deleted. Error details shown in the status message. Status bar remains the same.")]),_v(" "),_c('li',[_c('strong',[_v("Other Incorrect Delete Commands to Try")]),_v(": "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("delete")]),_v(", "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("delete x")]),_v(", "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("...")]),_v(" (where x is larger than the list size)\n"),_c('strong',[_v("Expected")]),_v(": Similar to previous.")])])}
+with(this){return _c('ul',[_c('li',[_c('strong',[_v("Prerequisites")]),_v(": List/view all persons using the "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("list")]),_v(" or "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("view -all")]),_v(" command. Multiple persons in the list.")]),_v(" "),_c('li',[_c('strong',[_v("Test Case")]),_v(": "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("delete 000001")]),_v(" "),_c('strong',[_v("Expected")]),_v(": Contact with the "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("ID")]),_v(" #000001 is deleted from the list. Details of the deleted contact shown in the status message. Timestamp in the status bar is updated.")]),_v(" "),_c('li',[_c('strong',[_v("Test Case")]),_v(": "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("delete 000000")]),_v(" "),_c('strong',[_v("Expected")]),_v(": No person is deleted. Error details shown in the status message. Status bar remains the same.")]),_v(" "),_c('li',[_c('strong',[_v("Other Incorrect Delete Commands to Try")]),_v(": "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("delete")]),_v(", "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("delete x")]),_v(", "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("...")]),_v(" (where x is larger than the list size)\n"),_c('strong',[_v("Expected")]),_v(": Similar to previous.")])])}
 },function anonymous(
 ) {
 with(this){return _c('h3',{attrs:{"id":"payment-commands"}},[_v("Payment Commands"),_c('a',{staticClass:"fa fa-anchor",attrs:{"href":"#payment-commands","onclick":"event.stopPropagation()"}})])}
@@ -614,43 +614,43 @@ with(this){return _c('h3',{attrs:{"id":"payment-commands"}},[_v("Payment Command
 with(this){return _c('h4',{attrs:{"id":"adding-a-payment-to-a-student-account"}},[_v("Adding a Payment to a Student Account"),_c('a',{staticClass:"fa fa-anchor",attrs:{"href":"#adding-a-payment-to-a-student-account","onclick":"event.stopPropagation()"}})])}
 },function anonymous(
 ) {
-with(this){return _c('ul',[_c('li',[_c('strong',[_v("Command")]),_v(": "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("addpayment")])]),_v(" "),_c('li',[_c('strong',[_v("Description")]),_v(": Adds a payment record to a specified student's account by their unique identifier. This command allows for specifying the payment amount either as a numerical value or as a text string for more descriptive purposes.")])])}
+with(this){return _c('ul',[_c('li',[_c('strong',[_v("Command")]),_v(": "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("addpayment")])]),_v(" "),_c('li',[_c('strong',[_v("Description")]),_v(": Adds a payment record to a specified student by their "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("ID")]),_v(". This command allows for specifying the payment amount either as a numerical value or as a text string for more descriptive purposes.")])])}
 },function anonymous(
 ) {
 with(this){return _c('h5',{attrs:{"id":"prerequisites"}},[_v("Prerequisites"),_c('a',{staticClass:"fa fa-anchor",attrs:{"href":"#prerequisites","onclick":"event.stopPropagation()"}})])}
 },function anonymous(
 ) {
-with(this){return _c('ul',[_c('li',[_v("User must be logged in with sufficient privileges to add payments.")]),_v(" "),_c('li',[_v("The student account associated with the given unique identifier must exist within the system.")])])}
+with(this){return _c('ul',[_c('li',[_v("The student associated with the given "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("ID")]),_v(" must exist within the system.")])])}
 },function anonymous(
 ) {
 with(this){return _c('h5',{attrs:{"id":"usage"}},[_v("Usage"),_c('a',{staticClass:"fa fa-anchor",attrs:{"href":"#usage","onclick":"event.stopPropagation()"}})])}
 },function anonymous(
 ) {
-with(this){return _c('ul',[_c('li',[_c('strong',[_v("To add a payment with a numerical amount")]),_v(":\n"),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("addpayment -id ID -amount 100.00")]),_v(" "),_c('strong',[_v("Expected Outcome")]),_v(": A payment of $100.00 is added to the student's account identified by "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("ID")]),_v(". The system confirms the addition with a success message and updates the student's payment history accordingly.")])])}
+with(this){return _c('ul',[_c('li',[_c('strong',[_v("To add a payment with a numerical amount")]),_v(":\n"),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("addpayment -id ID -amount 100.00")]),_v(" "),_c('br'),_v(" "),_c('strong',[_v("Expected Outcome")]),_v(": A payment of $100.00 is added to the student identified by "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("ID")]),_v(". The system confirms the addition with a success message and updates the student's payment history accordingly.")])])}
 },function anonymous(
 ) {
 with(this){return _c('h4',{attrs:{"id":"marking-a-student-s-payment"}},[_v("Marking a Student's Payment"),_c('a',{staticClass:"fa fa-anchor",attrs:{"href":"#marking-a-student-s-payment","onclick":"event.stopPropagation()"}})])}
 },function anonymous(
 ) {
-with(this){return _c('ul',[_c('li',[_c('strong',[_v("Command")]),_v(": "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("markpayment")])]),_v(" "),_c('li',[_c('strong',[_v("Description")]),_v(": Marks a specified payment as complete for a student's account. This command is used to update the status of a student's payments to reflect that they have been successfully processed or received.")])])}
+with(this){return _c('ul',[_c('li',[_c('strong',[_v("Command")]),_v(": "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("markpayment")])]),_v(" "),_c('li',[_c('strong',[_v("Description")]),_v(": Marks a specified payment as complete for a student. This command is used to update the status of a student's payments to reflect that they have been successfully processed or received.")])])}
 },function anonymous(
 ) {
 with(this){return _c('h5',{attrs:{"id":"prerequisites-2"}},[_v("Prerequisites"),_c('a',{staticClass:"fa fa-anchor",attrs:{"href":"#prerequisites-2","onclick":"event.stopPropagation()"}})])}
 },function anonymous(
 ) {
-with(this){return _c('ul',[_c('li',[_v("User must be logged in with sufficient privileges to mark payments as complete.")]),_v(" "),_c('li',[_v("The student account associated with the given unique identifier must exist and have outstanding payments.")])])}
+with(this){return _c('ul',[_c('li',[_v("The student associated with the given "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("ID")]),_v(" must exist.")])])}
 },function anonymous(
 ) {
 with(this){return _c('h5',{attrs:{"id":"usage-2"}},[_v("Usage"),_c('a',{staticClass:"fa fa-anchor",attrs:{"href":"#usage-2","onclick":"event.stopPropagation()"}})])}
 },function anonymous(
 ) {
-with(this){return _c('ul',[_c('li',[_c('strong',[_v("To mark a payment as complete")]),_v(":\n"),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("markpayment -id ID -payment PAYMENT_AMOUNT")]),_v(" "),_c('strong',[_v("Expected Outcome")]),_v(": The payment identified by "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("PAYMENT_AMOUNT")]),_v(" for the student "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("ID")]),_v(" is marked as complete. The system updates the payment status and provides a confirmation message.")])])}
+with(this){return _c('ul',[_c('li',[_c('strong',[_v("To mark a payment as complete")]),_v(":\n"),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("markpayment -id ID -payment PAYMENT_AMOUNT")]),_v(" "),_c('br'),_v(" "),_c('strong',[_v("Expected Outcome")]),_v(": The payment identified by "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("PAYMENT_AMOUNT")]),_v(" for the student "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("ID")]),_v(" is marked as complete. The system updates the payment status and provides a confirmation message.")])])}
 },function anonymous(
 ) {
 with(this){return _c('h4',{attrs:{"id":"extensions-and-error-handling"}},[_v("Extensions and Error Handling"),_c('a',{staticClass:"fa fa-anchor",attrs:{"href":"#extensions-and-error-handling","onclick":"event.stopPropagation()"}})])}
 },function anonymous(
 ) {
-with(this){return _c('ul',[_c('li',[_c('strong',[_v("Invalid ID")]),_v(": If an invalid "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("ID")]),_v(" or "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("PAYMENT_AMOUNT")]),_v(" is provided, the system will return an error message indicating the issue and suggesting corrective actions.")]),_v(" "),_c('li',[_c('strong',[_v("No Outstanding Payments")]),_v(": If there are no outstanding payments to mark as complete, the system will notify the user accordingly.")]),_v(" "),_c('li',[_c('strong',[_v("Permission Denied")]),_v(": If the user attempts to execute a command without sufficient privileges, the system will deny the request and provide an appropriate warning message.")])])}
+with(this){return _c('ul',[_c('li',[_c('strong',[_v("Invalid ID")]),_v(": If an invalid "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("ID")]),_v(" or "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("PAYMENT_AMOUNT")]),_v(" is provided, the system will return an error message indicating the issue and suggesting corrective actions.")]),_v(" "),_c('li',[_c('strong',[_v("No Outstanding Payments")]),_v(": If there are no outstanding payments to mark as complete, the system will notify the user accordingly.")])])}
 },function anonymous(
 ) {
 with(this){return _c('h3',{attrs:{"id":"additional-notes"}},[_v("Additional Notes"),_c('a',{staticClass:"fa fa-anchor",attrs:{"href":"#additional-notes","onclick":"event.stopPropagation()"}})])}
@@ -662,31 +662,31 @@ with(this){return _c('ul',[_c('li',[_v("These commands are designed to interact 
 with(this){return _c('h4',{attrs:{"id":"resetting-payments-for-a-student-account"}},[_v("Resetting Payments for a Student Account"),_c('a',{staticClass:"fa fa-anchor",attrs:{"href":"#resetting-payments-for-a-student-account","onclick":"event.stopPropagation()"}})])}
 },function anonymous(
 ) {
-with(this){return _c('ul',[_c('li',[_c('strong',[_v("Command")]),_v(": "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("resetpayments")])]),_v(" "),_c('li',[_c('strong',[_v("Description")]),_v(": Resets the payment status for all recorded payments in a specified student's account. This command is used when a student's payment record needs to be cleared, typically after all dues have been settled or in case of account adjustments.")])])}
+with(this){return _c('ul',[_c('li',[_c('strong',[_v("Command")]),_v(": "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("resetpayments")])]),_v(" "),_c('li',[_c('strong',[_v("Description")]),_v(": Resets the payment status for all recorded payments in a specified student identified by "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("ID")]),_v(". This command is used when a student's payment record needs to be cleared, typically after all dues have been settled or in case of adjustments.")])])}
 },function anonymous(
 ) {
 with(this){return _c('h5',{attrs:{"id":"prerequisites-3"}},[_v("Prerequisites"),_c('a',{staticClass:"fa fa-anchor",attrs:{"href":"#prerequisites-3","onclick":"event.stopPropagation()"}})])}
 },function anonymous(
 ) {
-with(this){return _c('ul',[_c('li',[_v("User must be logged in with sufficient privileges to reset payment records.")]),_v(" "),_c('li',[_v("The student account associated with the given unique identifier must exist and have one or more payments recorded.")])])}
+with(this){return _c('ul',[_c('li',[_v("The student account associated with the given "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("ID")]),_v(" must exist.")])])}
 },function anonymous(
 ) {
 with(this){return _c('h5',{attrs:{"id":"usage-3"}},[_v("Usage"),_c('a',{staticClass:"fa fa-anchor",attrs:{"href":"#usage-3","onclick":"event.stopPropagation()"}})])}
 },function anonymous(
 ) {
-with(this){return _c('ul',[_c('li',[_c('strong',[_v("To reset all payments for a student")]),_v(":\n"),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("resetpayments -id ID")]),_v(" "),_c('strong',[_v("Expected Outcome")]),_v(": All payments recorded for the student account identified by "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("ID")]),_v(" are reset. The system confirms the reset with a success message, indicating that the student's payment history is now cleared.")])])}
+with(this){return _c('ul',[_c('li',[_c('strong',[_v("To reset all payments for a student")]),_v(":\n"),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("resetpayments -id ID")]),_v(" "),_c('br'),_v(" "),_c('strong',[_v("Expected Outcome")]),_v(": All payments recorded for the student identified by "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("ID")]),_v(" are reset. The system confirms the reset with a success message, indicating that the student's payment history is now cleared.")])])}
 },function anonymous(
 ) {
 with(this){return _c('h4',{attrs:{"id":"extensions-and-error-handling-2"}},[_v("Extensions and Error Handling"),_c('a',{staticClass:"fa fa-anchor",attrs:{"href":"#extensions-and-error-handling-2","onclick":"event.stopPropagation()"}})])}
 },function anonymous(
 ) {
-with(this){return _c('ul',[_c('li',[_c('strong',[_v("Invalid ID")]),_v(": If an invalid "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("ID")]),_v(" is provided, the system will return an error message indicating that the student account could not be found.")]),_v(" "),_c('li',[_c('strong',[_v("No Recorded Payments")]),_v(": If the student account does not have any recorded payments, the system will notify the user that there are no payments to reset.")]),_v(" "),_c('li',[_c('strong',[_v("Permission Denied")]),_v(": Similar to the other commands, if the user attempts to execute the "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("resetpayments")]),_v(" command without sufficient privileges, the system will deny the request and display an appropriate warning message.")])])}
+with(this){return _c('ul',[_c('li',[_c('strong',[_v("Invalid ID")]),_v(": If an invalid "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("ID")]),_v(" is provided, the system will return an error message indicating that the student could not be found.")]),_v(" "),_c('li',[_c('strong',[_v("No Recorded Payments")]),_v(": If the student does not have any recorded payments, the system will notify the user that there are no payments to reset.")])])}
 },function anonymous(
 ) {
 with(this){return _c('h3',{attrs:{"id":"additional-notes-2"}},[_v("Additional Notes"),_c('a',{staticClass:"fa fa-anchor",attrs:{"href":"#additional-notes-2","onclick":"event.stopPropagation()"}})])}
 },function anonymous(
 ) {
-with(this){return _c('ul',[_c('li',[_v("Use the "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("resetpayments")]),_v(" command with caution, as it will clear all payment records for the specified student, potentially impacting their payment history and account status.")]),_v(" "),_c('li',[_v("Ensure accuracy when entering the "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("ID")]),_v(" to avoid unintentional resets of payment information for the wrong student account.")])])}
+with(this){return _c('ul',[_c('li',[_v("Use the "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("resetpayments")]),_v(" command with caution, as it will clear all payment records for the specified student, potentially impacting their payment record.")]),_v(" "),_c('li',[_v("Ensure accuracy when entering the "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("ID")]),_v(" to avoid unintentional resets of payment information for the wrong student.")])])}
 },function anonymous(
 ) {
 with(this){return _c('h3',{attrs:{"id":"exam-commands"}},[_v("Exam commands"),_c('a',{staticClass:"fa fa-anchor",attrs:{"href":"#exam-commands","onclick":"event.stopPropagation()"}})])}
@@ -695,48 +695,48 @@ with(this){return _c('h3',{attrs:{"id":"exam-commands"}},[_v("Exam commands"),_c
 with(this){return _c('h4',{attrs:{"id":"adding-an-exam-to-a-student-account"}},[_v("Adding an Exam to a Student Account"),_c('a',{staticClass:"fa fa-anchor",attrs:{"href":"#adding-an-exam-to-a-student-account","onclick":"event.stopPropagation()"}})])}
 },function anonymous(
 ) {
-with(this){return _c('ul',[_c('li',[_c('strong',[_v("Command")]),_v(": "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("addexam")])]),_v(" "),_c('li',[_c('strong',[_v("Description")]),_v(": Adds an exam record to a specified student by their unique id. This command allows for specifying the exam name, exam date, and optionally, exam time.")])])}
+with(this){return _c('ul',[_c('li',[_c('strong',[_v("Command")]),_v(": "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("addexam")])]),_v(" "),_c('li',[_c('strong',[_v("Description")]),_v(": Adds an exam record to a specified student by their "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("ID")]),_v(". This command allows for specifying the exam name, exam date, and optionally, exam time.")])])}
 },function anonymous(
 ) {
 with(this){return _c('h5',{attrs:{"id":"prerequisites-4"}},[_v("Prerequisites"),_c('a',{staticClass:"fa fa-anchor",attrs:{"href":"#prerequisites-4","onclick":"event.stopPropagation()"}})])}
 },function anonymous(
 ) {
-with(this){return _c('ul',[_c('li',[_v("The student associated with the given unique id must exist within the system.")])])}
+with(this){return _c('ul',[_c('li',[_v("The student associated with the given "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("ID")]),_v(" must exist within the system.")])])}
 },function anonymous(
 ) {
 with(this){return _c('h5',{attrs:{"id":"usage-4"}},[_v("Usage"),_c('a',{staticClass:"fa fa-anchor",attrs:{"href":"#usage-4","onclick":"event.stopPropagation()"}})])}
 },function anonymous(
 ) {
-with(this){return _c('ul',[_c('li',[_c('strong',[_v("To add an exam")]),_v(":\n"),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("addexam -id ID -examname EXAM_NAME -date EXAM_DATE [-time EXAM_TIME]")])]),_v(" "),_c('li',[_v("Only EXAM_DATE from current date onwards can be used.")]),_v(" "),_c('li',[_v("EXAM_DATE should be in the format of yyyy-MM-DD.")]),_v(" "),_c('li',[_v("EXAM_TIME should be in the format of HH:mm\n"),_c('strong',[_v("Expected Outcome")]),_v(": An exam with the specified name, date, and optionally time is added to the student identified by ID. The system confirms the addition with a success message and updates the student's exam records accordingly.")])])}
+with(this){return _c('ul',[_c('li',[_c('strong',[_v("To add an exam")]),_v(":\n"),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("addexam -id ID -examname EXAM_NAME -date EXAM_DATE [-time EXAM_TIME]")])]),_v(" "),_c('li',[_v("Only EXAM_DATE from current date onwards can be used.")]),_v(" "),_c('li',[_v("EXAM_DATE should be in the format of yyyy-MM-DD.")]),_v(" "),_c('li',[_v("EXAM_TIME should be in the format of HH:mm "),_c('br'),_v(" "),_c('strong',[_v("Expected Outcome")]),_v(": An exam with the specified name, date, and optionally time is added to the student identified by "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("ID")]),_v(". The system confirms the addition with a success message and updates the student's exam records accordingly.")])])}
 },function anonymous(
 ) {
 with(this){return _c('h4',{attrs:{"id":"deleting-an-exam-from-a-student-account"}},[_v("Deleting an Exam from a Student Account"),_c('a',{staticClass:"fa fa-anchor",attrs:{"href":"#deleting-an-exam-from-a-student-account","onclick":"event.stopPropagation()"}})])}
 },function anonymous(
 ) {
-with(this){return _c('ul',[_c('li',[_c('strong',[_v("Command")]),_v(": "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("deleteexam")])]),_v(" "),_c('li',[_c('strong',[_v("Description")]),_v(": Deletes a specific exam record from a student by specifying the student's unique identifier, exam name, exam date, and optionally, exam time.")])])}
+with(this){return _c('ul',[_c('li',[_c('strong',[_v("Command")]),_v(": "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("deleteexam")])]),_v(" "),_c('li',[_c('strong',[_v("Description")]),_v(": Deletes a specific exam record from a student by specifying the student's "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("ID")]),_v(", exam name, exam date, and optionally, exam time.")])])}
 },function anonymous(
 ) {
 with(this){return _c('h5',{attrs:{"id":"prerequisites-5"}},[_v("Prerequisites"),_c('a',{staticClass:"fa fa-anchor",attrs:{"href":"#prerequisites-5","onclick":"event.stopPropagation()"}})])}
 },function anonymous(
 ) {
-with(this){return _c('ul',[_c('li',[_v("The student associated with the given unique id must exist and have the specified exam recorded.")])])}
+with(this){return _c('ul',[_c('li',[_v("The student associated with the given "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("ID")]),_v(" must exist and have the specified exam recorded.")])])}
 },function anonymous(
 ) {
 with(this){return _c('h5',{attrs:{"id":"usage-5"}},[_v("Usage"),_c('a',{staticClass:"fa fa-anchor",attrs:{"href":"#usage-5","onclick":"event.stopPropagation()"}})])}
 },function anonymous(
 ) {
-with(this){return _c('ul',[_c('li',[_c('strong',[_v("To delete an exam")]),_v(":\n"),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("deleteexam -id ID -examname EXAM_NAME -date EXAM_DATE [-time EXAM_TIME]")]),_v(" "),_c('strong',[_v("Expected Outcome")]),_v(": The exam with the specified name, date, and optionally time is removed from the student identified by ID. The system confirms the deletion with a success message, and the student's exam records are updated accordingly.")])])}
+with(this){return _c('ul',[_c('li',[_c('strong',[_v("To delete an exam")]),_v(":\n"),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("deleteexam -id ID -examname EXAM_NAME -date EXAM_DATE [-time EXAM_TIME]")]),_c('br'),_v(" "),_c('strong',[_v("Expected Outcome")]),_v(": The exam with the specified name, date, and optionally time is removed from the student identified by "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("ID")]),_v(". The system confirms the deletion with a success message, and the student's exam records are updated accordingly.")])])}
 },function anonymous(
 ) {
 with(this){return _c('h4',{attrs:{"id":"extensions-and-error-handling-3"}},[_v("Extensions and Error Handling"),_c('a',{staticClass:"fa fa-anchor",attrs:{"href":"#extensions-and-error-handling-3","onclick":"event.stopPropagation()"}})])}
 },function anonymous(
 ) {
-with(this){return _c('ul',[_c('li',[_c('strong',[_v("Invalid ID")]),_v(": If an invalid ID is provided, the system will return an error message indicating the issue and suggesting corrective actions.")]),_v(" "),_c('li',[_c('strong',[_v("No Recorded Exam")]),_v(": If the student does not have the specified exam recorded, the system will notify the user that there are no exams to delete.")])])}
+with(this){return _c('ul',[_c('li',[_c('strong',[_v("Invalid ID")]),_v(": If an invalid "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("ID")]),_v(" is provided, the system will return an error message indicating the issue and suggesting corrective actions.")]),_v(" "),_c('li',[_c('strong',[_v("No Recorded Exam")]),_v(": If the student does not have the specified exam recorded, the system will notify the user that there are no exams to delete.")])])}
 },function anonymous(
 ) {
 with(this){return _c('h3',{attrs:{"id":"additional-notes-3"}},[_v("Additional Notes"),_c('a',{staticClass:"fa fa-anchor",attrs:{"href":"#additional-notes-3","onclick":"event.stopPropagation()"}})])}
 },function anonymous(
 ) {
-with(this){return _c('footer',[_c('div',{staticClass:"text-center"},[_c('small',[_v("["),_c('span',[_c('strong',[_v("Powered by")])]),_v(" "),_c('img',{attrs:{"src":"https://markbind.org/favicon.ico","width":"30"}}),_v(" "),_c('a',{attrs:{"href":"https://markbind.org/"}},[_v("MarkBind 5.4.0")]),_v(", generated on Mon, 15 Apr 2024, 22:50:02 GMT+8]")])])])}
+with(this){return _c('footer',[_c('div',{staticClass:"text-center"},[_c('small',[_v("["),_c('span',[_c('strong',[_v("Powered by")])]),_v(" "),_c('img',{attrs:{"src":"https://markbind.org/favicon.ico","width":"30"}}),_v(" "),_c('a',{attrs:{"href":"https://markbind.org/"}},[_v("MarkBind 5.4.0")]),_v(", generated on Mon, 15 Apr 2024, 22:50:44 GMT+8]")])])])}
 }];
   
