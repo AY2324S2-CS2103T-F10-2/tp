@@ -47,9 +47,6 @@ deactivate LogCommand
 
 LogCommandParser --> AddressBookParser : l
 deactivate LogCommandParser
-'Hidden arrow to position the destroy marker below the end of the activation bar.
-LogCommandParser -[hidden]-> AddressBookParser
-destroy LogCommandParser
 
 AddressBookParser --> LogicManager : l
 deactivate AddressBookParser
@@ -79,7 +76,7 @@ create CommandResult
 LogCommand -> CommandResult
 activate CommandResult
 
-CommandResult --> ViewCommand
+CommandResult -> LogCommand
 deactivate CommandResult
 
 LogCommand --> LogicManager : r

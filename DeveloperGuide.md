@@ -176,36 +176,49 @@ Utility classes that provide helper functions and shared functionalities used by
 
 --------------------------------------------------------------------------------------------------------------------
 
-## **Implementation**
+# **Implementation**
+
+## Student Details Retrieval System
+
+### Introduction
+
+This section of the developer guide covers the functionalities provided for retrieving student related details. This includes finding a student with a specific id or name, adding and checking past logs of a student, and retrieving summary statistics of all students.
+
+### Features Overview
 
 This section describes some noteworthy details on how certain features are implemented.
+- **Viewing all**: Displays full student list.
+- **Viewing by name**: Displays students with at least one keyword in their name.
+- **Viewing by unique ID**: Displays specific student with a matching unique ID.
+- **Adding log of a student**: Adds a log to the log list attached to the student.
+- **Viewing logs of a student**: Displays the specific student's log list.
+- **Viewing summary statistics**: Displays summary statistics such as number of students and total outstanding payment.
+
 ### View student feature
-The `view` command is a feature that allows the user to find details related to student(s) and retrieve their details.
-It consists of 3 variants
+The `view` command is a feature that allows the user to find and retrieve details related to student(s).
+It consists of 4 variants
 1. `view -all` : shows all students currently recorded in TuteeTally.
 2. `view -name`: shows all students recorded with their name, or part of their name matching the input.
-2. `view -id` : finds (unique) student associated with the unique id.
+2. `view -id` : finds (unique) student associated with the unique id, and opens the log window.
 3. `view -stats` : opens a popup for summary statistics with regard to all students.
+
 #### Implementation
 The checking of which variant of `view` is triggered is detected based on the presence of prefixes in `ViewCommandParser#parse`.
 
-If more than one valid prefix `-all`, `-name`, `-id`, or `stats` are present, `ViewCommandParser` creates `ViewCommands` in the following order of precedence:
-* `all` > `name` > `id` > `stats`
+Only one prefix is allowed to be in the command format at once. If more than one prefix is present, the user will receive an error message to remind them only one prefix is allowed. 
 
 #### Design considerations:
-**Aspect: How to check which command to execute:**
+**Aspect: What to do when encountering more than 1 prefix:**
 
-* **Alternative 1 (current choice):** Goes through checks for presence of prefix variants, and execute the first detected based on the precedence of ``-all`` > ``-name`` > ``-id`` > ``-stats``
-    * Pros: Easy to implement.
-    * Cons: If variants increase in the future, might take extra time falling through the conditional checks. Precedence of prefixes can also not be aligned with what the user intended.
+* **Alternative 1 (current choice):** Throws an error and prompts the user that only 1 prefix is allowed
+    * Pros: Easy to implement, unambiguous and structured.
+    * Cons: User will only be able to check the details provided by one view command at one time.
 
-* **Alternative 2:** Executes all variants given in the command
-  itself.
-    * Pros: More intuitive for user, gives quick overview of multiple view commands.
+* **Alternative 2:** Executes all variants given in the command.
+    * Pros: Gives quick overview of multiple view commands at once.
     * Cons: Difficult to implement and requires drastic changes in GUI.
 
-Below is an example usage scenario where the `view -stats` command was entered.
-
+### Example invocation procedure for view -stats command
 **Step 1:** User first calls `view -stats`. The input is passed into ``AddressBookParser`` which instantiates a ``ViewCommandParser`` instance.
 The `ViewCommandParser` uses ``ViewCommandParser#arePrefixesPresent`` to check for presence of the ``-add`` prefix.
 
@@ -218,17 +231,13 @@ The `ViewCommandParser` uses ``ViewCommandParser#arePrefixesPresent`` to check f
 The ``LogicManager`` then executes ``StatCommand`` which returns a  ``CommandResult`` with the ``isStatsCommand`` set to true.
 <puml src="diagrams/ViewParserSequenceDiagram2.puml" />
 
-For the prefixes ``-name`` and ``-id``, a filtered list containing the search results will be returned.
-Both variants utilize a similar logic to of passing in a ``prefix`` to ``model#updateFilteredPersonList`` to adjust the entries displayed by the GUI.
-<puml src="diagrams/ViewIdSequenceDiagram.puml" />
-
 ### View all feature
-
+This feature allows the user to see all current students stored in the app.
 #### Implementation
 
-The mechanism is similar to list feature in `AddressBook`. parser checks for `-all` flag and execute showing the entire list of students.
+The mechanism is similar to list feature in `AddressBook`. Parser checks for `-all` flag using the sequence above and execute showing the entire list of students.
 
-The feature can return user to the whole list after user uses view -id/view -name function to see specific student. A list of students will only be displayed if there are at least 1 student added to TuteeTally.
+The feature can return user to the whole list after user uses `view -id/view -name` function to see specific student. A list of students will only be displayed if there is at least 1 student added to TuteeTally.
 
 Below is a sequence diagram of how view all interacts with multiple classes.
 
@@ -236,14 +245,39 @@ Below is a sequence diagram of how view all interacts with multiple classes.
 
 #### Design considerations:
 **Aspect: How view all executes:**
-* **Alternative 1:** In a view command class with view -id/-name.
-    * Pros: Clear execution line.
+* **Alternative 1 (current choice):** In a view command class with view -id/-name.
+    * Pros: Easy to implement, clear execution line.
     * Cons: Several if else checks, more prone to errors.
 
-* **Alternative 2 (current choice) :** Separate classes for view -all and other view commands
+* **Alternative 2:** Separate classes for view -all and other view commands
     * Pros: Easy to implement, less merge conflicts.
-    * Cons: More files and parsers needed.
+    * Cons: More files and parsers needed, might be difficult to navigate.
 
+### Filtering for students using view
+For the prefixes ``-name`` and ``-id``, a filtered list containing the search results will be returned.
+Both variants utilize a similar logic to of passing in a ``prefix`` to ``model#updateFilteredPersonList`` to adjust the entries displayed by the GUI.
+<puml src="diagrams/ViewNameSequenceDiagram.puml" alt="ViewNameSequenceDiagram" />
+### View Name
+This feature allows the user to find all students with at least one matching keyword in their name.
+#### Implementation
+This mechanism is similar to the `find` command in `AddressBook`. Parser checks for the `-name` flag using the sequence above and places the keywords into a `NameContainsKeywordsPredicate`.<br>
+This command will display any student with at least **one keyword** fully matching with a part of the name. (e.g. `John` keyword will display `John Lim` but not `Joh Ng`). If there are no such students, an empty list will be displayed.<br>
+#### Design considerations:
+**Aspect: How view name finds students to display:**
+* **Alternative 1 (current choice):** Returns students only if a part of their name **fully** matches a keyword.
+    * Pros: Easy to implement, only needs to check for equality of Strings.
+    * Cons: Prone to typos by the user.
+
+* **Alternative 2:** Returns students as long as their name contains **all the characters** of any keyword, and they appear in the **right order**.
+    * Pros: Enables more extensive searching, will allow room for typos.
+    * Cons: Harder to implement, user need to look through redundant names. (e.g. User wants to find student called `John`, but has to first scroll through `Jo` `Jon` and even `James Ong`)
+### View student and their logs by ID Feature
+This feature allows the user to search for a specific student with the corresponding ID. The list of all logs of the target student will also be displayed in a popup.
+#### Implementation
+Parser checks for the `-id` flag using the sequence above and checks if the id is a valid id. Then, it passes the id into a `IsSameIdPredicate` to filter for the student. <br>
+This command will display the student with the matching id, and open a popup containing their log information. If such a student does not exist, a prompt will be given to the user to retry.
+Below is the activity diagram of how `view -id` executes.
+<puml src="diagrams/ViewIdActivityDiagram.puml">
 
 ### View Stats feature
 This feature supports the viewing of summary statistics, it currently shows the 
@@ -302,18 +336,34 @@ it get the SummaryStats from `Logic`the respective frame will show `SummaryStats
 * **Useful Information**: We want the user to have useful information in a quick manner to aid their tuition administration.
 * **Many ways to access**: We want the user to have many ways to open the Summary Stats Window.
 
-### View Name Feature
-** to add in v1.4**
+### Add Log feature
+This command is has a similar mechanism to the `add` feature, but targets a specific student instead. <br>
+This feature enables tutors to log session specific details for record to a specific student. Each log entry includes the total hours of the lesson, lesson content, the learning style of the student, as well as any additional notes. The date of the log entry is recorded as the system time when the user added the log.
 #### Implementation
-** to add in v1.4**
-### View ID Feature
-** to add in v1.4**
-#### Implementation
-** to add in v1.4**
+The parser first checks if the there exists a student with the `ID` specified using the `-id` in current records. Then, the app adds the log entry to the end of the log list attached as a field to the student.
+Below is the sequence diagram of how the `log` command interacts with multiple classes.
+<puml src="diagrams/LogSequenceDiagram.puml">
+#### Design Considerations
+**Aspect: Whether all fields in log should be compulsory**
+* **Alternative 1 (current choice):** All fields are compulsory
+    * Pros: Reminds user of all possible fields, gives structure to the display format of the log entries.
+    * Cons: Troublesome for user to enter all fields, mandates some content even if they deem it unnecessary
+* **Alternative 2:** Only some fields like hours are compulsory
+    * Pros: Allows flexibility in user input, saves time for user
+    * Cons: Log entries will not be structured. Tutor may also accidentally forget important information to log, such as a change in learning style or lesson content covered.
+      As we are currently in the early stage of development and have yet to carry out user testing for what fields should be compulsory, we chose to mandate every field so tutors are reminded of all possibly important aspects to record.
 
-# Student Payment Management System
+**Aspect: Restrictions on log feature fields' contents**
+* **Alternative 1 (current choice):** All fields are strings, and can be empty
+    * Pros: Easy to implement, flexible, allowing customised inputs like `45 minutes` for hours instead of restricting to an integer. Allowing empty fields partially mitigates aforementioned con of being forced to enter content even if the user deems it unnecessary, all while still providing a reminder to possibly important fields.
+    * Cons: Prone to user errors, which can make the log entry messy.
+* **Alternative 2:** All fields have their own required format and data types.
+    * Pros: More systematic, less prone to user errors and typos.
+    * Cons: More complicated to implement and use.
 
-## Introduction
+## Student Payment Management System
+
+### Introduction
 
 This section of the developer guide covers the functionalities provided for managing student payments. It includes adding payments, marking payments as paid, and resetting payment statuses for students. These features are integral to maintaining accurate and up-to-date financial records for each student.
 
@@ -323,26 +373,26 @@ This section of the developer guide covers the functionalities provided for mana
 - **Mark Payment**: Marks payments as completed for students, indicating that a payment has been made.
 - **Reset Payments**: Resets the payment status of students, useful in scenarios where the total payment amount is fulfilled or adjustments are needed.
 
-## Add Payment Feature
+### Add Payment Feature
 
 The `AddPaymentCommand` enables users to add payment records to students by specifying a unique student ID and the payment amount.
 <puml src="diagrams/AddPaymentSequenceDiagram.puml" alt="AddPaymentSequenceDiagram" />
 
 
-### Implementation
+#### Implementation
 
 1. The user inputs a command with the `-addpayment` flag, followed by the student's `uniqueId` and the amount.
 2. The system parses this command, extracting the necessary details.
 3. A new payment record is created and added to the student's account in the system.
    <puml src="diagrams/AddPaymentActivityDiagram.puml" alt="AddPaymentActivityDiagram" />
 
-## Mark Payment Feature
+### Mark Payment Feature
 
 The `MarkPaymentCommand` allows marking a student's payment as completed. This is typically used once a payment has been processed or received.
 <puml src="diagrams/MarkPaymentSequenceDiagram.puml" alt="MarkPaymentSequenceDiagram" />
 
 
-### Implementation
+#### Implementation
 
 1. The user inputs a command with the `-markpayment` flag, followed by the student's `uniqueId`.
 2. The system identifies the corresponding student record and updates the payment status to reflect that it has been paid.
@@ -350,20 +400,20 @@ The `MarkPaymentCommand` allows marking a student's payment as completed. This i
    <puml src="diagrams/MarkPaymentActivityDiagram.puml" alt="MarkPaymentActivityDiagram" />
 
 
-## Reset Payments Feature
+### Reset Payments Feature
 
 This feature enables the system to reset the payment status of students, which is useful when a student has fully paid their dues or when adjustments to their payment records are needed.
 <puml src="diagrams/ResetPaymentsSequenceDiagram.puml" alt="ResetPaymentsSequenceDiagram" />
 
 
-### Implementation
+#### Implementation
 
 1. A specific command with the `-resetpayments` flag and the student's `uniqueId` is issued by the user.
 2. The system locates the student's record and resets the payment information, clearing any completed payments or dues.
 3. A success message is sent to the user, confirming the reset. <br>
    <puml src="diagrams/ResetPaymentsActivityDiagram.puml" alt="ResetPaymentsActivityDiagram" />
 
-## Conclusion
+### Conclusion
 
 This guide provides a concise overview of the payment management functionalities within the system, designed to assist developers in understanding and utilizing these features effectively. For further details or clarification, please refer to the system documentation or contact the development team.
 
@@ -373,7 +423,7 @@ This guide provides a concise overview of the payment management functionalities
 
 This section covers the exam management system including add exam and delete exam.
 
-#### Features Overview
+### Features Overview
 
 Add Exam: Allows the addition of exam records to student accounts using unique identifiers.
 Delete Exam: Enables the deletion of exam records from student accounts.
@@ -505,6 +555,8 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 2. TuteeTally retrieves and shows the relevant student details based on the request.
 
+3. TuteeTally opens a popup and shows the past log entries of the student.
+
    Use case ends.
 
 **Extensions**
@@ -519,6 +571,9 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
     * 2b1. TuteeTally shows an error message and the correct command format.
 
+Use case ends.
+* 3a. The requested student does not have valid logs recorded.
+    * 3a1. TuteeTally opens a popup containing "No logs yet!" instead.
 Use case ends.
 
 **Use case: View Summary Statistics**

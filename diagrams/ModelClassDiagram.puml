@@ -48,9 +48,9 @@ Person *--> Phone
 Person *--> Email
 Person *--> Address
 Person *--> Subject
-Person *--> Exam
+Person *--> "*" Exam
 Person *--> Payment
-Person *--> Log
+Person *--> "*" Log
 Person *--> Id
 Person *--> "*" Tag
 

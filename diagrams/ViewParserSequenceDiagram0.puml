@@ -8,7 +8,6 @@ participant ":AddressBookParser" as AddressBookParser LOGIC_COLOR
 participant ":ViewCommandParser" as ViewCommandParser LOGIC_COLOR
 participant "v:StatCommand" as StatCommand LOGIC_COLOR
 participant "r:CommandResult" as CommandResult LOGIC_COLOR
-participant "p:IsSameIdPredicate" as IsSameIdPredicate LOGIC_COLOR
 end box
 
 box Model MODEL_COLOR_T1

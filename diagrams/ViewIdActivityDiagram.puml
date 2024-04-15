@@ -1,0 +1,29 @@
+@startuml
+start
+:Parse View Command;
+if ("ID present after -id prefix?") then (yes)
+    :Find Student by ID;
+    if ("Student found?") then (yes)
+        :Edit displayed list to show student with correct ID;
+        :Retrieve log list of student;
+        if ("Student details window open?") then (yes)
+        else (no)
+            :Open log window;
+            endif
+        if ("Log list empty?") then (yes)
+            :Update text content to be "No logs yet!";
+        else (no)
+            :Update text content of details window to contain logs;
+        endif
+        stop
+    else (no)
+        :Error Handling;
+        :Return "Person Not Found";
+        stop
+    endif
+else (no)
+    :Error Handling;
+    :Return "Invalid Command";
+    stop
+endif
+@enduml
