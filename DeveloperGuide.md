@@ -770,7 +770,7 @@ Team size: 4 <br>
 1. Update Edit command to use ID instead of index.
 2. Improve the UI such as removing all white spaces from it.
 3. Learning styles can be tagged to Person so that it doesn't need to be logged every lesson.
-4. Logging of a lesson will automatically update the payment info.
+4. When exiting the GUI using the "x" button, if there are past exams stored in the JSON file, the application should save the current data to the JSON file, similar to how it behaves when using the "exit" command.
 5. View -id or -name should automatically filter and show the exams of the person on the right.
 6. Log window will update its content to respond to addition of logs to a student.
 7. Log entry can be deleted and its fields can be edited, including editing the date and time of the log to a custom date to match the lesson time.
