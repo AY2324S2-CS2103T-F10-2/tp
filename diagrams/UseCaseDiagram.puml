@@ -1,0 +1,24 @@
+@startuml
+left to right direction
+actor PrivateTutor as g
+
+package TuteeTally {
+  usecase "Add Student" as UC1
+  usecase "Add Exam of Student" as UC2
+  usecase "Logging of Tuition Lessons"" as UC3
+  usecase "Adding of Exams" as UC4
+  usecase "Adding of Payment Details" as UC5
+  usecase "Marking of Payment Details" as UC6
+  usecase "Viewing of Summary Stats" as UC7
+  usecase "Editing of Student Details" as UC8
+}
+
+g --> UC1
+g --> UC2
+g --> UC3
+g --> UC4
+g --> UC5
+g --> UC6
+g --> UC7
+g --> UC8
+@enduml

@@ -1,0 +1,71 @@
+@startuml
+mainframe "sd updateUpcomingMonthExams()"
+!include style.puml
+
+
+box UI UI_COLOR_T1
+participant ":SummaryStatsWindow" as SummaryStatsWindow UI_COLOR
+
+end box
+
+box Logic LOGIC_COLOR_T1
+participant ":LogicManager" as LogicManager LOGIC_COLOR
+end box
+
+box Model MODEL_COLOR_T1
+participant ":ModelManager" as ModelManager MODEL_COLOR
+participant ":AddressBook" as Addressbook MODEL_COLOR
+participant ":AllExamsList" as AllExamsList MODEL_COLOR
+end box
+
+
+activate SummaryStatsWindow #DarkSalmon
+
+
+
+
+
+SummaryStatsWindow -> SummaryStatsWindow: updateUpcomingMonthExams()
+
+activate SummaryStatsWindow #Red
+SummaryStatsWindow -> LogicManager:getUpcomingMonthExamCount()
+
+activate LogicManager
+
+LogicManager -> ModelManager: getUpcomingMonthExamCount()
+activate ModelManager
+
+ModelManager -> Addressbook: getUpcomingMonthExamCount()
+
+activate Addressbook
+
+Addressbook -> AllExamsList: getUpcomingMonthExamCount(
+
+activate AllExamsList
+
+AllExamsList --> Addressbook: upcomingMonthExamCount
+
+deactivate AllExamsList
+
+Addressbook --> ModelManager: upcomingMonthExamCount
+
+deactivate Addressbook
+
+ModelManager --> LogicManager: upcomingMonthExamCount
+
+deactivate ModelManager
+
+LogicManager --> SummaryStatsWindow: upcomingMonthExamCount
+
+deactivate LogicManager
+
+SummaryStatsWindow -> SummaryStatsWindow:setText(upcomingMonthExamCount)
+
+activate SummaryStatsWindow #Blue
+
+SummaryStatsWindow -> SummaryStatsWindow
+
+SummaryStatsWindow -> SummaryStatsWindow
+deactivate SummaryStatsWindow
+
+@enduml

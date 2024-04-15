@@ -1,0 +1,76 @@
+@startuml
+mainframe "sd UpdateTotalOwingsofPersons()"
+!include style.puml
+
+
+box UI UI_COLOR_T1
+participant ":SummaryStatsWindow" as SummaryStatsWindow UI_COLOR
+
+end box
+
+box Logic LOGIC_COLOR_T1
+participant ":LogicManager" as LogicManager LOGIC_COLOR
+end box
+
+box Model MODEL_COLOR_T1
+participant ":ModelManager" as ModelManager MODEL_COLOR
+participant ":AddressBook" as Addressbook MODEL_COLOR
+participant ":UniquePersonList" as UniquePersonList MODEL_COLOR
+end box
+
+
+activate SummaryStatsWindow #DarkSalmon
+
+
+
+
+
+SummaryStatsWindow -> SummaryStatsWindow: updateTotalCountOfOwing()
+
+activate SummaryStatsWindow #Red
+SummaryStatsWindow -> LogicManager:getTotalOwing()
+
+activate LogicManager
+
+LogicManager -> ModelManager: getTotalOwing()
+activate ModelManager
+
+ModelManager -> Addressbook: getTotalOwing()
+
+activate Addressbook
+
+Addressbook -> UniquePersonList: getTotalOwing()
+
+activate UniquePersonList
+
+UniquePersonList --> Addressbook: TotalOwing
+
+deactivate UniquePersonList
+
+Addressbook --> ModelManager: TotalOwing
+
+deactivate Addressbook
+
+ModelManager --> LogicManager: TotalOwing
+
+deactivate ModelManager
+
+LogicManager --> SummaryStatsWindow: TotalOwing
+
+deactivate LogicManager
+
+SummaryStatsWindow -> SummaryStatsWindow:setText(TotalOwing)
+
+activate SummaryStatsWindow #Blue
+
+SummaryStatsWindow -> SummaryStatsWindow
+
+SummaryStatsWindow -> SummaryStatsWindow
+deactivate SummaryStatsWindow
+
+
+
+
+
+
+@enduml

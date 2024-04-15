@@ -1,15 +1,14 @@
 @startuml
-
+mainframe "sd Get CommandResult"
 !include style.puml
 
 box Logic LOGIC_COLOR_T1
 participant ":LogicManager" as LogicManager LOGIC_COLOR
 participant ":AddressBookParser" as AddressBookParser LOGIC_COLOR
 participant ":ViewCommandParser" as ViewCommandParser LOGIC_COLOR
-participant "c:ViewCommand" as ViewCommand LOGIC_COLOR
+participant "c:StatCommand" as StatCommand LOGIC_COLOR
 participant "r:CommandResult" as CommandResult LOGIC_COLOR
 end box
-
 
 
 [-> LogicManager : execute("view -stats")
@@ -28,12 +27,12 @@ deactivate ViewCommandParser
 AddressBookParser -> ViewCommandParser : parse("-stats")
 activate ViewCommandParser
 
-create ViewCommand
-ViewCommandParser -> ViewCommand
-activate ViewCommand
+create StatCommand
+ViewCommandParser -> StatCommand
+activate StatCommand
 
-ViewCommand --> ViewCommandParser :
-deactivate ViewCommand
+StatCommand --> ViewCommandParser :
+deactivate StatCommand
 
 ViewCommandParser --> AddressBookParser : d
 deactivate ViewCommandParser
@@ -44,18 +43,18 @@ destroy ViewCommandParser
 AddressBookParser --> LogicManager : d
 deactivate AddressBookParser
 
-LogicManager -> ViewCommand : execute(m)
-activate ViewCommand
+LogicManager -> StatCommand : execute(m)
+activate StatCommand
 
 create CommandResult
-ViewCommand -> CommandResult
+StatCommand -> CommandResult
 activate CommandResult
 
-CommandResult --> ViewCommand
+CommandResult --> StatCommand
 deactivate CommandResult
 
-ViewCommand --> LogicManager : r
-deactivate ViewCommand
+StatCommand --> LogicManager : r
+deactivate StatCommand
 
 [<--LogicManager
 deactivate LogicManager

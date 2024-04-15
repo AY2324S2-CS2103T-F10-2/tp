@@ -43,9 +43,7 @@ activate StatCommand
 
 StatCommand -->  ViewCommandParser : v
 deactivate StatCommand
-'Hidden arrow to position the destroy marker below the end of the activation bar.
-ViewCommandParser -[hidden]-> AddressBookParser
-destroy StatCommand
+
 
 ViewCommandParser --> AddressBookParser : v
 deactivate ViewCommandParser
@@ -56,18 +54,18 @@ destroy ViewCommandParser
 AddressBookParser --> LogicManager : v
 deactivate AddressBookParser
 
-LogicManager -> ViewCommand : execute(v)
-activate ViewCommand
+LogicManager -> StatCommand : execute(v)
+activate StatCommand
 
 create CommandResult
-ViewCommand -> CommandResult : CommandResult(MESSAGE_SUCCESS, null, false, false, true, false);
+StatCommand -> CommandResult : CommandResult(MESSAGE_SUCCESS, null, false, false, true, false);
 activate CommandResult
 
-CommandResult --> ViewCommand
+CommandResult --> StatCommand
 deactivate CommandResult
 
-ViewCommand --> LogicManager : r
-deactivate ViewCommand
+StatCommand --> LogicManager : r
+deactivate StatCommand
 
 [<--LogicManager
 deactivate LogicManager

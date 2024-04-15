@@ -1,0 +1,68 @@
+@startuml
+
+!include style.puml
+
+
+participant "User" as User USER_COLOR
+
+
+box UI UI_COLOR_T1
+participant ":CommandBox" as CommandBox UI_COLOR
+participant ":CommandBox" as CommandBox UI_COLOR
+participant ":MainWindow" as MainWindow UI_COLOR
+participant ":SummaryStatsWindow" as SummaryStatsWindow UI_COLOR
+
+end box
+
+box Logic LOGIC_COLOR_T1
+participant ":LogicManager" as LogicManager LOGIC_COLOR
+end box
+
+box Model MODEL_COLOR_T1
+participant ":ModelManager" as ModelManager MODEL_COLOR
+end box
+
+User -> CommandBox : Typed: "view -stats"
+
+activate CommandBox
+
+CommandBox -> MainWindow :executeCommand("view -stats")
+
+deactivate CommandBox
+activate MainWindow
+
+ref over MainWindow,LogicManager,ModelManager : Get CommandResult
+
+MainWindow -> MainWindow: handleSummaryStats()
+
+activate MainWindow #DarkSalmon
+
+
+
+alt  Is SummaryStatsWindow Showing
+MainWindow -> SummaryStatsWindow: focus()
+activate SummaryStatsWindow
+else  else
+MainWindow -> SummaryStatsWindow: show()
+
+end
+
+SummaryStatsWindow -> SummaryStatsWindow : updateSummaryStats()
+activate SummaryStatsWindow #DarkSalmon
+
+ref over SummaryStatsWindow,LogicManager,ModelManager : updateTotalCountOfPersons()
+ref over SummaryStatsWindow,LogicManager,ModelManager : updateTotalOwingsOfPersons()
+ref over SummaryStatsWindow,LogicManager,ModelManager : updateUpcomingMonthExams()
+
+SummaryStatsWindow -[hidden]-> SummaryStatsWindow
+
+deactivate SummaryStatsWindow
+
+SummaryStatsWindow --> MainWindow: Show SummaryStatsWindow
+
+deactivate SummaryStatsWindow
+deactivate MainWindow
+
+MainWindow --> User: Show SummaryStatsWindow
+deactivate LogicManager
+@enduml
